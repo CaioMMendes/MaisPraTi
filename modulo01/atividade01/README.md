@@ -4,7 +4,7 @@
   
   - 1.
 
-## 🚀 Tecnologias utilizadas
+## 🚀 Dependências utilizadas
 
 A atividade01 possui as seguintes dependências:
 
@@ -18,7 +18,7 @@ A atividade01 possui as seguintes dependências:
 - Acessar a pasta da atividade desejada pelo terminal (caso não esteja na pasta da atividade)
     <pre><code>cd CaminhoDesejado</code></pre>
 
-- Instalar as dependências
+- Instalar as dependências (precisa ter o node instalado no computador)
     <pre><code>npm i</code></pre>
 
 - Executar o arquivo desejado (ex: node 1-temperatureConverter.js)
