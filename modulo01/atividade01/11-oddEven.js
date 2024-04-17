@@ -1,7 +1,7 @@
 const prompt = require("prompt-sync")()
 
 do {
-  number = parseInt(prompt("Digite um número: "))
+  number = parseInt(prompt("Digite um número inteiro: "))
   if (!number || number <= 0) {
     break
   } else if (number % 2 === 0) {

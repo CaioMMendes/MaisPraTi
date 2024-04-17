@@ -10,6 +10,6 @@ const nullVotesPercentage = (nullVotes / voters) * 100
 const validVotesPercentage = (validVotes / voters) * 100
 
 console.log("----------------------------------------------")
-console.log(`Percentual de votos brancos: ${whiteVotesPercentage}`)
-console.log(`Percentual de votos nulos: ${nullVotesPercentage}`)
-console.log(`Percentual de votos válidos: ${validVotesPercentage}`)
+console.log(`Percentual de votos brancos: ${whiteVotesPercentage}%`)
+console.log(`Percentual de votos nulos: ${nullVotesPercentage}%`)
+console.log(`Percentual de votos válidos: ${validVotesPercentage}%`)
