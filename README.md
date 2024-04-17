@@ -15,3 +15,8 @@ Este repositório é destinado ao conteúdo do curso de dev fullstack da **+PraT
 
 - Executar o arquivo desejado
     <pre><code>node NomeDoArquivo</code></pre>
+
+## 🔗 Atalhos para as pastas
+
+- [Modulo01 - Introdução à Lógica de Programação](https://github.com/CaioMMendes/MaisPraTi/tree/main/modulo01)
+  - [Atividade01 - Lista de exercícios: Praticando JS básico](https://github.com/CaioMMendes/MaisPraTi/tree/main/modulo01/atividade01)
