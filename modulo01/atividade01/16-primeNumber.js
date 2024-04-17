@@ -2,17 +2,17 @@ let count = 0
 let start = 101
 
 while (count < 50) {
-  let prime = false
+  let isPrimeNumber = true
   let divide = 2
 
-  while (prime === false && divide < start) {
+  while (isPrimeNumber === true && divide < start) {
     if (start % divide === 0) {
-      prime = true
+      isPrimeNumber = false
     }
     divide++
   }
 
-  if (prime === false) {
+  if (isPrimeNumber === true) {
     console.log(start)
     count++
   }

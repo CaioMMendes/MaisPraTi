@@ -4,7 +4,6 @@ const firstNumber = parseInt(prompt("Digite o primeiro número inteiro: "))
 const secondNumber = parseInt(prompt("Digite o segundo número inteiro: "))
 const thirdNumber = parseInt(prompt("Digite o terceiro número inteiro: "))
 let fourthNumber = parseInt(prompt("Digite o quarto número inteiro: "))
-//todo não entendi se precisa somar os 3 numeros com o 4 ou se não usa ele mesmo
 
 fourthNumber = firstNumber + secondNumber + thirdNumber
 
