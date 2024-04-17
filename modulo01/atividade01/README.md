@@ -1,8 +1,6 @@
 ## 📌 Sobre
 
 - Lista de atividade01
-  
-  - 1.
 
 ## 🚀 Dependências utilizadas
 
