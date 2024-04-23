@@ -3,7 +3,7 @@ const prompt = require("prompt-sync")()
 for (let i = 0; i < 5; i++) {
   const value = parseInt(prompt("Digite um valor: "))
 
-  if (value) {
+  if (value > 0) {
     for (let j = 1; j <= value; j++) {
       console.log(`${j} X ${value} = ${j * value}`)
     }
