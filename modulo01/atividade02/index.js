@@ -3,6 +3,8 @@ const exercicio2 = require("./2-trafficTicket")
 const exercicio3 = require("./3-tripPrice")
 const exercicio4 = require("./4-triangle")
 const exercicio5 = require("./5-JoKenPo")
+const exercicio6 = require("./6-sortedNumber")
+const exercicio7 = require("./7-carRent")
 
 const prompt = require("prompt-sync")()
 
@@ -13,7 +15,7 @@ do {
     "Escolha um exercicio 1-50 ou (sair->sair, todos->executar todos): "
   )
 
-  if (exercicio !== "sair") {
+  if (exercicio !== "sair" && exercicio !== null) {
     switch (exercicio) {
       case "1":
         exercicio1()
@@ -30,6 +32,12 @@ do {
       case "5":
         exercicio5()
         break
+      case "6":
+        exercicio6()
+        break
+      case "7":
+        exercicio7()
+        break
 
       case "todos": {
         exercicio1()
@@ -37,6 +45,8 @@ do {
         exercicio3()
         exercicio4()
         exercicio5()
+        exercicio6()
+        exercicio7()
       }
       case isNaN(exercicio):
         console.log("Escolha um número!")
@@ -45,4 +55,4 @@ do {
         console.log("Escolha um exercício válido")
     }
   }
-} while (exercicio !== "sair")
+} while (exercicio !== "sair" && exercicio !== null)
