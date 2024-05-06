@@ -5,6 +5,8 @@ const exercicio4 = require("./4-triangle")
 const exercicio5 = require("./5-JoKenPo")
 const exercicio6 = require("./6-sortedNumber")
 const exercicio7 = require("./7-carRent")
+const exercicio8 = require("./8-pointsPerActivity")
+const exercicio9 = require("./9-employeeSalary")
 
 const prompt = require("prompt-sync")()
 
@@ -13,6 +15,9 @@ let exercicio
 do {
   exercicio = prompt(
     "Escolha um exercicio 1-50 ou (sair->sair, todos->executar todos): "
+  )
+  console.log(
+    "-----------------------------------------------------------------------------"
   )
 
   if (exercicio !== "sair" && exercicio !== null) {
@@ -38,6 +43,12 @@ do {
       case "7":
         exercicio7()
         break
+      case "8":
+        exercicio8()
+        break
+      case "9":
+        exercicio9()
+        break
 
       case "todos": {
         exercicio1()
@@ -55,4 +66,7 @@ do {
         console.log("Escolha um exercício válido")
     }
   }
+  console.log(
+    "-----------------------------------------------------------------------------"
+  )
 } while (exercicio !== "sair" && exercicio !== null)
