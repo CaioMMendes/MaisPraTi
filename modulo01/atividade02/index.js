@@ -7,6 +7,9 @@ const exercicio6 = require("./6-sortedNumber")
 const exercicio7 = require("./7-carRent")
 const exercicio8 = require("./8-pointsPerActivity")
 const exercicio9 = require("./9-employeeSalary")
+const exercicio10 = require("./10-doWhileNumbers")
+const exercicio11 = require("./11-AP")
+const exercicio12 = require("./12-fibonacci")
 
 const prompt = require("prompt-sync")()
 
@@ -48,6 +51,15 @@ do {
         break
       case "9":
         exercicio9()
+        break
+      case "10":
+        exercicio10()
+        break
+      case "12":
+        exercicio12()
+        break
+      case "11":
+        exercicio11()
         break
 
       case "todos": {
