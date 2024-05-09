@@ -9,6 +9,5 @@ function exercicio16() {
   console.log(`Os números gerados foram: `, ...numbersList)
   console.log(`Os numeros ordenados são: `, ...sortedNumbers)
 }
-exercicio16()
 
 module.exports = exercicio16

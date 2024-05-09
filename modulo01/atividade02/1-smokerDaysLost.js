@@ -18,8 +18,11 @@ function exercicio1() {
   const numberOfCigarettes = cigarettesPerDay * 365 * years
   const lostMinutes = numberOfCigarettes * 10
   const lostDays = lostMinutes / 60 / 24
+  console.log()
 
-  return console.log(lostDays.toFixed(2))
+  return console.log(
+    `O fumante perderá um total de dias de ${lostDays.toFixed(2)}`
+  )
 }
 
 module.exports = exercicio1
