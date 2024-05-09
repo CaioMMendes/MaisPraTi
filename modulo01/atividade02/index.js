@@ -21,6 +21,12 @@ const exercicio20 = require("./20-table")
 const exercicio21 = require("./21-idealWeight")
 const exercicio22 = require("./22-salaryAndChildrens")
 const exercicio23 = require("./23-MI")
+const exercicio24 = require("./24-negativeRow")
+const exercicio25 = require("./25-columnSum")
+const exercicio26 = require("./26-productMatrix")
+const exercicio27 = require("./27-matrixToVector")
+const exercicio28 = require("./28-diagonal")
+const exercicio29 = require("./29-matrixSum")
 
 const exercisesList = [
   exercicio1,
@@ -46,6 +52,12 @@ const exercisesList = [
   exercicio21,
   exercicio22,
   exercicio23,
+  exercicio24,
+  exercicio25,
+  exercicio26,
+  exercicio27,
+  exercicio28,
+  exercicio29,
 ]
 
 const prompt = require("prompt-sync")()
