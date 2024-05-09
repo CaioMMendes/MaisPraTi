@@ -18,6 +18,9 @@ const exercicio17 = require("./17-ageAndName")
 const exercicio18 = require("./18-register")
 const exercicio19 = require("./19-time")
 const exercicio20 = require("./20-table")
+const exercicio21 = require("./21-idealWeight")
+const exercicio22 = require("./22-salaryAndChildrens")
+const exercicio23 = require("./23-MI")
 
 const exercisesList = [
   exercicio1,
@@ -40,6 +43,9 @@ const exercisesList = [
   exercicio18,
   exercicio19,
   exercicio20,
+  exercicio21,
+  exercicio22,
+  exercicio23,
 ]
 
 const prompt = require("prompt-sync")()
