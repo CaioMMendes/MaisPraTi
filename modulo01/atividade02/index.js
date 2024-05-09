@@ -27,6 +27,10 @@ const exercicio26 = require("./26-productMatrix")
 const exercicio27 = require("./27-matrixToVector")
 const exercicio28 = require("./28-diagonal")
 const exercicio29 = require("./29-matrixSum")
+const exercicio30 = require("./30-vectorSum")
+const exercicio31 = require("./31-differentValuesMatrix")
+const exercicio32 = require("./32-divideMatrix")
+const exercicio33 = require("./33-3x3matrix")
 
 const exercisesList = [
   exercicio1,
@@ -58,6 +62,10 @@ const exercisesList = [
   exercicio27,
   exercicio28,
   exercicio29,
+  exercicio30,
+  exercicio31,
+  exercicio32,
+  exercicio33,
 ]
 
 const prompt = require("prompt-sync")()
@@ -87,7 +95,7 @@ do {
       const leave = prompt(
         "Para sair digite sair, para continuar de enter ou digite qualquer coisa "
       )
-      if (leave === "sair" || leave === "Sair") {
+      if (leave === "sair" || leave === "Sair" || leave === null) {
         console.log("Saindo...")
         break
       }
