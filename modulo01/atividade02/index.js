@@ -10,10 +10,14 @@ const exercicio9 = require("./9-employeeSalary")
 const exercicio10 = require("./10-doWhileNumbers")
 const exercicio11 = require("./11-AP")
 const exercicio12 = require("./12-fibonacci")
+const exercicio13 = require("./13-fibonacci15")
 const exercicio14 = require("./14-names")
 const exercicio15 = require("./15-tenNumbers")
 const exercicio16 = require("./16-randomNumbers")
 const exercicio17 = require("./17-ageAndName")
+const exercicio18 = require("./18-register")
+const exercicio19 = require("./19-time")
+const exercicio20 = require("./20-table")
 
 const exercisesList = [
   exercicio1,
@@ -28,11 +32,14 @@ const exercisesList = [
   exercicio10,
   exercicio11,
   exercicio12,
-  // exercicio13,
+  exercicio13,
   exercicio14,
   exercicio15,
   exercicio16,
   exercicio17,
+  exercicio18,
+  exercicio19,
+  exercicio20,
 ]
 
 const prompt = require("prompt-sync")()
