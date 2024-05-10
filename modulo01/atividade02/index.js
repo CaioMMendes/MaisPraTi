@@ -31,6 +31,9 @@ const exercicio30 = require("./30-vectorSum")
 const exercicio31 = require("./31-differentValuesMatrix")
 const exercicio32 = require("./32-divideMatrix")
 const exercicio33 = require("./33-3x3matrix")
+const exercicio34 = require("./34-50x50matrix")
+const exercicio35 = require("./35-oddEvenArray")
+const exercicio36 = require("./36-lottery")
 
 const exercisesList = [
   exercicio1,
@@ -66,6 +69,9 @@ const exercisesList = [
   exercicio31,
   exercicio32,
   exercicio33,
+  exercicio34,
+  exercicio35,
+  exercicio36,
 ]
 
 const prompt = require("prompt-sync")()
