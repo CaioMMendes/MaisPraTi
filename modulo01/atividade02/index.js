@@ -38,6 +38,9 @@ const exercicio37 = require("./37-schoolTest")
 const exercicio38 = require("./38-arrayOperation")
 const exercicio39 = require("./39-compactArray")
 const exercicio40 = require("./40-lottery2")
+const exercicio41 = require("./41-personObject")
+const exercicio42 = require("./42-objectArrays")
+const exercicio43 = require("./43-twoObjects")
 
 const exercisesList = [
   exercicio1,
@@ -80,6 +83,9 @@ const exercisesList = [
   exercicio38,
   exercicio39,
   exercicio40,
+  exercicio41,
+  exercicio42,
+  exercicio43,
 ]
 
 const prompt = require("prompt-sync")()
