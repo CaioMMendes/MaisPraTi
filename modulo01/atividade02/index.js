@@ -41,6 +41,9 @@ const exercicio40 = require("./40-lottery2")
 const exercicio41 = require("./41-personObject")
 const exercicio42 = require("./42-objectArrays")
 const exercicio43 = require("./43-twoObjects")
+const exercicio44 = require("./44-stringPropertyCount")
+const exercicio45 = require("./45-stringsCount")
+const exercicio46 = require("./46-salesSum")
 
 const exercisesList = [
   exercicio1,
@@ -86,6 +89,9 @@ const exercisesList = [
   exercicio41,
   exercicio42,
   exercicio43,
+  exercicio44,
+  exercicio45,
+  exercicio46,
 ]
 
 const prompt = require("prompt-sync")()
