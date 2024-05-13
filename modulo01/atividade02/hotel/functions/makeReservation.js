@@ -5,6 +5,7 @@ const hasReview = require("../utils/hasReview")
 const hasAvaliableRooms = require("../utils/hasAvaliableRooms")
 
 async function makeReservation() {
+  console.log("-----------------------------------------------------------")
   let hotelsData
   console.log("Escolha um hotel para realizar a reserva:")
 
@@ -13,7 +14,7 @@ async function makeReservation() {
     hotelsData = JSON.parse(hotelsJson)
   } catch (error) {
     console.log()
-    console.log("Ocorreu um erro ao tentar ler os hotéis")
+    console.log("❌ Ocorreu um erro ao tentar ler os hotéis")
     return console.log()
   }
   let { hotels, reservations } = hotelsData
@@ -35,7 +36,7 @@ async function makeReservation() {
   const hotelNumber = parseInt(prompt("Escolha o número do hotel desejado: "))
 
   if (isNaN(hotelNumber) || hotelNumber < 1 || hotelNumber > hotels.length) {
-    console.log("O número escolhido não pertence a nenhum hotel!")
+    console.log("❌ O número escolhido não pertence a nenhum hotel!")
     return console.log()
   }
 
@@ -65,7 +66,7 @@ async function makeReservation() {
   if (!avaliableRooms.includes(selectedRoom)) {
     console.log()
     console.log(
-      `O quarto ${selectedRoom} não está disponível ou não existe nesse hotel!`
+      `❌ O quarto ${selectedRoom} não está disponível ou não existe nesse hotel!`
     )
     console.log()
   }
@@ -78,6 +79,7 @@ async function makeReservation() {
       idHotel: selectedHotel.id,
       guestName: guestName,
       hotelRoom: selectedRoom,
+      checkedIn: false,
     }
 
     hotels[hotelNumber - 1].avaliableRooms = hotels[
@@ -96,19 +98,19 @@ async function makeReservation() {
 
       (err) => {
         if (err) {
-          console.error("Ocorreu um erro ao tentar criar uma reserva. ", err)
+          console.error("❌ Ocorreu um erro ao tentar criar uma reserva. ", err)
           return
         }
       }
     )
 
     console.log()
-    console.log("Reserva criada com sucesso!")
+    console.log("✅ Reserva criada com sucesso!")
     console.table(reservation)
     console.log()
   } catch (error) {
     console.log()
-    console.log(`Ocorreu um erro ao tentar criar a reserva.`)
+    console.log(`❌ Ocorreu um erro ao tentar criar a reserva.`)
     console.log()
     console.log(error)
   }

@@ -3,6 +3,7 @@ const fs = require("node:fs/promises")
 const hasAvaliableRooms = require("../utils/hasAvaliableRooms")
 
 async function occupancyReport() {
+  console.log("-----------------------------------------------------------")
   try {
     const hotelsJson = await fs.readFile(`${__dirname}/../db.json`)
     const { hotels } = JSON.parse(hotelsJson)
@@ -21,7 +22,7 @@ async function occupancyReport() {
 
     if (isNaN(hotelNumber) || hotelNumber < 1 || hotelNumber > hotelsLength) {
       console.log()
-      console.log(`A opção ${hotelNumber} não existe.`)
+      console.log(`❌ A opção ${hotelNumber} não existe.`)
       return console.log()
     }
 
@@ -46,7 +47,7 @@ async function occupancyReport() {
     })
   } catch (error) {
     console.log()
-    console.log("Ocorreu um erro ao tentar gerar o relatório")
+    console.log("❌ Ocorreu um erro ao tentar gerar o relatório")
     console.log()
     console.log(error)
   }

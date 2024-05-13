@@ -1,7 +1,9 @@
 const fs = require("node:fs/promises")
 const hasReview = require("../utils/hasReview")
+const hasAvaliableRooms = require("../utils/hasAvaliableRooms")
 
 async function listReservation() {
+  console.log("-----------------------------------------------------------")
   try {
     const hotelsJson = await fs.readFile(`${__dirname}/../db.json`)
     const { hotels, reservations } = JSON.parse(hotelsJson)
@@ -17,14 +19,20 @@ async function listReservation() {
     console.log("Lista com as informações de todas as reservas:")
     console.log()
 
-    for (const { id, idHotel, guestName, hotelRoom } of reservations) {
+    for (const {
+      id,
+      idHotel,
+      guestName,
+      hotelRoom,
+      checkedIn,
+    } of reservations) {
       const reservationHotel = hotels.find((hotel) => {
         return hotel.id === idHotel
       })
       if (!reservationHotel) {
         console.log()
         console.log(
-          `Ocorreu um erro ao tentar encontrar um hotel com id: `,
+          `❌ Ocorreu um erro ao tentar encontrar um hotel com id: `,
           idHotel
         )
         console.log()
@@ -37,10 +45,11 @@ async function listReservation() {
           "Id da reserva": id,
           "Nome do hóspede": guestName,
           "Nome do hotel": name,
+          "Já realizou check-in": checkedIn ? "Sim" : "Não",
           "Quarto do hotel": hotelRoom,
           "Cidade do hotel": city,
           "Número de quartos do hotel": totalRooms,
-          "Quartos disponíveis do hotel": avaliableRooms,
+          "Quartos disponíveis do hotel": hasAvaliableRooms(avaliableRooms),
           "Avaliações do hotel": review,
         })
         console.log()
@@ -48,7 +57,7 @@ async function listReservation() {
     }
   } catch (error) {
     console.log()
-    console.log("Ocorreu um erro ao tentar listar as reservas")
+    console.log("❌ Ocorreu um erro ao tentar listar as reservas")
     console.log()
     console.log(error)
   }

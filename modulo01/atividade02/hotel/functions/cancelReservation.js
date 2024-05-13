@@ -4,6 +4,7 @@ const hasReview = require("../utils/hasReview")
 const prompt = require("prompt-sync")()
 
 async function cancelReservation() {
+  console.log("-----------------------------------------------------------")
   let hotelsData
   console.log("Escolha um hotel para cancelar a reserva:")
 
@@ -12,7 +13,7 @@ async function cancelReservation() {
     hotelsData = JSON.parse(hotelsJson)
   } catch (error) {
     console.log()
-    console.log("Ocorreu um erro ao tentar ler os hotéis")
+    console.log("❌ Ocorreu um erro ao tentar ler os hotéis")
     console.log()
     console.log(error)
     return console.log()
@@ -38,7 +39,7 @@ async function cancelReservation() {
       console.log(
         "Não existe nenhum hotel que possui reservas com possibilidade de cancelamento."
       )
-      console.log()
+      return console.log()
     }
 
     hotelsWithReservations.forEach(
@@ -64,7 +65,7 @@ async function cancelReservation() {
       hotelNumber < 1 ||
       hotelNumber > hotelsWithReservations.length
     ) {
-      console.log("O número escolhido não pertence a nenhum hotel!")
+      console.log("❌ O número escolhido não pertence a nenhum hotel!")
       return console.log()
     }
 
@@ -102,7 +103,7 @@ async function cancelReservation() {
       checkInNumber < 1 ||
       checkInNumber > reservationsWithoutCheckIn.length
     ) {
-      console.log("O número escolhido não pertence a nenhuma reserva!")
+      console.log("❌ O número escolhido não pertence a nenhuma reserva!")
       return console.log()
     }
 
@@ -134,18 +135,21 @@ async function cancelReservation() {
       "utf8",
       (err) => {
         if (err) {
-          console.error("Ocorreu um erro ao tentar cancelar a reserva. ", err)
+          console.error(
+            "❌ Ocorreu um erro ao tentar cancelar a reserva. ",
+            err
+          )
           return
         }
       }
     )
 
     console.log()
-    console.log("Reserva cancelada com sucesso!")
+    console.log("✅ Reserva cancelada com sucesso!")
     console.log()
   } catch (error) {
     console.log()
-    console.log("Ocorreu um erro ao tentar realizar o check-in.")
+    console.log("❌ Ocorreu um erro ao tentar cancelar a reserva.")
     console.log()
     console.log(error)
     console.log()

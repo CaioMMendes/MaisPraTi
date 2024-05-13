@@ -3,6 +3,7 @@ const fs = require("node:fs/promises")
 const idGenerator = require("../utils/idGenerator")
 
 async function addHotel() {
+  console.log("-----------------------------------------------------------")
   const name = prompt("Digite o nome do hotel: ").trim()
   const city = prompt("Digite a cidade do hotel: ").trim()
   const totalRooms = parseInt(
@@ -10,23 +11,16 @@ async function addHotel() {
   )
 
   if (totalRooms <= 0 || isNaN(totalRooms)) {
-    return console.log("Digite uma quantidade total de quartos válida.")
+    return console.log("❌ Digite uma quantidade total de quartos válida.")
+  }
+  if (totalRooms > 500) {
+    return console.log("❌ O número máximo de quartos é 500.")
   }
 
-  const avaliableRoomsString = prompt(
-    "Digite o número dos quartos disponíveis separados por , ex: 1,3,15 : "
-  ).trim()
   const avaliableRooms = []
 
-  const avaliableRoomsArray = avaliableRoomsString.split(",")
-  for (let value of avaliableRoomsArray) {
-    const cleanString = value.trim()
-    if (cleanString === "")
-      return console.log(
-        "Todos os quartos disponíveis precisam de um identificador!"
-      )
-
-    avaliableRooms.push(cleanString)
+  for (let i = 1; i <= totalRooms; i++) {
+    avaliableRooms.push(String(i))
   }
 
   const reviews = {
@@ -43,7 +37,7 @@ async function addHotel() {
     totalRooms === "" ||
     avaliableRooms === ""
   ) {
-    console.log(`Preencha todos os campos`)
+    console.log(`❌ Preencha todos os campos`)
     return console.log()
   }
 
@@ -89,18 +83,21 @@ async function addHotel() {
 
       (err) => {
         if (err) {
-          console.error("Ocorreu um erro ao tentar cadastrar um hotel. ", err)
+          console.error(
+            "❌ Ocorreu um erro ao tentar cadastrar um hotel. ",
+            err
+          )
           return
         }
       }
     )
 
     console.log()
-    console.log("Hotel cadastrado com sucesso!")
+    console.log("✅ Hotel cadastrado com sucesso!")
     console.table(hotel)
     console.log()
   } catch (error) {
-    console.log("Ocorreu um erro ao tentar cadastrar um hotel.")
+    console.log("❌ Ocorreu um erro ao tentar cadastrar um hotel.")
   }
 }
 

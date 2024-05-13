@@ -4,6 +4,7 @@ const fs = require("node:fs/promises")
 const prompt = require("prompt-sync")()
 
 async function checkIn() {
+  console.log("-----------------------------------------------------------")
   let hotelsData
   console.log("Escolha um hotel para realizar a reserva:")
 
@@ -12,7 +13,7 @@ async function checkIn() {
     hotelsData = JSON.parse(hotelsJson)
   } catch (error) {
     console.log()
-    console.log("Ocorreu um erro ao tentar ler os hotéis")
+    console.log("❌ Ocorreu um erro ao tentar ler os hotéis")
     console.log()
     console.log(error)
     return console.log()
@@ -32,6 +33,14 @@ async function checkIn() {
         return false
       }
     })
+
+    if (hotelsWithReservations.length === 0) {
+      console.log()
+      console.log(
+        "Não existe nenhum hotel com reservas para realizar check-in."
+      )
+      return console.log()
+    }
 
     hotelsWithReservations.forEach(
       ({ name, city, avaliableRooms, reviews }, i) => {
@@ -56,12 +65,12 @@ async function checkIn() {
       hotelNumber < 1 ||
       hotelNumber > hotelsWithReservations.length
     ) {
-      console.log("O número escolhido não pertence a nenhum hotel!")
+      console.log("❌ O número escolhido não pertence a nenhum hotel!")
       return console.log()
     }
 
     const selectedHotel = hotelsWithReservations[hotelNumber - 1]
-    const { id, name, city, avaliableRooms } = selectedHotel
+    const { id, name } = selectedHotel
 
     const reservationsWithoutCheckIn = reservations.filter((reservation) => {
       if (reservation.idHotel === id && reservation.checkedIn === false) {
@@ -77,9 +86,9 @@ async function checkIn() {
 
     reservationsWithoutCheckIn.forEach((reservation, i) => {
       console.log(
-        `${i + 1} - ${reservation.guestName}, quarto ${
+        `${i + 1} - Nome:${reservation.guestName}, quarto: ${
           reservation.hotelRoom
-        }, hotel ${selectedHotel.name}`
+        }, hotel: ${name}`
       )
     })
 
@@ -94,7 +103,7 @@ async function checkIn() {
       checkInNumber < 1 ||
       checkInNumber > reservationsWithoutCheckIn.length
     ) {
-      console.log("O número escolhido não pertence a nenhuma reserva!")
+      console.log("❌ O número escolhido não pertence a nenhuma reserva!")
       return console.log()
     }
 
@@ -118,19 +127,22 @@ async function checkIn() {
       "utf8",
       (err) => {
         if (err) {
-          console.error("Ocorreu um erro ao tentar realizar o check-in. ", err)
+          console.error(
+            "❌ Ocorreu um erro ao tentar realizar o check-in. ",
+            err
+          )
           return
         }
       }
     )
 
     console.log()
-    console.log("Check-in realizado com sucesso!")
+    console.log("✅ Check-in realizado com sucesso!")
     console.table(selectedCheckIn)
     console.log()
   } catch (error) {
     console.log()
-    console.log("Ocorreu um erro ao tentar realizar o check-in.")
+    console.log("❌ Ocorreu um erro ao tentar realizar o check-in.")
     console.log()
     console.log(error)
     console.log()

@@ -115,12 +115,12 @@ do {
   if (exercise === "sair" || exercise === null) {
     console.log("Saindo...")
   } else if (exercise === "todos") {
-    console.log(`Executando todos os exercícios`)
+    console.log(`✅ Executando todos os exercícios`)
 
     for (let index = 0; index < exercisesLength; index++) {
       const element = exercisesList[index]
       console.log()
-      console.log(`Executando exercício número ${index + 1}`)
+      console.log(`✅ Executando exercício número ${index + 1}`)
       console.log()
       element()
       console.log()
@@ -139,7 +139,7 @@ do {
       exerciseNumber > exercisesLength ||
       exerciseNumber < 1
     ) {
-      console.log("Escolha um exercício válido!")
+      console.log("❌ Escolha um exercício válido!")
     } else {
       exercisesList[exercise - 1]()
     }

@@ -6,11 +6,16 @@ const occupancyReport = require("./functions/occupancyReport")
 const listReservation = require("./functions/listReservations")
 const makeReservation = require("./functions/makeReservation")
 const cancelReservation = require("./functions/cancelReservation")
+const checkIn = require("./functions/check-in")
+const checkOut = require("./functions/check-out")
 
 async function exercicio50() {
   let leave = false
   function leaveFunction() {
     leave = true
+    console.log()
+    console.log(`👋 Saindo ....`)
+    console.log()
   }
 
   while (leave === false) {
@@ -18,6 +23,8 @@ async function exercicio50() {
       "Adicionar hotel": addHotel,
       "Buscar hotéis por cidade": findHotelPerCity,
       "Fazer reserva": makeReservation,
+      "Realizar check-in": checkIn,
+      "Realizar check-out": checkOut,
       "Cancelar reserva": cancelReservation,
       "Listar reservas": listReservation,
       "Relatório de ocupação": occupancyReport,
@@ -42,12 +49,12 @@ async function exercicio50() {
     if (isNaN(action) || action < 1 || action > numberOfActions) {
       console.log()
       console.log(
-        `A opção "${action}" não está dentre as disponíveis, escolha uma opção válida.`
+        `❌ A opção "${action}" não está dentre as disponíveis, escolha uma opção válida.`
       )
       console.log()
+    } else {
+      await actions[actionsKeys[action - 1]]()
     }
-
-    await actions[actionsKeys[action - 1]]()
   }
 }
 
