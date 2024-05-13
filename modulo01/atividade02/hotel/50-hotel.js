@@ -8,6 +8,7 @@ const makeReservation = require("./functions/makeReservation")
 const cancelReservation = require("./functions/cancelReservation")
 const checkIn = require("./functions/check-in")
 const checkOut = require("./functions/check-out")
+const reviewsList = require("./functions/reviewsList")
 
 async function exercicio50() {
   let leave = false
@@ -28,6 +29,7 @@ async function exercicio50() {
       "Cancelar reserva": cancelReservation,
       "Listar reservas": listReservation,
       "Relatório de ocupação": occupancyReport,
+      "Lista de avaliações": reviewsList,
       "Sair": leaveFunction,
     }
     const actionsKeys = Object.keys(actions)

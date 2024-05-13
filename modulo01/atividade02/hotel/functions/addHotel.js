@@ -13,8 +13,8 @@ async function addHotel() {
   if (totalRooms <= 0 || isNaN(totalRooms)) {
     return console.log("❌ Digite uma quantidade total de quartos válida.")
   }
-  if (totalRooms > 500) {
-    return console.log("❌ O número máximo de quartos é 500.")
+  if (totalRooms > 30) {
+    return console.log("❌ O número máximo de quartos é 30.")
   }
 
   const avaliableRooms = []
