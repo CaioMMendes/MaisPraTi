@@ -1,5 +1,7 @@
 const prompt = require("prompt-sync")()
 const fs = require("node:fs/promises")
+const hasReview = require("../utils/hasReview")
+const hasAvaliableRooms = require("../utils/hasAvaliableRooms")
 
 async function findHotelPerCity() {
   const city = prompt("Digite o nome da cidade: ").trim().toLowerCase()
@@ -33,14 +35,13 @@ async function findHotelPerCity() {
       totalRooms,
       avaliableRooms,
     } of findedHotels) {
-      const review =
-        reviews.numberOfReviews !== 0 ? reviews.reviewsMedia : "Sem avaliações"
+      const review = hasReview(reviews)
 
       console.table({
         "Nome": name,
         "Cidade": city,
         "Número de quartos": totalRooms,
-        "Quartos disponíveis": avaliableRooms,
+        "Quartos disponíveis": hasAvaliableRooms(avaliableRooms),
         "Avaliações": review,
       })
       console.log()

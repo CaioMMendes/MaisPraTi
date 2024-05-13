@@ -60,6 +60,23 @@ async function addHotel() {
     const hotels = await fs.readFile(`${__dirname}/../db.json`)
     const hotelsData = JSON.parse(hotels)
 
+    const alreadyRegisted = hotelsData.hotels.some((hotel) => {
+      if (
+        hotel.name.toLowerCase() === name.toLowerCase() &&
+        hotel.city.toLowerCase() === city.toLowerCase()
+      ) {
+        return true
+      } else {
+        return false
+      }
+    })
+
+    if (alreadyRegisted) {
+      console.log()
+      console.log(`O hotel "${name}" já existe na cidade "${city}"`)
+      return console.log()
+    }
+
     const updatedHotels = {
       ...hotelsData,
       hotels: [...hotelsData.hotels, hotel],
@@ -75,10 +92,13 @@ async function addHotel() {
           console.error("Ocorreu um erro ao tentar cadastrar um hotel. ", err)
           return
         }
-        console.log("Hotel cadastrado com sucesso!")
-        console.log()
       }
     )
+
+    console.log()
+    console.log("Hotel cadastrado com sucesso!")
+    console.table(hotel)
+    console.log()
   } catch (error) {
     console.log("Ocorreu um erro ao tentar cadastrar um hotel.")
   }

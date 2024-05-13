@@ -1,4 +1,5 @@
 const fs = require("node:fs/promises")
+const hasReview = require("../utils/hasReview")
 
 async function listReservation() {
   try {
@@ -16,7 +17,7 @@ async function listReservation() {
     console.log("Lista com as informações de todas as reservas:")
     console.log()
 
-    for (const { id, idHotel, guestName } of reservations) {
+    for (const { id, idHotel, guestName, hotelRoom } of reservations) {
       const reservationHotel = hotels.find((hotel) => {
         return hotel.id === idHotel
       })
@@ -30,16 +31,13 @@ async function listReservation() {
       } else {
         const { reviews, name, city, totalRooms, avaliableRooms } =
           reservationHotel
-        const review =
-          reviews.numberOfReviews !== 0
-            ? reviews.reviewsMedia
-            : "Sem avaliações"
-
+        const review = hasReview(reviews)
         console.log()
         console.table({
           "Id da reserva": id,
           "Nome do hóspede": guestName,
           "Nome do hotel": name,
+          "Quarto do hotel": hotelRoom,
           "Cidade do hotel": city,
           "Número de quartos do hotel": totalRooms,
           "Quartos disponíveis do hotel": avaliableRooms,

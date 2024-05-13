@@ -2,6 +2,7 @@ const prompt = require("prompt-sync")()
 const fs = require("node:fs/promises")
 const idGenerator = require("../utils/idGenerator")
 const hasReview = require("../utils/hasReview")
+const hasAvaliableRooms = require("../utils/hasAvaliableRooms")
 
 async function makeReservation() {
   let hotelsData
@@ -15,7 +16,7 @@ async function makeReservation() {
     console.log("Ocorreu um erro ao tentar ler os hotéis")
     return console.log()
   }
-  const { hotels, reservations } = hotelsData
+  let { hotels, reservations } = hotelsData
 
   hotels.forEach(({ name, city, avaliableRooms, reviews }, i) => {
     const review = hasReview(reviews)
@@ -24,10 +25,7 @@ async function makeReservation() {
     console.table({
       "Hotel": name,
       "Cidade": city,
-      "Quartos disponíveis":
-        avaliableRooms.length > 0
-          ? avaliableRooms
-          : "Sem quartos disponíveis no momento",
+      "Quartos disponíveis": hasAvaliableRooms(avaliableRooms),
       "Avaliação": review,
     })
     console.log()
@@ -82,8 +80,12 @@ async function makeReservation() {
       hotelRoom: selectedRoom,
     }
 
+    hotels[hotelNumber - 1].avaliableRooms = hotels[
+      hotelNumber - 1
+    ].avaliableRooms.filter((room) => room !== selectedRoom)
+
     const updatedHotels = {
-      ...hotelsData,
+      hotels,
       reservations: [...hotelsData.reservations, reservation],
     }
 

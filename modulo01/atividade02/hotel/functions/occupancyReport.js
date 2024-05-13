@@ -1,47 +1,49 @@
 const prompt = require("prompt-sync")()
 const fs = require("node:fs/promises")
+const hasAvaliableRooms = require("../utils/hasAvaliableRooms")
 
 async function occupancyReport() {
-  const hotelName = prompt("Digite o nome do hotel para gerar o relatório: ")
-    .trim()
-    .toLowerCase()
-
   try {
-    const hotels = await fs.readFile(`${__dirname}/../db.json`)
-    const hotelsData = JSON.parse(hotels)
+    const hotelsJson = await fs.readFile(`${__dirname}/../db.json`)
+    const { hotels } = JSON.parse(hotelsJson)
 
-    const findedHotel = hotelsData.hotels.filter(
-      (hotel) => hotel.name.toLowerCase() === hotelName
+    const hotelsLength = hotels.length
+    console.log()
+    console.log("Escolha um hotel para gerar o relatório")
+    console.log()
+    hotels.forEach((hotel, index) => {
+      console.log(`${index + 1} - ${hotel.name} na cidade ${hotel.city}`)
+    })
+    console.log()
+    const hotelNumber = parseInt(
+      prompt("Digite o número do hotel para gerar o relatório: ")
     )
 
-    if (findedHotel.length < 1) {
+    if (isNaN(hotelNumber) || hotelNumber < 1 || hotelNumber > hotelsLength) {
       console.log()
-      console.log(
-        `Não foi possível encontrar nenhum hotel com o nome: ${hotelName}`
-      )
+      console.log(`A opção ${hotelNumber} não existe.`)
       return console.log()
     }
 
+    const { name, city, totalRooms, avaliableRooms } = hotels[hotelNumber - 1]
+
     console.log()
-    console.log(`Número de hoteis ${hotelName}: `, findedHotel.length)
-    console.log(`Gerando relatórios para os hotéis encontrados...`)
+    console.log(`Gerando relatórios para o hotel encontrado...`)
     console.log()
 
-    for (let { name, city, totalRooms, avaliableRooms } of findedHotel) {
-      const occupation = `${(
-        ((totalRooms - avaliableRooms.length) / totalRooms) *
-        100
-      ).toFixed(2)} %`
+    const occupation = `${(
+      ((totalRooms - avaliableRooms.length) / totalRooms) *
+      100
+    ).toFixed(2)} %`
 
-      console.table({
-        "Nome": name,
-        "Cidade": city,
-        "Número de quartos": totalRooms,
-        "Quartos disponíveis": avaliableRooms,
-        "Ocupação": occupation,
-        "Número de quartos ocupados": totalRooms - avaliableRooms.length,
-      })
-    }
+    console.table({
+      "Nome": name,
+      "Cidade": city,
+      "Número de quartos": totalRooms,
+      "Quartos disponíveis": hasAvaliableRooms(avaliableRooms),
+      "Ocupação": occupation,
+      "Número de quartos ocupados": totalRooms - avaliableRooms.length,
+    })
   } catch (error) {
     console.log()
     console.log("Ocorreu um erro ao tentar gerar o relatório")
