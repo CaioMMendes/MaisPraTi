@@ -86,7 +86,7 @@ async function checkIn() {
 
     reservationsWithoutCheckIn.forEach((reservation, i) => {
       console.log(
-        `${i + 1} - Nome:${reservation.guestName}, quarto: ${
+        `${i + 1} - Nome: ${reservation.guestName}, quarto: ${
           reservation.hotelRoom
         }, hotel: ${name}`
       )

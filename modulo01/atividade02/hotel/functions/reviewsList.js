@@ -62,7 +62,7 @@ async function reviewsList() {
     const { name, city, reviews } = selectedHotel
 
     console.log()
-    console.log(`O hotel ${city} possui ${reviews.reviews.length} avaliações`)
+    console.log(`O hotel ${city} possui ${reviews.reviews.length} avaliaçõ(es)`)
     console.log(`Lsita de avaliações do hotel: ${name} da cidade: ${city}`)
     console.log()
 

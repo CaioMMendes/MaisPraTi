@@ -30,7 +30,7 @@ async function findHotelPerCity() {
 
     const city = parseInt(prompt("Digite o número da opção desejada: "))
 
-    if (isNaN(city) || city < 1 || city > uniqueCitiesLength.length + 1) {
+    if (isNaN(city) || city < 1 || city > uniqueCitiesLength + 1) {
       console.log()
       console.log(`❌ A opção "${city}" não está dentre as disponíveis.`)
       return console.log()

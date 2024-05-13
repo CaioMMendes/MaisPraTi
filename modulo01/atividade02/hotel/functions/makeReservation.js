@@ -68,7 +68,7 @@ async function makeReservation() {
     console.log(
       `❌ O quarto ${selectedRoom} não está disponível ou não existe nesse hotel!`
     )
-    console.log()
+    return console.log()
   }
 
   const guestName = prompt("Digite seu nome: ").trim()

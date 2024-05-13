@@ -143,7 +143,7 @@ async function checkOut() {
             avaliableRooms: [
               ...hotel.avaliableRooms,
               selectedCheckOut.hotelRoom,
-            ],
+            ].sort((a, b) => Number(a) - Number(b)),
           }
         }
         return hotel

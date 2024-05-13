@@ -60,6 +60,4 @@ async function exercicio50() {
   }
 }
 
-exercicio50()
-
 module.exports = exercicio50

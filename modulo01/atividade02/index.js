@@ -47,6 +47,7 @@ const exercicio46 = require("./46-salesSum")
 const exercicio47 = require("./47-functionObject")
 const exercicio48 = require("./48-storeObjects")
 const exercicio49 = require("./49-transactions")
+const exercicio50 = require("./hotel/50-hotel")
 
 const exercisesList = [
   exercicio1,
@@ -98,6 +99,7 @@ const exercisesList = [
   exercicio47,
   exercicio48,
   exercicio49,
+  exercicio50,
 ]
 
 const prompt = require("prompt-sync")()
@@ -106,14 +108,15 @@ let exercise
 
 do {
   exercise = prompt(
-    "Escolha um exercise 1-50 ou (sair->sair, todos->executar todos): "
+    "Escolha um exercício 1-50 ou (0 ou sair->sair, todos->executar todos): "
   )
   console.log(
     "-----------------------------------------------------------------------------"
   )
 
-  if (exercise === "sair" || exercise === null) {
+  if (exercise === "sair" || exercise === null || exercise === "0") {
     console.log("Saindo...")
+    break
   } else if (exercise === "todos") {
     console.log(`✅ Executando todos os exercícios`)
 
@@ -149,83 +152,3 @@ do {
     "-----------------------------------------------------------------------------"
   )
 } while (exercise !== "sair" && exercise !== null)
-
-// do {
-//   exercicio = prompt(
-//     "Escolha um exercicio 1-50 ou (sair->sair, todos->executar todos): "
-//   )
-//   console.log(
-//     "-----------------------------------------------------------------------------"
-//   )
-
-//   if (exercicio !== "sair" && exercicio !== null) {
-//     switch (exercicio) {
-//       case "1":
-//         exercicio1()
-//         break
-//       case "2":
-//         exercicio2()
-//         break
-//       case "3":
-//         exercicio3()
-//         break
-//       case "4":
-//         exercicio4()
-//         break
-//       case "5":
-//         exercicio5()
-//         break
-//       case "6":
-//         exercicio6()
-//         break
-//       case "7":
-//         exercicio7()
-//         break
-//       case "8":
-//         exercicio8()
-//         break
-//       case "9":
-//         exercicio9()
-//         break
-//       case "10":
-//         exercicio10()
-//         break
-//       case "11":
-//         exercicio11()
-//         break
-//       case "12":
-//         exercicio12()
-//         break
-//       case "14":
-//         exercicio14()
-//         break
-//       case "15":
-//         exercicio15()
-//         break
-//       case "16":
-//         exercicio16()
-//         break
-//       case "17":
-//         exercicio17()
-//         break
-
-//       case "todos": {
-//         exercicio1()
-//         exercicio2()
-//         exercicio3()
-//         exercicio4()
-//         exercicio5()
-//         exercicio6()
-//         exercicio7()
-//       }
-//       case isNaN(exercicio):
-//         console.log("Escolha um número!")
-//         break
-//       default:
-//         console.log("Escolha um exercício válido")
-//     }
-//   }
-//   console.log(
-//     "-----------------------------------------------------------------------------"
-//   )
-// } while (exercicio !== "sair" && exercicio !== null)

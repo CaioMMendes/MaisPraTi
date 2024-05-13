@@ -120,7 +120,7 @@ async function cancelReservation() {
           avaliableRooms: [
             ...hotel.avaliableRooms,
             selectedReservation.hotelRoom,
-          ],
+          ].sort((a, b) => Number(a) - Number(b)),
         }
       }
       return hotel
