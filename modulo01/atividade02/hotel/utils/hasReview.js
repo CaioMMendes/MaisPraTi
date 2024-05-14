@@ -1,7 +1,7 @@
 function hasReview(reviews) {
   const review =
     reviews.numberOfReviews !== 0
-      ? `⭐ ${reviews.reviewMedia}`
+      ? `⭐ ${reviews.reviewMedia.toFixed(2)}`
       : "Sem avaliações"
   return review
 }

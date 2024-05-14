@@ -39,7 +39,10 @@ function hotelReview(hotels, { id, reviews }, selectedCheckOut) {
     if (hotel.id === id) {
       return {
         ...hotel,
-        avaliableRooms: [...hotel.avaliableRooms, selectedCheckOut.hotelRoom],
+        avaliableRooms: [
+          ...hotel.avaliableRooms,
+          selectedCheckOut.hotelRoom,
+        ].sort((a, b) => Number(a) - Number(b)),
         reviews: updatedReview,
       }
     }

@@ -102,53 +102,56 @@ const exercisesList = [
   exercicio50,
 ]
 
-const prompt = require("prompt-sync")()
-const exercisesLength = exercisesList.length
-let exercise
+async function index() {
+  const prompt = require("prompt-sync")()
+  const exercisesLength = exercisesList.length
+  let exercise
 
-do {
-  exercise = prompt(
-    "Escolha um exercício 1-50 ou (0 ou sair->sair, todos->executar todos): "
-  )
-  console.log(
-    "-----------------------------------------------------------------------------"
-  )
+  do {
+    exercise = prompt(
+      "Escolha um exercício 1-50 ou (0 ou sair->sair, -1 ou todos->executar todos): "
+    )
+    console.log(
+      "-----------------------------------------------------------------------------"
+    )
 
-  if (exercise === "sair" || exercise === null || exercise === "0") {
-    console.log("Saindo...")
-    break
-  } else if (exercise === "todos") {
-    console.log(`✅ Executando todos os exercícios`)
+    if (exercise === "sair" || exercise === null || exercise === "0") {
+      console.log(`👋 Saindo ....`)
+      break
+    } else if (exercise === "todos" || exercise === "-1") {
+      console.log(`✅ Executando todos os exercícios`)
 
-    for (let index = 0; index < exercisesLength; index++) {
-      const element = exercisesList[index]
-      console.log()
-      console.log(`✅ Executando exercício número ${index + 1}`)
-      console.log()
-      element()
-      console.log()
-      const leave = prompt(
-        "Para sair digite sair, para continuar de enter ou digite qualquer coisa "
-      )
-      if (leave === "sair" || leave === "Sair" || leave === null) {
-        console.log("Saindo...")
-        break
+      for (let index = 0; index < exercisesLength; index++) {
+        console.log()
+        console.log(`✅ Executando exercício número ${index + 1}`)
+        console.log()
+        await exercisesList[index]()
+        console.log()
+        const leave = prompt(
+          "Para sair digite sair, para continuar de enter ou digite qualquer coisa "
+        )
+        if (leave === "sair" || leave === "Sair" || leave === null) {
+          console.log(`👋 Saindo ....`)
+          break
+        }
+      }
+    } else {
+      const exerciseNumber = Number(exercise)
+      if (
+        isNaN(exerciseNumber) ||
+        exerciseNumber > exercisesLength ||
+        exerciseNumber < 1
+      ) {
+        console.log("❌ Escolha um exercício válido!")
+      } else {
+        await exercisesList[exercise - 1]()
       }
     }
-  } else {
-    const exerciseNumber = Number(exercise)
-    if (
-      isNaN(exerciseNumber) ||
-      exerciseNumber > exercisesLength ||
-      exerciseNumber < 1
-    ) {
-      console.log("❌ Escolha um exercício válido!")
-    } else {
-      exercisesList[exercise - 1]()
-    }
-  }
 
-  console.log(
-    "-----------------------------------------------------------------------------"
-  )
-} while (exercise !== "sair" && exercise !== null)
+    console.log(
+      "-----------------------------------------------------------------------------"
+    )
+  } while (exercise !== "sair" && exercise !== null)
+}
+
+index()
