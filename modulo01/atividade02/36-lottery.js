@@ -2,10 +2,18 @@ const arrayGenerator = require("./helpers/arrayGenerator")
 const matrixGenerator = require("./helpers/matrixGenerator")
 
 function exercicio36() {
-  const template = arrayGenerator(13, 0, 3)
+  const min = 1
+  const max = 15
+  const template = betGenerator(min, max)
   const rows = 100
   const columns = 13
-  const bettors = matrixGenerator(rows, columns, 0, 3)
+  const bettors = []
+
+  for (let i = 0; i < rows; i++) {
+    for (let j = 0; j < columns; j++) {
+      bettors.push(betGenerator(min, max))
+    }
+  }
 
   for (let i = 0; i < rows; i++) {
     let hits = 0
@@ -30,3 +38,13 @@ function exercicio36() {
 }
 
 module.exports = exercicio36
+
+function betGenerator(min, max) {
+  let bet = []
+  while (bet.length < 13) {
+    const randomNumber = Math.floor(Math.random() * (max - min + 1)) + min
+    if (bet.includes(randomNumber)) continue
+    bet.push(randomNumber)
+  }
+  return bet
+}
