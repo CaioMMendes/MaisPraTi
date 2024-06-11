@@ -1,0 +1,9 @@
+@import "./setup/colors.css";
+
+body {
+  background-color: var(--coffee);
+}
+
+p {
+  font-weight: 600;
+}
