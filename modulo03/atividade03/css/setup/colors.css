@@ -7,4 +7,9 @@
   --sepia: #5d3a00;
   --bistre: #312217;
   --white: #f4f4f4;
+
+  --toast-success: #008a2e;
+  --toast-success-background: #ecfdf3;
+  --toast-error: #e60000;
+  --toast-error-background: #fff0f0;
 }
