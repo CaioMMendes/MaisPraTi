@@ -6,10 +6,100 @@
     <title>Zé Café</title>
     <link rel="stylesheet" href="../css/setup/normalize.css" />
     <link rel="stylesheet" href="../css/setup/reset.css" />
-    <link rel="stylesheet" href="../css/teste.css" />
+    <link rel="stylesheet" href="../css/index.css" />
     <script type="module" src="../js/teste.js"></script>
   </head>
   <body>
-    <p>asdasd</p>
+    <header>
+      <a href="index.html">
+        <img src="../assets/icons/Logo-with-text.png" alt="Zé Café" />
+      </a>
+      <nav>
+        <div id="nav-container">
+          <ul id="page-links">
+            <li><a class="selected-link" href="index.html">Início</a></li>
+            <li><a href="about.html">Sobre</a></li>
+            <li><a href="menu.html">Cardápio</a></li>
+            <li><a href="contact.html">Contato</a></li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <section class="slideshow">
+      <div class="slide">
+        <img src="../assets/img/banners/1.png" alt="É hora do café, peça já" />
+      </div>
+      <div class="slide">
+        <img
+          src="../assets/img/banners/2.png"
+          alt="Promoção compre 1 café e 1 doce e leve dois"
+        />
+      </div>
+      <div class="slide">
+        <img src="../assets/img/banners/3.png" alt="Oferta mês dos namorados" />
+      </div>
+    </section>
+
+    <section id="see-more">
+      <div class="background-opacity"></div>
+      <div class="see-more-content">
+        <h2>Zé Café</h2>
+        <h2>Onde cada xícara conta uma história</h2>
+
+        <button class="button">Saiba mais</button>
+      </div>
+    </section>
+
+    <section id="menu-options">
+      <div class="option-card">
+        <img src="../assets/img/background/cold-beverages-background.png" />
+        <h2>Bebidas</h2>
+      </div>
+      <div class="option-card">
+        <img src="../assets/img/background/desserts-background.png" />
+        <h2>Bebidas</h2>
+      </div>
+      <div class="option-card">
+        <h2>Ver mais</h2>
+      </div>
+    </section>
+
+    <div class="toast-container"></div>
+
+    <footer>
+      <section id="footer-contact">
+        <div>
+          <h5>Endereço:</h5>
+          <p>Rua Pituínos, 10, Centro, Jesuslândia, MG</p>
+        </div>
+        <div>
+          <h5>Email:</h5>
+          <p>contato@zecafe.com</p>
+        </div>
+      </section>
+      <section id="footer-links">
+        <ul>
+          <li><a href="index.html">Início</a></li>
+          <li><a href="about.html">Sobre</a></li>
+          <li><a href="menu.html">Cardápio</a></li>
+          <li><a href="contact.html">Contato</a></li>
+        </ul>
+      </section>
+      <section id="footer-social-media">
+        <p>Redes Sociais</p>
+        <a rel="noopener" target="_blank" href="https://web.whatsapp.com/">
+          <img src="../assets/icons/whatsapp.png" alt="Whatsapp" />
+        </a>
+        <a rel="noopener" target="_blank" href="https://www.instagram.com/">
+          <img src="../assets/icons/instagram.png" alt="Instagram" />
+        </a>
+        <a rel="noopener" target="_blank" href="https://www.facebook.com/">
+          <img src="../assets/icons/facebook.png" alt="Facebook" />
+        </a>
+      </section>
+
+      <p class="copy">© 2024 | Zé Café - Todos os direitos reservados</p>
+    </footer>
   </body>
 </html>
