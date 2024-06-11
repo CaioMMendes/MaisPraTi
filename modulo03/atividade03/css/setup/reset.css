@@ -85,8 +85,7 @@ video {
   margin: 0;
   padding: 0;
   border: 0;
-  /* font-size: 100%; */
-  font-size: 62.5%;
+  font-size: 100%;
   font: inherit;
   font-family: "inter", sans-serif;
   vertical-align: baseline;
@@ -133,4 +132,21 @@ q:after {
 table {
   border-collapse: collapse;
   border-spacing: 0;
+}
+
+body {
+  -webkit-tap-highlight-color: transparent;
+}
+
+::-webkit-scrollbar {
+  width: 0.8rem;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bone);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--chamoisee);
+  border-radius: 999px;
 }
