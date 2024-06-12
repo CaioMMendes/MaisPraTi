@@ -3,7 +3,133 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/setup/normalize.css" />
+    <link rel="stylesheet" href="../css/setup/reset.css" />
+    <link rel="stylesheet" href="../css/contact.css" />
+    <script type="module" src="../js/contact.js"></script>
     <title>Zé Café - Contato</title>
   </head>
-  <body></body>
+  <body>
+    <header>
+      <a href="index.html" id="header-logo">
+        <img src="../assets/icons/Logo-with-text.png" alt="Zé Café" />
+      </a>
+      <nav>
+        <div id="nav-container">
+          <ul id="page-links">
+            <li><a href="index.html">Início</a></li>
+            <li><a href="about.html">Sobre</a></li>
+            <li><a href="menu.html">Cardápio</a></li>
+            <li><a class="selected-link" href="contact.html">Contato</a></li>
+          </ul>
+        </div>
+      </nav>
+      <div class="clear"></div>
+    </header>
+
+    <main>
+      <section id="form-section">
+        <div class="background-opacity"></div>
+        <form id="contact-form">
+          <h1>Entre em contato</h1>
+          <div class="form-item">
+            <label for="name">Nome</label>
+            <input
+              type="text"
+              required
+              name="name"
+              id="name"
+              maxlength="300"
+              placeholder="John doe"
+            />
+          </div>
+          <div class="form-item">
+            <label for="email">E-mail</label>
+            <input
+              type="email"
+              required
+              name="email"
+              maxlength="300"
+              id="email"
+              placeholder="johndoe@gmail.com"
+            />
+          </div>
+          <div class="form-item">
+            <label for="message">Mensagem</label>
+            <textarea
+              required
+              type="text"
+              id="message"
+              name="message"
+              minlength="5"
+              maxlength="1000"
+              placeholder="Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat, nihil."
+            ></textarea>
+          </div>
+          <button type="submit">Enviar</button>
+        </form>
+      </section>
+
+      <section id="map-section">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d924.8301067415129!2d-45.28960986330719!3d-21.999030195838316!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1spt-BR!2sbr!4v1718178823103!5m2!1spt-BR!2sbr"
+          allowfullscreen="true"
+          loading="lazy"
+          frame-border="0"
+          referrerpolicy="no-referrer-when-downgrade"
+        ></iframe>
+      </section>
+    </main>
+    <div id="toast-container" class="">
+      <div class="toast-container">
+        <div class="success-message">
+          <img src="../assets/icons/success.png" alt="Success" />
+          <p id="toast-message">
+            Agredecemos pelo contato, asdasdasdadsadasdasdads
+          </p>
+        </div>
+        <div class="error-message">
+          <img src="../assets/icons/error.png" class="error" alt="Error" />
+          <p class="error">Digite um nome</p>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <section id="footer-contact">
+        <div>
+          <h5>Endereço:</h5>
+          <p>Rua Pituínos, 10, Centro, Jesuslândia, MG</p>
+        </div>
+        <div>
+          <h5>Email:</h5>
+          <p>contato@zecafe.com</p>
+        </div>
+      </section>
+
+      <section id="footer-links">
+        <ul>
+          <li><a href="index.html">Início</a></li>
+          <li><a href="about.html">Sobre</a></li>
+          <li><a href="menu.html">Cardápio</a></li>
+          <li><a href="contact.html">Contato</a></li>
+        </ul>
+      </section>
+
+      <section id="footer-social-media">
+        <p>Redes Sociais</p>
+        <a rel="noopener" target="_blank" href="https://web.whatsapp.com/">
+          <img src="../assets/icons/whatsapp.png" alt="Whatsapp" />
+        </a>
+        <a rel="noopener" target="_blank" href="https://www.instagram.com/">
+          <img src="../assets/icons/instagram.png" alt="Instagram" />
+        </a>
+        <a rel="noopener" target="_blank" href="https://www.facebook.com/">
+          <img src="../assets/icons/facebook.png" alt="Facebook" />
+        </a>
+      </section>
+
+      <p class="copy">© 2024 | Zé Café - Todos os direitos reservados</p>
+    </footer>
+  </body>
 </html>
