@@ -11,7 +11,7 @@
   </head>
   <body>
     <header>
-      <a href="index.html">
+      <a href="index.html" id="header-logo">
         <img src="../assets/icons/Logo-with-text.png" alt="Zé Café" />
       </a>
       <nav>
@@ -24,6 +24,7 @@
           </ul>
         </div>
       </nav>
+      <div class="clear"></div>
     </header>
 
     <section class="slideshow">
@@ -53,16 +54,29 @@
 
     <section id="menu-options">
       <div class="option-card">
-        <img src="../assets/img/background/cold-beverages-background.png" />
-        <h2>Bebidas</h2>
+        <div class="card-container">
+          <a href="/menu.html#hot-beverages">
+            <img src="../assets/img/background/cold-beverages-background.png" />
+            <h2>Bebidas</h2>
+          </a>
+        </div>
       </div>
       <div class="option-card">
-        <img src="../assets/img/background/desserts-background.png" />
-        <h2>Bebidas</h2>
+        <div class="card-container">
+          <a href="/menu.html#desserts">
+            <img src="../assets/img/background/desserts-background.png" />
+            <h2>Doces</h2>
+          </a>
+        </div>
       </div>
-      <div class="option-card">
-        <h2>Ver mais</h2>
+      <div class="option-card option-see-more">
+        <div class="card-container">
+          <a href="/menu.html">
+            <h2>Ver mais</h2>
+          </a>
+        </div>
       </div>
+      <div class="clear"></div>
     </section>
 
     <div class="toast-container"></div>
