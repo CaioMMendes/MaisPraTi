@@ -95,6 +95,7 @@ header img {
 
 #form-section {
   position: relative;
+  width: 100%;
   margin: 2rem 0;
   height: 64rem;
   color: var(--white);
@@ -165,6 +166,7 @@ form button:hover {
   padding: 1rem;
   outline: none;
   border: none;
+  box-sizing: border-box;
 }
 
 .form-item input:active {
@@ -190,6 +192,7 @@ form button:hover {
   border: none;
   border-radius: 0.8rem;
   padding: 1rem;
+  box-sizing: border-box;
 }
 
 input:-webkit-autofill,
@@ -215,7 +218,7 @@ input:-webkit-autofill:active {
 
 #toast-container {
   padding: 1.6rem 2.4rem;
-  display: inline-block;
+  display: none;
   width: 36.4rem;
   height: 5.15rem;
   background-color: var(--toast-success-background);
@@ -260,6 +263,7 @@ input:-webkit-autofill:active {
   animation-delay: 0s;
   animation-iteration-count: 1;
   animation-timing-function: ease;
+  display: inline-block;
 }
 
 @keyframes toast {

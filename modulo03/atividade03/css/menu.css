@@ -97,8 +97,12 @@ header img {
   display: inline-block;
   text-align: center;
   width: 100%;
-  padding: 2rem 0;
+  padding: 3rem 0;
   user-select: none;
+  position: sticky;
+  z-index: 20;
+  display: inline-block;
+  top: 0;
 }
 
 #badge-list .badge-item {

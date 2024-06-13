@@ -28,9 +28,8 @@ function showProductSection(products, htmlElement) {
     <p>${product.name}</p>
     <p>${currencyFormatter(product.price)}</p>
     </div>`
+    htmlElement.innerHTML = html
   }
-
-  htmlElement.innerHTML = html
 }
 
 showProductSection(hotBeverages, htmlHotBeverages)
