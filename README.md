@@ -21,3 +21,6 @@ Este repositório é destinado ao conteúdo do curso de dev fullstack da **+PraT
 - [Modulo01 - Introdução à Lógica de Programação](https://github.com/CaioMMendes/MaisPraTi/tree/main/modulo01)
   - [Atividade01 - Lista de exercícios: Praticando JS básico](https://github.com/CaioMMendes/MaisPraTi/tree/main/modulo01/atividade01)
   - [Atividade02 - Lista de exercícios: Exercícios que contemplam todo o conteúdo abordado no módulo 01](https://github.com/CaioMMendes/MaisPraTi/tree/main/modulo01/atividade02)
+
+- [Modulo03 - Fundamentos do Desenvolvimento Front-end](https://github.com/CaioMMendes/MaisPraTi/tree/main/modulo03)
+  - [Atividade 03 - Desenvolvimento de uma Landing Page](https://github.com/CaioMMendes/MaisPraTi/tree/main/modulo03/atividade03)
