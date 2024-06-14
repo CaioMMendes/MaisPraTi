@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="../css/setup/normalize.css" />
     <link rel="stylesheet" href="../css/setup/reset.css" />
     <link rel="stylesheet" href="../css/index.css" />
+    <script type="module" src="../js/index.js"></script>
     <title>Zé Café</title>
   </head>
   <body>
@@ -29,6 +30,9 @@
 
     <main>
       <section id="slideshow">
+        <div id="previous-slide">
+          <img src="../assets/icons/angle-left.png" alt="Left arrow" />
+        </div>
         <div class="slide">
           <img
             src="../assets/img/banners/1.png"
@@ -47,6 +51,10 @@
             alt="Oferta mês dos namorados"
           />
         </div>
+        <div id="next-slide">
+          <img src="../assets/icons/angle-right.png" alt="Right arrow" />
+        </div>
+        <div id="slide-select"></div>
       </section>
 
       <section id="see-more">
