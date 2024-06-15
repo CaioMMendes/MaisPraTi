@@ -13,9 +13,9 @@
 
 - Abra o arquivo index.html, localizado na pasta "pages", utilizando um navegador.
 
-## 🎨 Colors
+## 🎨 Cores
 
-| Color             | Hex                                                                |
+| Cor             | Hex                                                                |
 | ----------------- | ------------------------------------------------------------------ |
 | Bone | ![#d9cdbe](https://via.placeholder.com/10/d9cdbe?text=+) #d9cdbe |
 | Silver | ![#c4bbaf](https://via.placeholder.com/10/c4bbaf?text=+) #c4bbaf |
@@ -35,6 +35,8 @@
 <https://zecafe.vercel.app/>
 
 ## 💻 Exemplo do projeto
+
+https://github.com/CaioMMendes/MaisPraTi/assets/115363966/adc37302-f819-4de3-9a5e-8155ff167f32
 
 ## 📋 Notas
 
