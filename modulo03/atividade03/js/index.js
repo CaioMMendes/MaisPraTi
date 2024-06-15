@@ -23,6 +23,7 @@ function createSlideButtons() {
     const button = document.createElement("button")
     button.className = `slide-button ${index === 0 ? "active" : ""}`
     button.id = `slide-button-${index}`
+    button["aria-label"] = `slide ${index + 1}`
 
     button.addEventListener("click", () => handleChangeSlide(index))
     slideButtons.push(button)
