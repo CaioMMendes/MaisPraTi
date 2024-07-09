@@ -1,4 +1,4 @@
-## Atividade 03 - Desenvolvimento de uma Landing Page
+## Atividade 04 - Aprimoramento de projeto
 
 <div align="center" style="justify-content:center; display:flex; flex-direction:column; gap:20px">
 <img  title="Imagem do projeto desktop" src="./github/desktop1.png" alt="Imagem do projeto desktop"  />
@@ -32,7 +32,7 @@
 
 ## 👀 O projeto pode ser vizualizado acessando o seguinte link
 
-<https://zecafe-v1.vercel.app/>
+<https://zecafe.vercel.app/>
 
 ## 💻 Exemplo do projeto
 
