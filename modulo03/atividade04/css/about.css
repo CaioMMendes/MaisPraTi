@@ -94,38 +94,37 @@ header img {
 
 /* Main */
 
-main {
+/* main {
   width: 100%;
   position: relative;
-  height: calc(100vh - 8.2rem - 15.8rem);
+   height: calc(100vh - 8.2rem - 15.8rem); 
   text-align: center;
-}
+} */
 
-main .vertical-center {
+/* main .vertical-center {
   display: inline;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-}
+} */
 
 main img {
   width: 32.8rem;
-  height: 52.5rem;
-  margin-right: 6rem;
-  float: left;
-  vertical-align: middle;
+  height: auto;
+  /* margin-right: 6rem; */
+  /* vertical-align: middle; */
 }
 
 main #about {
-  width: 130.2rem;
+  /* width: 130.2rem; */
   text-align: left;
 }
 
 main #about h1 {
   font-weight: 600;
   font-size: 3.2rem;
-  text-align: justify;
+  text-align: center;
 }
 
 main #about p {
