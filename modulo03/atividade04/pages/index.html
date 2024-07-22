@@ -51,77 +51,63 @@
     </header>
 
     <main>
-      <section
-        id="carouselExampleAutoplaying"
-        class="carousel slide"
-        data-bs-ride="carousel"
-      >
-        <div class="carousel-indicators slide-select">
-          <button
-            type="button"
-            data-bs-target="#carouselExampleAutoplaying"
-            data-bs-slide-to="0"
-            class="active button-select"
-            aria-current="true"
-            aria-label="Slide 1"
-          ></button>
-          <button
-            type="button"
-            data-bs-target="#carouselExampleAutoplaying"
-            data-bs-slide-to="1"
-            class="button-select"
-            aria-label="Slide 2"
-          ></button>
-          <button
-            type="button"
-            data-bs-target="#carouselExampleAutoplaying"
-            data-bs-slide-to="2"
-            class="button-select"
-            aria-label="Slide 3"
-          ></button>
-        </div>
-        <div class="carousel-inner">
-          <div class="carousel-item active slide-div" data-bs-interval="6000">
-            <!-- <img
-              src="../assets/img/banners/1.png"
-              alt="É hora do café, peça já"
-            /> -->
-          </div>
-          <div class="carousel-item slide-div" data-bs-interval="6000">
-            <!-- <img
-              src="../assets/img/banners/2.png"
-              alt="Promoção compre 1 café e 1 doce e leve dois"
-            /> -->
-          </div>
-          <div class="carousel-item slide-div" data-bs-interval="6000">
-            <!-- <img
-              src="../assets/img/banners/3.png"
-              alt="Oferta mês dos namorados"
-            /> -->
-          </div>
-        </div>
-        <button
-          class="carousel-control-prev prev-slide"
-          type="button"
-          data-bs-target="#carouselExampleAutoplaying"
-          data-bs-slide="prev"
+      <section id="carousel" class="container">
+        <div
+          id="carouselExampleAutoplaying"
+          class="carousel slide align-self-center"
+          data-bs-ride="carousel"
         >
-          <span class="carousel-control-prev-icon" aria-hidden="true">
-            <!-- <img src="../assets/icons/angle-left.png" alt="Left arrow" /> -->
-          </span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button
-          class="carousel-control-next next-slide"
-          type="button"
-          data-bs-target="#carouselExampleAutoplaying"
-          data-bs-slide="next"
-        >
-          <span class="carousel-control-next-icon" aria-hidden="true">
-            <!-- <img src="../assets/icons/angle-right.png" alt="Right arrow" /> -->
-          </span>
-          <span class="visually-hidden">Next</span>
-        </button>
+          <div class="carousel-indicators slide-select">
+            <button
+              type="button"
+              data-bs-target="#carouselExampleAutoplaying"
+              data-bs-slide-to="0"
+              class="active button-select"
+              aria-current="true"
+              aria-label="Slide 1"
+            ></button>
+            <button
+              type="button"
+              data-bs-target="#carouselExampleAutoplaying"
+              data-bs-slide-to="1"
+              class="button-select"
+              aria-label="Slide 2"
+            ></button>
+            <button
+              type="button"
+              data-bs-target="#carouselExampleAutoplaying"
+              data-bs-slide-to="2"
+              class="button-select"
+              aria-label="Slide 3"
+            ></button>
+          </div>
+          <div class="carousel-inner">
+            <div
+              class="carousel-item active slide-div"
+              data-bs-interval="6000"
+            ></div>
+            <div class="carousel-item slide-div" data-bs-interval="6000"></div>
+            <div class="carousel-item slide-div" data-bs-interval="6000"></div>
+          </div>
+          <button
+            class="carousel-control-prev prev-slide"
+            type="button"
+            data-bs-target="#carouselExampleAutoplaying"
+            data-bs-slide="prev"
+          >
+            <span class="carousel-control-prev-icon" aria-hidden="true"> </span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button
+            class="carousel-control-next next-slide"
+            type="button"
+            data-bs-target="#carouselExampleAutoplaying"
+            data-bs-slide="next"
+          >
+            <span class="carousel-control-next-icon" aria-hidden="true"> </span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
       </section>
 
       <section id="see-more">
@@ -135,10 +121,10 @@
         </div>
       </section>
 
-      <section id="menu-options">
+      <section id="menu-options" class="container">
         <div class="option-card">
           <div class="card-container">
-            <a href="menu.html#hot-beverages">
+            <a href="menu.html#hot-beverages-section">
               <img
                 src="../assets/img/background/cold-beverages-background.png"
                 alt="Bebidas"
@@ -149,7 +135,7 @@
         </div>
         <div class="option-card">
           <div class="card-container">
-            <a href="menu.html#desserts">
+            <a href="menu.html#desserts-section">
               <img
                 src="../assets/img/background/desserts-background.png"
                 alt="Doces"
@@ -165,45 +151,46 @@
             </a>
           </div>
         </div>
-        <div class="clear"></div>
       </section>
     </main>
 
     <footer>
-      <section id="footer-contact">
-        <div>
-          <h5>Endereço:</h5>
-          <p>Rua Pituínos, 10, Centro, Jesuslândia, MG</p>
-        </div>
-        <div>
-          <h5>Email:</h5>
-          <p>contato@zecafe.com</p>
-        </div>
-      </section>
+      <div class="container row gap-3 w-100" id="footer-container">
+        <section id="footer-contact" class="col-12 col-sm-4">
+          <div>
+            <h5>Endereço:</h5>
+            <p>Rua Pituínos, 10, Centro, Jesuslândia, MG</p>
+          </div>
+          <div>
+            <h5>Email:</h5>
+            <p>contato@zecafe.com</p>
+          </div>
+        </section>
 
-      <section id="footer-links">
-        <ul>
-          <li><a href="index.html">Início</a></li>
-          <li><a href="about.html">Sobre</a></li>
-          <li><a href="menu.html">Cardápio</a></li>
-          <li><a href="contact.html">Contato</a></li>
-        </ul>
-      </section>
+        <section id="footer-links" class="col-12 col-sm-4">
+          <ul>
+            <li><a href="index.html">Início</a></li>
+            <li><a href="about.html">Sobre</a></li>
+            <li><a href="menu.html">Cardápio</a></li>
+            <li><a href="contact.html">Contato</a></li>
+          </ul>
+        </section>
 
-      <section id="footer-social-media">
-        <p>Redes Sociais</p>
-        <a rel="noopener" target="_blank" href="https://web.whatsapp.com/">
-          <img src="../assets/icons/whatsapp.png" alt="Whatsapp" />
-        </a>
-        <a rel="noopener" target="_blank" href="https://www.instagram.com/">
-          <img src="../assets/icons/instagram.png" alt="Instagram" />
-        </a>
-        <a rel="noopener" target="_blank" href="https://www.facebook.com/">
-          <img src="../assets/icons/facebook.png" alt="Facebook" />
-        </a>
-      </section>
+        <section id="footer-social-media" class="col-12 col-sm-3">
+          <p>Redes Sociais</p>
+          <a rel="noopener" target="_blank" href="https://web.whatsapp.com/">
+            <img src="../assets/icons/whatsapp.png" alt="Whatsapp" />
+          </a>
+          <a rel="noopener" target="_blank" href="https://www.instagram.com/">
+            <img src="../assets/icons/instagram.png" alt="Instagram" />
+          </a>
+          <a rel="noopener" target="_blank" href="https://www.facebook.com/">
+            <img src="../assets/icons/facebook.png" alt="Facebook" />
+          </a>
+        </section>
 
-      <p class="copy">© 2024 | Zé Café - Todos os direitos reservados</p>
+        <p class="copy">© 2024 | Zé Café - Todos os direitos reservados</p>
+      </div>
     </footer>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"

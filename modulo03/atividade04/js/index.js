@@ -107,7 +107,6 @@ function showSlides(initial = false) {
     }
     initial && slides[index - 1].appendChild(img)
   }
-  console.log(widthValue, heightValue)
 }
 showSlides(true)
 window.addEventListener("resize", updateWidth)
