@@ -6,6 +6,11 @@
     <link rel="icon" type="image/x-icon" href="../assets/icons/favicon.ico" />
     <link rel="stylesheet" href="../css/setup/normalize.css" />
     <link rel="stylesheet" href="../css/setup/reset.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"
+    />
     <link rel="stylesheet" href="../css/contact.css" />
     <script type="module" src="../js/contact.js"></script>
     <meta
@@ -14,7 +19,7 @@
     />
     <title>Zé Café - Contato</title>
   </head>
-  <body>
+  <body class="d-flex flex-column gap-4">
     <header>
       <a href="index.html" id="header-logo">
         <img src="../assets/icons/Logo-with-text.png" alt="Zé Café" />
@@ -29,7 +34,6 @@
           </ul>
         </div>
       </nav>
-      <div class="clear"></div>
     </header>
 
     <main>
@@ -85,20 +89,6 @@
         ></iframe>
       </section>
     </main>
-    <div id="toast-container" class="">
-      <div class="toast-container">
-        <div class="success-message">
-          <img src="../assets/icons/success.png" alt="Success" />
-          <p id="toast-message">
-            Agredecemos pelo contato, asdasdasdadsadasdasdads
-          </p>
-        </div>
-        <div class="error-message">
-          <img src="../assets/icons/error.png" class="error" alt="Error" />
-          <p class="error">Digite um nome</p>
-        </div>
-      </div>
-    </div>
 
     <footer>
       <section id="footer-contact">
@@ -136,5 +126,9 @@
 
       <p class="copy">© 2024 | Zé Café - Todos os direitos reservados</p>
     </footer>
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/toastify-js"
+    ></script>
   </body>
 </html>

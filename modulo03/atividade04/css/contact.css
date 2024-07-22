@@ -99,6 +99,9 @@ header img {
   margin: 2rem 0;
   height: 64rem;
   color: var(--white);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .background-opacity {
@@ -116,12 +119,15 @@ header img {
 }
 
 #form-section form {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   z-index: 10;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 70rem;
+  width: 100%;
+  padding: 3rem;
+  max-width: 70rem;
 }
 
 #form-section form h1 {
@@ -133,6 +139,7 @@ header img {
 
 #form-section .form-item {
   margin-bottom: 1rem;
+  width: 100%;
 }
 
 #form-section form label {
@@ -216,93 +223,22 @@ input:-webkit-autofill:active {
 
 /* Toast */
 
-#toast-container {
-  padding: 1.6rem 2.4rem;
-  display: none;
-  width: 36.4rem;
-  height: 5.15rem;
-  background-color: var(--toast-success-background);
-  position: fixed;
-  top: 7rem;
-  margin: auto 0;
-  vertical-align: middle;
-  right: -41.4rem;
-  border-radius: 0.8rem;
-  overflow: hidden;
-  z-index: 20;
+@media (max-width: 449px) {
+  .toast-mobile {
+    /* transform: translate(-50%, 0px) !important; */
+    width: 90vw;
+    max-width: none;
+  }
 }
 
-#toast-container img {
-  width: 2rem;
-  height: 2rem;
-  margin-right: 2rem;
+.toast-mobile.toast-fail button {
+  color: var(--white);
+  opacity: 0.8;
 }
 
-.toast-container {
-  display: inline-block;
-  position: relative;
-  width: calc(100% - 4.5rem);
-  text-wrap: nowrap;
-  height: 2rem;
-}
-
-#toast-container .toast-container p {
-  font-size: 1.4rem;
-  position: absolute;
-  width: 100%;
-  top: 50%;
-  transform: translateY(-50%);
-  display: inline-block;
-  font-weight: 500;
+.toast-mobile.toast-work button {
   color: var(--toast-success);
-}
-
-#toast-container.active {
-  animation-name: toast;
-  animation-duration: 5s;
-  animation-delay: 0s;
-  animation-iteration-count: 1;
-  animation-timing-function: ease;
-  display: inline-block;
-}
-
-@keyframes toast {
-  0% {
-    transform: translateX(0%);
-  }
-  7% {
-    transform: translateX(-43.4rem);
-  }
-  93% {
-    transform: translateX(-43.4rem);
-  }
-  100% {
-    transform: translateX(0%);
-  }
-}
-
-#toast-container div {
-  display: inline-block;
-}
-
-#toast-container .error-message {
-  display: none;
-}
-
-#toast-container.error {
-  background-color: var(--toast-error-background);
-}
-
-#toast-container.error .error-message {
-  display: inline-block;
-}
-
-#toast-container.error .error-message p {
-  color: var(--toast-error);
-}
-
-#toast-container.error .success-message {
-  display: none;
+  opacity: 0.8;
 }
 
 /* Footer */

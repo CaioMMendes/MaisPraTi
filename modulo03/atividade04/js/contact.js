@@ -1,6 +1,6 @@
+import { toastSuccess, toastError } from "./helpers/toast.js"
+
 const form = document.getElementById("contact-form")
-const toast = document.getElementById("toast-container")
-const toastMessage = document.getElementById("toast-message")
 
 form.addEventListener("submit", handleSubmit)
 
@@ -10,20 +10,18 @@ function handleSubmit(e) {
   let formatedName = name.value.trim().split(" ")[0]
   formatedName =
     formatedName.slice(0, 1).toUpperCase() + formatedName.slice(1).toLowerCase()
+  const message = document.getElementById("message")
+  const formatedMessage = message.value.trim()
   if (formatedName === "") {
-    toast.classList.add("error")
     name.value = ""
+    toastError("Digite um nome.")
+  } else if (formatedMessage === "") {
+    message.value = ""
+    toastError("Digite uma mensagem")
   } else {
     name.value = ""
     document.getElementById("email").value = ""
-    document.getElementById("message").value = ""
+    message.value = ""
+    toastSuccess(`Agredecemos pelo contato, ${formatedName}`)
   }
-
-  toast.classList.add("active")
-  toastMessage.innerHTML = `Agredecemos pelo contato, ${formatedName}`
-
-  setTimeout(() => {
-    toast.classList.remove("active")
-    toast.classList.remove("error")
-  }, 5000)
 }
