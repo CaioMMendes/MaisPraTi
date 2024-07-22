@@ -94,16 +94,27 @@ header img {
 /* Badge list */
 
 #badge-list {
-  display: inline-block;
-  text-align: center;
+  /* display: inline-block; */
+  /* text-align: center; */
   width: 100%;
-  padding: 3rem 0;
+  padding: 1rem 0;
   user-select: none;
   position: sticky;
   z-index: 20;
-  display: inline-block;
+  /* display: inline-block; */
   top: 0;
+  background-color: var(--white);
 }
+/* 
+@media (min-width: 767.98px) {
+  #badge-list {
+    background-color: var(--white);
+  }
+} */
+
+/* #badge-list ul {
+  background-color: var(--white);
+} */
 
 #badge-list .badge-item {
   display: inline;
@@ -112,7 +123,7 @@ header img {
   border-radius: 100rem;
   background-color: var(--chamoisee);
   border: none;
-  margin: 0 0.4rem;
+  /* margin: 0 0.4rem; */
   cursor: pointer;
   transition: all;
   transition-duration: 0.3s;
@@ -133,37 +144,42 @@ header img {
 /* Products list */
 
 #product-list {
-  padding: 1.2rem 7.5rem;
+  /* padding: 1.2rem 7.5rem; */
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 
 #product-list section {
   margin-top: 1.2rem;
 }
 
-#product-list section:nth-child(1) {
+/* #product-list section:nth-child(1) {
   margin-top: 0;
-}
+} */
 
 .product-item {
-  display: inline-block;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   width: 100%;
-  position: relative;
+  /* position: relative; */
   padding: 1.2rem 2rem;
   color: var(--bistre);
   font-size: 2rem;
   font-weight: 500;
 }
 
-.product-item p {
+/* .product-item p {
   display: inline;
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-}
+} */
 
-.product-item p:nth-child(3) {
+/* .product-item p:nth-child(3) {
   right: 0;
-}
+} */
 
 .product-item img {
   width: 14rem;
@@ -179,6 +195,32 @@ header img {
 .separator {
   height: 0.1rem;
   background-color: var(--coffee);
+}
+
+.product-item .button {
+  border-radius: 0.8rem;
+  color: var(--white);
+  background-color: var(--chamoisee);
+  padding: 0.8rem;
+  font-size: 1.8rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all;
+  transition-duration: 300ms;
+  border: none;
+}
+
+.product-item .button:hover {
+  background-color: var(--coffee);
+}
+
+#hot-beverages-section,
+#savory-snacks-section,
+#cold-beverages-section,
+#desserts-section {
+  position: relative;
+  display: block;
+  transform: translateY(-11.4rem);
 }
 
 /* Footer */

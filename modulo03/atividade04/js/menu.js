@@ -1,5 +1,6 @@
 import { products } from "../db/products.js"
 import { currencyFormatter } from "./helpers/currency-formatter.js"
+import { toastSuccess, toastError } from "./helpers/toast.js"
 
 const htmlHotBeverages = document.getElementById("hot-beverages-products")
 const htmlColdBeverages = document.getElementById("cold-beverages-products")
@@ -17,18 +18,87 @@ const savorySnacks = products.filter(
   (product) => product.category === "savory-snacks"
 )
 
-function showProductSection(products, htmlElement) {
-  let html = ``
+function handleAddProductToCart(product) {
+  try {
+    const cart = localStorage.getItem("cart")
+      ? JSON.parse(localStorage.getItem("cart"))
+      : {}
 
+    let updatedCart
+    if (cart[product.name]) {
+      updatedCart = {
+        ...cart,
+        [product.name]: {
+          ...cart[product.name],
+          quantity: cart[product.name].quantity + 1,
+        },
+      }
+    } else {
+      updatedCart = {
+        ...cart,
+        [product.name]: {
+          ...product,
+          quantity: 1,
+        },
+      }
+    }
+    localStorage.setItem("cart", JSON.stringify(updatedCart))
+    toastSuccess(`${product.name} adicionado com sucesso!`)
+  } catch (error) {
+    console.log(error)
+    localStorage.removeItem("cart")
+    toastError(`Ocorreu um erro ao tentar adicionar o item.`)
+  }
+}
+
+function createProductItem(product) {
+  const productItem = document.createElement("div")
+  productItem.className = "product-item"
+
+  const imageContainer = document.createElement("div")
+  imageContainer.className = "d-flex align-items-center"
+  const img = document.createElement("img")
+  img.src = `../assets/img/${product.category}/${product.image}`
+  img.alt = product.name
+  imageContainer.appendChild(img)
+
+  const productInfoContainer = document.createElement("div")
+  productInfoContainer.className =
+    "d-flex flex-column flex-md-row justify-content-between flex-grow-1 gap-3 gap-md-1 align-items-center"
+
+  const productName = document.createElement("p")
+  productName.textContent = product.name
+
+  const priceAndButtonContainer = document.createElement("div")
+  priceAndButtonContainer.className =
+    "d-flex flex-column flex-md-row align-items-center gap-3"
+
+  const productPrice = document.createElement("p")
+  productPrice.textContent = currencyFormatter(product.price)
+
+  const addButton = document.createElement("button")
+  addButton.className = "button px-md-4 py-md-2 w-100"
+  addButton.title = "Adicionar ao carrinho"
+  addButton.textContent = "+"
+  addButton.onclick = () => handleAddProductToCart(product)
+
+  priceAndButtonContainer.appendChild(productPrice)
+  priceAndButtonContainer.appendChild(addButton)
+
+  productInfoContainer.appendChild(productName)
+  productInfoContainer.appendChild(priceAndButtonContainer)
+
+  productItem.appendChild(imageContainer)
+  productItem.appendChild(productInfoContainer)
+
+  return productItem
+}
+
+function showProductSection(products, htmlElement) {
+  htmlElement.innerHTML = ""
   for (let product of products) {
-    html += `<div class="product-item">
-    <img src='../assets/img/${product.category}/${product.image}' alt='${
-      product.name
-    }'/>
-    <p>${product.name}</p>
-    <p>${currencyFormatter(product.price)}</p>
-    </div>`
-    htmlElement.innerHTML = html
+    const productItem = createProductItem(product)
+    htmlElement.appendChild(productItem)
   }
 }
 
