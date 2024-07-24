@@ -5,6 +5,9 @@ const toastOptions = {
   close: true,
   gravity: "top",
   position: "right",
+  offset: {
+    y: 60,
+  },
   stopOnFocus: true,
   style: {
     background: "#ecfdf3",
