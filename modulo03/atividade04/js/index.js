@@ -60,7 +60,7 @@ if (pathname.length > 0) {
   pathname = pathname.join("/")
 }
 
-function initializePage(page) {
+function initializePage(page = "home") {
   window.history.pushState(
     { path: `${pathname}/${page}.html` },
     "",
@@ -70,7 +70,7 @@ function initializePage(page) {
   request(`../pages/${page}.html`)
 }
 
-initializePage(searchParams.get("page"))
+initializePage(searchParams.get("page") ?? "home")
 
 handleAddFunctionToNavButtons()
 
