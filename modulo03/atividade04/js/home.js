@@ -33,7 +33,7 @@ function showSlides(initial = false) {
 }
 setTimeout(() => {
   showSlides(true)
-}, 500)
+}, 800)
 window.addEventListener("resize", updateWidth)
 
 let pathname = window.location.pathname.split("/")

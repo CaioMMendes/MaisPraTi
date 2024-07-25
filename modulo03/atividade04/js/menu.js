@@ -109,7 +109,7 @@ if (hash !== "") {
   const element = document.querySelector(hash)
   setTimeout(() => {
     goToElement(element)
-  }, 400)
+  }, 800)
 }
 
 function goToElement(element) {
@@ -124,7 +124,9 @@ function showProducts() {
   showProductSection(savorySnacks, htmlSavorySnacks)
 }
 
-showProducts()
+setTimeout(() => {
+  showProducts()
+}, 700)
 
 window.addEventListener("load", () => {
   console.log("load")

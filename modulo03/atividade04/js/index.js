@@ -60,7 +60,13 @@ if (pathname.length > 0) {
   pathname = pathname.join("/")
 }
 
+console.log(searchParams.get("page"))
+
+const regex = /(?<=\/)([^\/]+)(?=\.html)/
+
 function initializePage(page = "home") {
+  if (page === "index") page = "home"
+  console.log("dasd", page)
   window.history.pushState(
     { path: `${pathname}/${page}.html` },
     "",
@@ -70,7 +76,8 @@ function initializePage(page = "home") {
   request(`../pages/${page}.html`)
 }
 
-initializePage(searchParams.get("page") ?? "home")
+// initializePage(searchParams.get("page") ??page)
+initializePage(window.location.href.match(regex)[0] ?? "home")
 
 handleAddFunctionToNavButtons()
 
