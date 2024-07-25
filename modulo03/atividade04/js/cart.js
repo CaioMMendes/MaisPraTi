@@ -47,7 +47,7 @@ function createProductItem(product) {
   const productInfoContainer = document.createElement("div")
   productInfoContainer.id = "product-info-container"
   productInfoContainer.className =
-    "d-flex flex-column flex-md-row justify-content-between flex-grow-1 gap-md-1 align-items-center"
+    "d-flex flex-column flex-md-row justify-content-between flex-grow-1 gap-md-1 align-items-center gap-md-4 gap-1"
 
   const productName = document.createElement("p")
   productName.className = "product-item-name"
@@ -55,19 +55,19 @@ function createProductItem(product) {
 
   const quantityContainer = document.createElement("div")
   quantityContainer.className =
-    "quantity-container d-flex justify-content-end  align-items-center gap-4 flex-grow-1"
+    "quantity-container d-flex justify-content-end  align-items-center gap-md-4 gap-1 flex-grow-1"
 
   const priceText = document.createElement("p")
   priceText.className = "price-text"
   priceText.textContent = currencyFormatter(product.price)
 
   const quantityText = document.createElement("p")
-  quantityText.className = "quantity-text"
+  quantityText.className = "quantity-text d-none d-md-flex"
   quantityText.textContent = "Quantidade:"
 
   const changeQuantityContainer = document.createElement("div")
   changeQuantityContainer.className =
-    "quantity-container d-flex justify-content-center align-items-center"
+    "quantity-container d-flex justify-content-center align-items-center "
 
   const decreaseQuantityButton = document.createElement("button")
   decreaseQuantityButton.textContent = "<"
@@ -86,7 +86,7 @@ function createProductItem(product) {
 
   const priceAndButtonContainer = document.createElement("div")
   priceAndButtonContainer.className =
-    "d-flex flex-column flex-md-row align-items-center gap-3"
+    "d-flex flex-column flex-md-row align-items-center gap-md-3 gap-1"
 
   const productPrice = document.createElement("p")
   productPrice.id = `${product.name}-price`
@@ -206,7 +206,7 @@ function handleDecreaseQuantity({ name, price }) {
   }
 }
 
-function handleIncreaseQuantity({ quantity, name, price }) {
+function handleIncreaseQuantity({ name, price }) {
   try {
     let updatedQuantity
 
@@ -242,10 +242,6 @@ function handleIncreaseQuantity({ quantity, name, price }) {
   }
 }
 
-function updateHtmlCartProduct(htmlElement) {
-  htmlElement.innerHTML = ""
-}
-
 function handleRemoveItem({ name }) {
   try {
     const productItemHtml = document.getElementById(`${name}-item`)
@@ -274,10 +270,16 @@ function showEmptyCart() {
   emptyCart.className = "empty-cart"
   cartItemsHtml.appendChild(emptyCart)
 }
+console.log("cart javascript")
 
-showProductSection(cartItemsHtml)
-showTotalPrice(totalPrice)
-if (cartValues.length === 0) {
-  console.log(cartValues)
-  showEmptyCart()
+renderContent()
+
+function renderContent() {
+  console.log(cartItemsHtml)
+  showProductSection(cartItemsHtml)
+  showTotalPrice(totalPrice)
+  if (cartValues.length === 0) {
+    console.log(cartValues)
+    showEmptyCart()
+  }
 }

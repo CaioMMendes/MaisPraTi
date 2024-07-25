@@ -1,140 +1,5 @@
 @import "./setup/colors.css";
 
-:root {
-  --padding-container-x: 0rem;
-}
-
-html {
-  font-size: 62.5%;
-  scroll-behavior: smooth;
-}
-
-body {
-  font-size: 1.6rem;
-  background-color: var(--white);
-  color: var(--bistre);
-  width: 100vw;
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-}
-
-nav .container-nav {
-  justify-content: space-between;
-  width: 100%;
-}
-
-main {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-}
-
-p {
-  margin-bottom: 0rem;
-}
-
-/* Header */
-
-header {
-  background-color: var(--bone);
-  padding: 1rem var(--padding-container-x);
-  display: flex;
-  justify-content: space-between;
-}
-
-header nav {
-  width: 100%;
-  display: flex;
-  justify-content: end;
-  gap: 0.4rem;
-  align-items: center;
-}
-
-header nav .container {
-  display: flex;
-  justify-content: space-between;
-}
-
-header a img {
-  width: 18.6rem;
-  height: 6rem;
-}
-
-#page-links {
-  text-decoration: none;
-  user-select: none;
-  display: flex;
-  gap: 1.6rem;
-}
-
-#page-links li a {
-  text-decoration: none;
-  color: var(--bistre);
-  font-weight: 500;
-  font-size: 2.4rem;
-  position: relative;
-}
-
-#page-links li a::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -0.3rem;
-  width: 0;
-  height: 0.1rem;
-  background-color: var(--bistre);
-  transition: width 0.35s ease-out;
-}
-
-#page-links .selected-link::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -0.3rem;
-  width: 100%;
-  height: 0.1rem;
-  background-color: var(--bistre);
-}
-
-#page-links li a:hover::after {
-  width: 100%;
-}
-
-#hamburger-menu img {
-  height: 2.4rem;
-  width: 2.4rem;
-}
-
-.navbar-toggler-shadow {
-  box-shadow: 0 0 0 0.15rem;
-}
-
-.navbar-toggler-shadow:focus {
-  box-shadow: 0 0 0 0.15rem;
-}
-
-.nav-links {
-  display: flex;
-  justify-content: end;
-  align-items: center;
-}
-
-@media (max-width: 767.98px) {
-  .nav-links {
-    margin-top: 1.6rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  #page-links li {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-}
-
 /* Cart */
 
 .separator {
@@ -186,9 +51,8 @@ header a img {
 
 .quantity-container {
   display: flex;
-  gap: 1.2rem;
   justify-content: center;
-  align-items: centerS;
+  align-items: center;
 }
 
 .quantity-container button {
@@ -218,10 +82,6 @@ header a img {
   font-size: 1.8rem;
 }
 
-#product-info-container {
-  gap: 2rem;
-}
-
 .price-text {
   font-size: 1.8rem;
 }
@@ -240,69 +100,4 @@ header a img {
 
 .empty-cart {
   font-size: 2.4rem;
-}
-
-/* Footer */
-
-footer {
-  width: 100%;
-  background-color: var(--bone);
-  display: flex;
-  justify-content: center;
-  padding: 1.6rem var(--padding-container-x);
-}
-
-#footer-contact {
-  display: flex;
-  flex-direction: column;
-  align-items: start;
-  justify-content: center;
-  gap: 1rem;
-}
-
-#footer-links ul li a {
-  text-decoration: none;
-  font-weight: 600;
-  color: var(--bistre);
-}
-#footer-links ul {
-  padding-left: 0;
-  margin-bottom: 0;
-}
-#footer-social-media a {
-  text-decoration: none;
-}
-#footer-social-media img {
-  width: 2.5rem;
-  height: 2.5rem;
-}
-#footer-social-media p,
-#footer-contact h5 {
-  font-weight: 600;
-  font-size: 1.6rem;
-}
-
-footer .copy {
-  display: flex;
-  grid-column: 1 / -1;
-  justify-content: center;
-  align-items: center;
-  font-size: 1.4rem;
-}
-
-#footer-contact p {
-  line-height: 1.9rem;
-}
-
-@media (max-width: 767.98px) {
-  :root {
-    --padding-container-x: 2rem;
-  }
-  footer {
-    width: 100%;
-    display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    justify-content: start;
-    background-color: var(--bone);
-  }
 }

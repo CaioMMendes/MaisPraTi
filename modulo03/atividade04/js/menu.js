@@ -102,7 +102,31 @@ function showProductSection(products, htmlElement) {
   }
 }
 
-showProductSection(hotBeverages, htmlHotBeverages)
-showProductSection(coldBeverages, htmlColdBeverages)
-showProductSection(desserts, htmlDesserts)
-showProductSection(savorySnacks, htmlSavorySnacks)
+const hash = window.location.hash
+
+if (hash !== "") {
+  console.log(hash)
+  const element = document.querySelector(hash)
+  setTimeout(() => {
+    goToElement(element)
+  }, 400)
+}
+
+function goToElement(element) {
+  element.scrollIntoView()
+}
+console.log("menu-loaded")
+
+function showProducts() {
+  showProductSection(hotBeverages, htmlHotBeverages)
+  showProductSection(coldBeverages, htmlColdBeverages)
+  showProductSection(desserts, htmlDesserts)
+  showProductSection(savorySnacks, htmlSavorySnacks)
+}
+
+showProducts()
+
+window.addEventListener("load", () => {
+  console.log("load")
+  showProducts()
+})

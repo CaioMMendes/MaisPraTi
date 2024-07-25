@@ -1,10 +1,23 @@
 {
-  "rewrites": [
+  "_comment": [
     { "source": "/", "destination": "/pages/index.html" },
     { "source": "/index.html", "destination": "/pages/index.html" },
+    { "source": "/home.html", "destination": "/pages/home.html" },
     { "source": "/about.html", "destination": "/pages/about.html" },
     { "source": "/menu.html", "destination": "/pages/menu.html" },
     { "source": "/contact.html", "destination": "/pages/contact.html" },
     { "source": "/cart.html", "destination": "/pages/cart.html" }
+  ],
+  "rewrites": [
+    { "source": "/", "destination": "/pages/index.html" },
+    { "source": "/index.html", "destination": "/pages/index.html" },
+    { "source": "/home.html", "destination": "/pages/index.html?page=home" },
+    { "source": "/about.html", "destination": "/pages/index.html?page=about" },
+    { "source": "/menu.html", "destination": "/pages/index.html?page=menu" },
+    {
+      "source": "/contact.html",
+      "destination": "/pages/index.html?page=contact"
+    },
+    { "source": "/cart.html", "destination": "/pages/index.html?page=cart" }
   ]
 }

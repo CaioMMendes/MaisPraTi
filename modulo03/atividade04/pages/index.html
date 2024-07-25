@@ -12,23 +12,54 @@
       integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="../css/index.css" />
     <script type="module" src="../js/index.js"></script>
+    <link rel="stylesheet" href="../css/index.css" />
     <meta
       name="description"
       content="Bem-vindo ao Zé Café! Experimente os melhores cafés especiais, acompanhados de deliciosas opções de doces e salgados, em um ambiente aconchegante e acolhedor. Visite-nos para uma experiência única de sabor e qualidade."
     />
     <title>Zé Café</title>
   </head>
-  <body>
+  <body class="min-vh-100">
     <header>
       <nav class="navbar navbar-expand-md">
-        <div class="container container-nav">
-          <a href="index.html" id="header-logo">
-            <img src="../assets/icons/Logo-with-text.png" alt="Zé Café" />
-          </a>
+        <div class="container container-nav justify-content-end gap-4">
+          <button name="navigate-home" id="header-logo" class="flex-grow-1">
+            <img
+              src="../assets/icons/Logo-with-text.png"
+              alt="Zé Café"
+              class="logo-image"
+            />
+          </button>
+          <div
+            id="nav-container"
+            class="collapse navbar-collapse nav-links order-3"
+          >
+            <ul id="page-links" class="navbar-nav">
+              <!-- <li><a class="selected-link" href="index.html">Início</a></li> -->
+              <!-- <li><a href="about.html">Sobre</a></li> -->
+              <li><button name="navigate-home">Início</button></li>
+              <li><button name="navigate-about">Sobre</button></li>
+              <li><button name="navigate-menu">Cardápio</button></li>
+              <!-- <li><button href="menu.html">Cardápio</button></li> -->
+              <li><button name="navigate-contact">Contato</button></li>
+              <!-- <li><button href="contact.html">Contato</button></li> -->
+            </ul>
+          </div>
           <button
-            class="navbar-toggler navbar-toggler-shadow"
+            name="navigate-cart"
+            class="order-1 order-md-4"
+            title="Carrinho"
+            id="shopping-cart-icon"
+          >
+            <img
+              src="../assets/icons/shopping-cart.png"
+              alt="shopping-cart-icon"
+              class="shopping-cart-icon"
+            />
+          </button>
+          <button
+            class="navbar-toggler navbar-toggler-shadow order-0"
             data-bs-toggle="collapse"
             data-bs-target="#nav-container"
             id="hamburger-menu"
@@ -38,121 +69,11 @@
               alt="Menu hamburguer"
             />
           </button>
-          <div id="nav-container" class="collapse navbar-collapse nav-links">
-            <ul id="page-links" class="navbar-nav">
-              <li><a class="selected-link" href="index.html">Início</a></li>
-              <li><a href="about.html">Sobre</a></li>
-              <li><a href="menu.html">Cardápio</a></li>
-              <li><a href="contact.html">Contato</a></li>
-            </ul>
-          </div>
         </div>
       </nav>
     </header>
 
-    <main>
-      <section id="carousel" class="container">
-        <div
-          id="carouselExampleAutoplaying"
-          class="carousel slide align-self-center"
-          data-bs-ride="carousel"
-        >
-          <div class="carousel-indicators slide-select">
-            <button
-              type="button"
-              data-bs-target="#carouselExampleAutoplaying"
-              data-bs-slide-to="0"
-              class="active button-select"
-              aria-current="true"
-              aria-label="Slide 1"
-            ></button>
-            <button
-              type="button"
-              data-bs-target="#carouselExampleAutoplaying"
-              data-bs-slide-to="1"
-              class="button-select"
-              aria-label="Slide 2"
-            ></button>
-            <button
-              type="button"
-              data-bs-target="#carouselExampleAutoplaying"
-              data-bs-slide-to="2"
-              class="button-select"
-              aria-label="Slide 3"
-            ></button>
-          </div>
-          <div class="carousel-inner">
-            <div
-              class="carousel-item active slide-div"
-              data-bs-interval="6000"
-            ></div>
-            <div class="carousel-item slide-div" data-bs-interval="6000"></div>
-            <div class="carousel-item slide-div" data-bs-interval="6000"></div>
-          </div>
-          <button
-            class="carousel-control-prev prev-slide"
-            type="button"
-            data-bs-target="#carouselExampleAutoplaying"
-            data-bs-slide="prev"
-          >
-            <span class="carousel-control-prev-icon" aria-hidden="true"> </span>
-            <span class="visually-hidden">Previous</span>
-          </button>
-          <button
-            class="carousel-control-next next-slide"
-            type="button"
-            data-bs-target="#carouselExampleAutoplaying"
-            data-bs-slide="next"
-          >
-            <span class="carousel-control-next-icon" aria-hidden="true"> </span>
-            <span class="visually-hidden">Next</span>
-          </button>
-        </div>
-      </section>
-
-      <section id="see-more">
-        <div class="background-opacity"></div>
-        <div class="see-more-content">
-          <h2>Zé Café</h2>
-          <h2>Onde cada xícara conta uma história</h2>
-          <a href="about.html">
-            <button class="button">Saiba mais</button>
-          </a>
-        </div>
-      </section>
-
-      <section id="menu-options" class="container">
-        <div class="option-card">
-          <div class="card-container">
-            <a href="menu.html#hot-beverages-section">
-              <img
-                src="../assets/img/background/cold-beverages-background.png"
-                alt="Bebidas"
-              />
-              <h2>Bebidas</h2>
-            </a>
-          </div>
-        </div>
-        <div class="option-card">
-          <div class="card-container">
-            <a href="menu.html#desserts-section">
-              <img
-                src="../assets/img/background/desserts-background.png"
-                alt="Doces"
-              />
-              <h2>Doces</h2>
-            </a>
-          </div>
-        </div>
-        <div class="option-card option-see-more">
-          <div class="card-container">
-            <a href="menu.html">
-              <h2>Ver mais</h2>
-            </a>
-          </div>
-        </div>
-      </section>
-    </main>
+    <div id="ajax-content" class="flex flex-column flex-grow-1"></div>
 
     <footer>
       <div class="container row gap-3 w-100" id="footer-container">
@@ -169,10 +90,10 @@
 
         <section id="footer-links" class="col-12 col-sm-4">
           <ul>
-            <li><a href="index.html">Início</a></li>
-            <li><a href="about.html">Sobre</a></li>
-            <li><a href="menu.html">Cardápio</a></li>
-            <li><a href="contact.html">Contato</a></li>
+            <li><button name="navigate-home">Início</button></li>
+            <li><button name="navigate-about">Sobre</button></li>
+            <li><button name="navigate-menu">Cardápio</button></li>
+            <li><button name="navigate-contact">Contato</button></li>
           </ul>
         </section>
 
@@ -192,10 +113,15 @@
         <p class="copy">© 2024 | Zé Café - Todos os direitos reservados</p>
       </div>
     </footer>
+
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
       crossorigin="anonymous"
+    ></script>
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/toastify-js"
     ></script>
   </body>
 </html>

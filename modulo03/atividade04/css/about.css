@@ -1,123 +1,13 @@
 @import "./setup/colors.css";
 
-html {
-  font-size: 62.5%;
-  scroll-behavior: smooth;
-}
-
-body {
-  font-size: 1.6rem;
-  background-color: var(--white);
-  color: var(--bistre);
-  min-height: 100vh;
-}
-
-/* Header */
-
-header {
-  background-color: var(--bone);
-  padding: 1rem 7.5rem;
-  margin: auto;
-  position: relative;
-}
-
-header nav {
-  display: inline;
-  float: right;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  right: 7.5rem;
-}
-
-header img {
-  width: 18.6rem;
-  height: 6rem;
-}
-
-#nav-container {
-  text-align: center;
-}
-
-#page-links {
-  float: right;
-  text-decoration: none;
-  display: inline;
-  user-select: none;
-}
-
-#page-links li {
-  margin: auto;
-  display: inline;
-  margin-left: 1.6rem;
-}
-#page-links li a {
-  text-decoration: none;
-  color: var(--bistre);
-  font-weight: 500;
-  font-size: 2.4rem;
-  position: relative;
-}
-
-#page-links li a::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -0.4rem;
-  width: 0;
-  height: 0.15rem;
-  background-color: var(--bistre);
-  transition: width 0.35s ease-out;
-}
-
-#page-links .selected-link::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -0.4rem;
-  width: 100%;
-  height: 0.15rem;
-  background-color: var(--bistre);
-}
-
-#page-links li a:hover::after {
-  width: 100%;
-}
-
-#header-logo {
-  float: left;
-}
-
-.clear {
-  clear: both;
-}
-
 /* Main */
-
-/* main {
-  width: 100%;
-  position: relative;
-   height: calc(100vh - 8.2rem - 15.8rem); 
-  text-align: center;
-} */
-
-/* main .vertical-center {
-  display: inline;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-} */
 
 main img {
   width: 32.8rem;
   height: auto;
-  /* margin-right: 6rem; */
-  /* vertical-align: middle; */
 }
 
 main #about {
-  /* width: 130.2rem; */
   text-align: left;
 }
 
@@ -134,56 +24,4 @@ main #about p {
 
 .clear {
   clear: both;
-}
-
-/* Footer */
-
-footer {
-  display: inline-block;
-  width: 100%;
-  padding: 2rem 7.5rem;
-  text-align: start;
-  background-color: var(--bone);
-}
-
-footer section {
-  display: inline;
-  width: fit-content;
-}
-
-#footer-links ul li a {
-  text-decoration: none;
-  font-weight: 600;
-  color: var(--bistre);
-}
-#footer-social-media a {
-  text-decoration: none;
-}
-#footer-social-media img {
-  width: 2.5rem;
-  height: 2.5rem;
-}
-
-#footer-social-media p,
-#footer-contact h5 {
-  font-weight: 600;
-}
-#footer-contact div,
-#footer-links li,
-#footer-social-media p {
-  margin-bottom: 1rem;
-}
-#footer-contact p {
-  line-height: 1.9rem;
-}
-footer section {
-  float: left;
-  width: 33.333%;
-}
-
-footer .copy {
-  clear: both;
-  margin-top: 0.8rem;
-  text-align: center;
-  font-size: 1.4rem;
 }

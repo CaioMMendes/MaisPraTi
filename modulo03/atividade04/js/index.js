@@ -1,112 +1,207 @@
-// const previousSlide = document.getElementById("previous-slide")
-// const nextSlide = document.getElementById("next-slide")
-// const elements = document.getElementsByClassName("slide")
-// const slideSelect = document.getElementById("slide-select")
+const ajaxContentHtml = document.getElementById("ajax-content")
+const navigateHomeButtons = document.querySelectorAll(
+  'button[name="navigate-home"]'
+)
+const navigateAboutButtons = document.querySelectorAll(
+  'button[name="navigate-about"]'
+)
+const navigateCartButtons = document.querySelectorAll(
+  'button[name="navigate-cart"]'
+)
+const navigateContactButtons = document.querySelectorAll(
+  'button[name="navigate-contact"]'
+)
+const navigateMenuButtons = document.querySelectorAll(
+  'button[name="navigate-menu"]'
+)
 
-// const numberOfSlides = elements.length
-// let currentSlide = 0
-// const slideButtons = []
-// elements[0].style = "opacity:1;"
+async function delay(func, time = 1000) {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      const response = func()
 
-// let interval
-
-// createSlideButtons()
-// startSlideShow()
-
-// previousSlide.addEventListener("click", () => {
-//   handleChangeSlide(currentSlide - 1)
-// })
-// nextSlide.addEventListener("click", () => handleChangeSlide(currentSlide + 1))
-
-// function createSlideButtons() {
-//   for (let index = 0; index < numberOfSlides; index++) {
-//     const button = document.createElement("button")
-//     button.className = `slide-button ${index === 0 ? "active" : ""}`
-//     button.id = `slide-button-${index}`
-//     button["aria-label"] = `slide ${index + 1}`
-
-//     button.addEventListener("click", () => handleChangeSlide(index))
-//     slideButtons.push(button)
-//     slideSelect.appendChild(button)
-//   }
-// }
-
-// function startSlideShow() {
-//   interval = setInterval(() => {
-//     currentSlide = currentSlide + 1
-//     for (let index = 0; index < numberOfSlides; index++) {
-//       if (index === currentSlide % numberOfSlides) {
-//         elements[index].style = "opacity:1;"
-//         slideButtons[index].classList.add("active")
-//       } else {
-//         elements[index].style = "opacity:0;"
-//         slideButtons[index].classList.remove("active")
-//       }
-//     }
-//   }, 4000)
-// }
-
-// function restartSlideShow(slide = 0) {
-//   if (interval) {
-//     clearInterval(interval)
-//   }
-//   currentSlide = slide
-
-//   startSlideShow()
-// }
-
-// function handleChangeSlide(slide = 0) {
-//   console.log(slide)
-//   if (slide < 0) {
-//     slide = numberOfSlides + (slide % numberOfSlides)
-//   }
-//   for (let index = 0; index < numberOfSlides; index++) {
-//     if (index === slide % numberOfSlides) {
-//       elements[index].style = "opacity:1;"
-//       slideButtons[index].classList.add("active")
-//     } else {
-//       elements[index].style = "opacity:0;"
-//       slideButtons[index].classList.remove("active")
-//     }
-//   }
-
-//   restartSlideShow(slide)
-// }
-
-const slides = document.querySelectorAll(".slide-div")
-const numberOfSlides = 3
-
-let widthValue = Math.min(window.innerWidth, screen.width)
-let heightValue = window.innerHeight
-// let widthValue = screen.width
-// let heightValue = screen.height
-const mobileWidth = 600
-
-const imagesAlt = {
-  1: "É hora do café, peça já",
-  2: "Promoção compre 1 café e 1 doce e leve dois",
-  3: "Oferta mês dos namorados",
+      resolve(response)
+    }, time)
+  })
 }
 
-function updateWidth() {
-  widthValue = Math.min(window.innerWidth, screen.width)
-  showSlides()
-}
+let oldScript
 
-function showSlides(initial = false) {
-  for (let index = 1; index <= numberOfSlides; index++) {
-    const img = initial
-      ? document.createElement("img")
-      : slides[index - 1].getElementsByTagName("img")[0]
-    if (widthValue < mobileWidth) {
-      img.src = `../assets/img/banners/${index}-mobile.png`
-      img.alt = imagesAlt[index]
-    } else {
-      img.src = `../assets/img/banners/${index}.png`
-      img.alt = imagesAlt[index]
+function request(url) {
+  const ajax = new XMLHttpRequest()
+  try {
+    ajax.open("GET", url)
+    ajax.onreadystatechange = () => {
+      if (ajax.readyState == 4 && ajax.status == 200) {
+        ajaxContentHtml.style = "visibility: hidden;"
+        ajaxContentHtml.innerHTML = ajax.responseText
+
+        setTimeout(() => {
+          ajaxContentHtml.style = "visibility: visible;"
+        }, 200)
+      } else if (ajax.readyState == 4 && ajax.status == 404) {
+        ajaxContentHtml.innerHTML =
+          "Requisição finalizada, porém o recurso não foi encontrado. Erro 404."
+      } else {
+        ajaxContentHtml.innerHTML = "Ocorreu um erro."
+      }
     }
-    initial && slides[index - 1].appendChild(img)
+  } catch (error) {
+    console.log(error)
+    ajaxContentHtml.innerHTML =
+      "Requisição finalizada, porém o recurso não foi encontrado. Erro 404."
+  }
+  ajax.send()
+}
+const searchParams = new URLSearchParams(window.location.search)
+let pathname = window.location.pathname.split("/")
+if (pathname.length > 0) {
+  pathname.pop()
+  pathname = pathname.join("/")
+}
+
+function initializePage(page) {
+  window.history.pushState(
+    { path: `${pathname}/${page}.html` },
+    "",
+    `${pathname}/${page}.html`
+  )
+  loadPageScript(`${page}`)
+  request(`../pages/${page}.html`)
+}
+
+initializePage(searchParams.get("page"))
+
+handleAddFunctionToNavButtons()
+
+function loadPageScript(page) {
+  // Remove o script antigo, se houver
+  oldScript = document.getElementById("page-script")
+  if (oldScript) {
+    console.log("removendo")
+    document.head.removeChild(oldScript)
+    oldScript.remove()
+  }
+  const oldCss = document.getElementById("page-css")
+  if (oldCss) oldCss.remove()
+
+  // ;<link rel="stylesheet" href="../css/index.css" id="page-css" />
+  const css = document.createElement("link")
+  css.rel = "stylesheet"
+  css.href = `../css/${page}.css`
+  css.id = "page-css"
+  css.dataset.page = page // Adiciona um atributo para controle
+  document.head.appendChild(css)
+
+  // Cria um novo elemento script
+  if (page !== "about") {
+    const script = document.createElement("script")
+    // script.src = `../js/${page}.js`
+    script.src = `../js/${page}.js?${Date.now()}`
+    script.type = "module"
+    script.id = "page-script"
+    script.dataset.page = page // Adiciona um atributo para controle
+    script.onload = () => {
+      console.log(`${page} script loaded`)
+    }
+    script.onerror = () => {
+      console.error(`Failed to load ${page} script`)
+    }
+    document.head.appendChild(script)
   }
 }
-showSlides(true)
-window.addEventListener("resize", updateWidth)
+
+// window.addEventListener("popstate", function (event) {
+//   console.log("A URL foi alterada para:", window.location.href)
+//   // Aqui você pode adicionar a lógica para lidar com a nova URL
+// })
+const pages = ["about", "home", "menu", "cart", "contact"]
+
+window.navigation.addEventListener("navigate", (event) => {
+  console.log(event.currentTarget.currentEntry.url)
+  const currentUrl = event.currentTarget.currentEntry.url
+  let page = event.destination.url.split("/")
+  const pageLength = page.length
+  if (pageLength > 4) {
+    page = page[pageLength - 1].split(".")[0]
+  } else {
+    page = page[3].split(".")[0]
+  }
+  console.log(page)
+  if (!currentUrl.includes(page)) {
+    request(`../pages/${page}.html`)
+    if (pages.some((name) => name === page)) loadPageScript(page)
+  }
+})
+
+function handleAddFunctionToNavButtons() {
+  for (let button of navigateAboutButtons) {
+    button.addEventListener("click", () => {
+      console.log(pathname)
+      window.history.pushState(
+        // "about",
+        // "Zé Café - Sobre",
+        // `${pathname}/about.html`
+        { path: `${pathname}/about.html` },
+        "",
+        `${pathname}/about.html`
+      )
+    })
+  }
+  for (let button of navigateHomeButtons) {
+    button.addEventListener("click", () => {
+      window.history.pushState("home", "Zé Café", `${pathname}/home.html`)
+    })
+  }
+  for (let button of navigateCartButtons) {
+    button.addEventListener("click", () => {
+      window.history.pushState(
+        // "cart",
+        // "Zé Café - Carrinho",
+        // `${pathname}/cart.html`
+        { path: `${pathname}/cart.html` },
+        "",
+        `${pathname}/cart.html`
+      )
+    })
+  }
+  for (let button of navigateContactButtons) {
+    button.addEventListener("click", () => {
+      window.history.pushState(
+        // "contact",
+        // "Zé Café - Contato",
+        // `${pathname}/contact.html`
+        { path: `${pathname}/contact.html` },
+        "",
+        `${pathname}/contact.html`
+      )
+    })
+  }
+  for (let button of navigateMenuButtons) {
+    button.addEventListener("click", () => {
+      window.history.pushState(
+        // "menu",
+        // "Zé Café - Cardápio",
+        // `${pathname}/menu.html`
+        { path: `${pathname}/menu.html` },
+        "",
+        `${pathname}/menu.html`
+      )
+    })
+  }
+}
+
+//todo testar
+// function loadPage(url) {
+//   fetch(url)
+//     .then((response) => response.text())
+//     .then((data) => {
+//       document.getElementById("content").innerHTML = data
+//       history.pushState({ path: url }, "", url)
+//     })
+//     .catch((error) => console.error("Error loading page:", error))
+// }
+// document.addEventListener("DOMContentLoaded", function () {
+//   var initialUrl = location.pathname
+//   loadPage(initialUrl)
+// })
