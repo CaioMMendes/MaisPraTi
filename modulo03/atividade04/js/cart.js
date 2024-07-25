@@ -151,7 +151,6 @@ function calcTotalPrice(products) {
 }
 
 const totalPrice = calcTotalPrice(cartValues)
-console.log(totalPrice)
 
 function showTotalPrice(price) {
   totalPriceHtml.innerHTML = ""
@@ -166,19 +165,21 @@ function handleDecreaseQuantity({ name, price }) {
     let updatedQuantity
 
     const cartValuesLength = cartValues.length
-    const newCartValues = []
+    const newCartValues = {}
     const tempCart = [...cartValues]
 
     for (let i = 0; i < cartValuesLength; i++) {
       const element = tempCart[i]
-      console.log(element)
       if (element.name !== name) {
-        newCartValues.push(element)
+        newCartValues[element.name] = element
       } else {
         element.quantity--
         updatedQuantity = element.quantity
         if (updatedQuantity > 0) {
-          newCartValues.push(element)
+          newCartValues[element.name] = {
+            ...element,
+            quantity: updatedQuantity,
+          }
         } else {
           handleRemoveItem(element)
         }
@@ -186,9 +187,9 @@ function handleDecreaseQuantity({ name, price }) {
     }
 
     cartValues = newCartValues
-    console.log(cartValues)
 
-    localStorage.setItem("cart", JSON.stringify({ ...cartValues }))
+    localStorage.setItem("cart", JSON.stringify(cartValues))
+    cartValues = Object.values(cartValues)
     if (updatedQuantity > 0) {
       const quantityHtmlElement = document.getElementById(`${name}-quantity`)
       quantityHtmlElement.innerHTML = updatedQuantity
@@ -196,7 +197,7 @@ function handleDecreaseQuantity({ name, price }) {
       const parcialPriceHtml = document.getElementById(`${name}-price`)
       parcialPriceHtml.innerHTML = currencyFormatter(updatedQuantity * price)
 
-      const totalPrice = calcTotalPrice(cartValues)
+      const totalPrice = calcTotalPrice([...cartValues])
 
       showTotalPrice(totalPrice)
     }
@@ -210,22 +211,36 @@ function handleIncreaseQuantity({ name, price }) {
   try {
     let updatedQuantity
 
-    cartValues = cartValues.map((product) => {
-      if (product.name !== name) return product
-      if (product.quantity >= 20) {
-        updatedQuantity = product.quantity
-        return product
+    const cartValuesLength = cartValues.length
+    const newCartValues = {}
+    const tempCart = [...cartValues]
+
+    for (let i = 0; i < cartValuesLength; i++) {
+      const element = tempCart[i]
+      if (element.name !== name) {
+        newCartValues[element.name] = element
       } else {
-        updatedQuantity = product.quantity + 1
+        if (element.quantity >= 20) {
+          updatedQuantity = element.quantity
+          newCartValues[element.name] = element
+        } else {
+          updatedQuantity = element.quantity + 1
+          newCartValues[element.name] = {
+            ...element,
+            quantity: updatedQuantity,
+          }
+        }
       }
-      return { ...product, quantity: updatedQuantity }
-    })
+    }
+
+    cartValues = newCartValues
 
     if (updatedQuantity >= 20) {
       toastError("Você atingiu o limite de 20 unidades.")
     }
 
-    localStorage.setItem("cart", JSON.stringify({ ...cartValues }))
+    localStorage.setItem("cart", JSON.stringify(cartValues))
+    cartValues = Object.values(cartValues)
 
     const quantityHtmlElement = document.getElementById(`${name}-quantity`)
     quantityHtmlElement.innerHTML = updatedQuantity
@@ -246,9 +261,17 @@ function handleRemoveItem({ name }) {
   try {
     const productItemHtml = document.getElementById(`${name}-item`)
     productItemHtml.remove()
+
     cartValues = cartValues.filter((product) => product.name !== name)
-    localStorage.setItem("cart", JSON.stringify({ ...cartValues }))
-    console.log(cartValues)
+    const cartValuesLength = cartValues.length
+    const storageCart = {}
+
+    for (let i = 0; i < cartValuesLength; i++) {
+      const element = cartValues[i]
+      storageCart[element.name] = element
+    }
+
+    localStorage.setItem("cart", JSON.stringify(storageCart))
     if (cartValues.length === 0) {
       showEmptyCart()
     }
@@ -264,22 +287,18 @@ function handleRemoveItem({ name }) {
 }
 
 function showEmptyCart() {
-  console.log("chamou cart")
   const emptyCart = document.createElement("p")
   emptyCart.textContent = "O carrinho está vazio, adicione algo."
   emptyCart.className = "empty-cart"
   cartItemsHtml.appendChild(emptyCart)
 }
-console.log("cart javascript")
 
 renderContent()
 
 function renderContent() {
-  console.log(cartItemsHtml)
   showProductSection(cartItemsHtml)
   showTotalPrice(totalPrice)
   if (cartValues.length === 0) {
-    console.log(cartValues)
     showEmptyCart()
   }
 }

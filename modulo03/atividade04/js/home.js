@@ -31,9 +31,11 @@ function showSlides(initial = false) {
     initial && slides[index - 1].appendChild(img)
   }
 }
-setTimeout(() => {
-  showSlides(true)
-}, 800)
+
+showSlides(true)
+// setTimeout(() => {
+//   showSlides(true)
+// }, 800)
 window.addEventListener("resize", updateWidth)
 
 let pathname = window.location.pathname.split("/")
@@ -44,7 +46,6 @@ if (pathname.length > 0) {
 handleAddFunctionToNavButtons()
 
 function handleAddFunctionToNavButtons() {
-  console.log("asdasdasdasdadsad")
   const dessertsHtml = document.getElementById("navigate-menu-desserts")
   const hotBeveragesHtml = document.getElementById("navigate-hot-beverages")
   const menuHtml = document.getElementById("navigate-menu")

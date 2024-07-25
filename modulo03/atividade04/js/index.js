@@ -66,18 +66,21 @@ const regex = /(?<=\/)([^\/]+)(?=\.html)/
 
 function initializePage(page = "home") {
   if (page === "index") page = "home"
-  console.log("dasd", page)
   window.history.pushState(
     { path: `${pathname}/${page}.html` },
     "",
     `${pathname}/${page}.html`
   )
-  loadPageScript(`${page}`)
   request(`../pages/${page}.html`)
+  loadPageScript(`${page}`)
 }
 
 // initializePage(searchParams.get("page") ??page)
-initializePage(window.location.href.match(regex)[0] ?? "home")
+initializePage(
+  window.location.href.match(regex)
+    ? window.location.href.match(regex)[0]
+    : "home"
+)
 
 handleAddFunctionToNavButtons()
 
@@ -85,14 +88,12 @@ function loadPageScript(page) {
   // Remove o script antigo, se houver
   oldScript = document.getElementById("page-script")
   if (oldScript) {
-    console.log("removendo")
     document.head.removeChild(oldScript)
     oldScript.remove()
   }
   const oldCss = document.getElementById("page-css")
   if (oldCss) oldCss.remove()
 
-  // ;<link rel="stylesheet" href="../css/index.css" id="page-css" />
   const css = document.createElement("link")
   css.rel = "stylesheet"
   css.href = `../css/${page}.css`
@@ -108,24 +109,19 @@ function loadPageScript(page) {
     script.type = "module"
     script.id = "page-script"
     script.dataset.page = page // Adiciona um atributo para controle
-    script.onload = () => {
-      console.log(`${page} script loaded`)
-    }
-    script.onerror = () => {
-      console.error(`Failed to load ${page} script`)
-    }
+    // script.onload = () => {
+    //   console.log(`${page} script loaded`)
+    // }
+    // script.onerror = () => {
+    //   console.error(`Failed to load ${page} script`)
+    // }
     document.head.appendChild(script)
   }
 }
 
-// window.addEventListener("popstate", function (event) {
-//   console.log("A URL foi alterada para:", window.location.href)
-//   // Aqui você pode adicionar a lógica para lidar com a nova URL
-// })
 const pages = ["about", "home", "menu", "cart", "contact"]
 
 window.navigation.addEventListener("navigate", (event) => {
-  console.log(event.currentTarget.currentEntry.url)
   const currentUrl = event.currentTarget.currentEntry.url
   let page = event.destination.url.split("/")
   const pageLength = page.length
@@ -134,7 +130,6 @@ window.navigation.addEventListener("navigate", (event) => {
   } else {
     page = page[3].split(".")[0]
   }
-  console.log(page)
   if (!currentUrl.includes(page)) {
     request(`../pages/${page}.html`)
     if (pages.some((name) => name === page)) loadPageScript(page)
@@ -144,7 +139,6 @@ window.navigation.addEventListener("navigate", (event) => {
 function handleAddFunctionToNavButtons() {
   for (let button of navigateAboutButtons) {
     button.addEventListener("click", () => {
-      console.log(pathname)
       window.history.pushState(
         // "about",
         // "Zé Café - Sobre",

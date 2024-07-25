@@ -104,14 +104,6 @@ function showProductSection(products, htmlElement) {
 
 const hash = window.location.hash
 
-if (hash !== "") {
-  console.log(hash)
-  const element = document.querySelector(hash)
-  setTimeout(() => {
-    goToElement(element)
-  }, 800)
-}
-
 function goToElement(element) {
   element.scrollIntoView()
 }
@@ -124,11 +116,19 @@ function showProducts() {
   showProductSection(savorySnacks, htmlSavorySnacks)
 }
 
-setTimeout(() => {
-  showProducts()
-}, 700)
+// setTimeout(() => {
+showProducts()
+// }, 700)
 
 window.addEventListener("load", () => {
   console.log("load")
   showProducts()
 })
+
+if (hash !== "") {
+  console.log(hash)
+  const element = document.querySelector(hash)
+  // setTimeout(() => {
+  goToElement(element)
+  // }, 800)
+}
