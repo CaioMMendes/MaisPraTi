@@ -1,4 +1,3 @@
-const slides = document.querySelectorAll(".slide-div")
 const numberOfSlides = 3
 
 let widthValue = Math.min(window.innerWidth, screen.width)
@@ -17,6 +16,7 @@ function updateWidth() {
 }
 
 function showSlides(initial = false) {
+  const slides = document.querySelectorAll(".slide-div")
   for (let index = 1; index <= numberOfSlides; index++) {
     const img = initial
       ? document.createElement("img")
@@ -32,10 +32,9 @@ function showSlides(initial = false) {
   }
 }
 
-showSlides(true)
-// setTimeout(() => {
-//   showSlides(true)
-// }, 800)
+setTimeout(() => {
+  showSlides(true)
+}, 400)
 window.addEventListener("resize", updateWidth)
 
 let pathname = window.location.pathname.split("/")
