@@ -24,6 +24,7 @@ if (pathname.length > 0) {
   pathname.pop()
   pathname = pathname.join("/")
 }
+const isLocal = pathname.length > 4
 
 function request(url) {
   const ajax = new XMLHttpRequest()
@@ -54,11 +55,20 @@ function request(url) {
 
 function initializePage(page = "home") {
   if (page === "index") page = "home"
-  window.history.pushState(
-    { path: `${pathname}/${page}.html` },
-    "",
-    `${pathname}/${page}.html`
-  )
+  if (isLocal) page = searchParams.get("page") ?? "home"
+  if (isLocal) {
+    window.history.pushState(
+      { path: `${pathname}/index.html?page=${page}` },
+      "",
+      `${pathname}/index.html?page=${page}`
+    )
+  } else {
+    window.history.pushState(
+      { path: `${pathname}/${page}.html` },
+      "",
+      `${pathname}/${page}.html`
+    )
+  }
   request(`../pages/${page}.html`)
   loadPageScript(`${page}`)
 }
@@ -92,46 +102,99 @@ function loadPageScript(page) {
   }
 }
 
+function handlePushState(destiny) {
+  // let page
+
+  // if (isLocal) {
+  //   page = searchParams.get("page")
+  // } else {
+  //   page = window.location.pathname.split("/")
+  //   const pageLength = page.length
+  //   page = page[pageLength - 1].split(".")[0]
+  // }
+
+  // console.log(destiny, page)
+  // console.log(searchParams.get("page"))
+
+  // if (page !== destiny) {
+  isLocal
+    ? window.history.pushState(
+        { path: `${pathname}/index.html?page=${destiny}` },
+        "",
+        `${pathname}/index.html?page=${destiny}`
+      )
+    : window.history.pushState(
+        { path: `${pathname}/${destiny}.html` },
+        "",
+        `${pathname}/${destiny}.html`
+      )
+  // }
+}
+
 function handleAddFunctionToNavButtons() {
   for (let button of navigateAboutButtons) {
     button.addEventListener("click", () => {
-      window.history.pushState(
-        { path: `${pathname}/about.html` },
-        "",
-        `${pathname}/about.html`
-      )
+      handlePushState("about")
     })
   }
   for (let button of navigateHomeButtons) {
     button.addEventListener("click", () => {
-      window.history.pushState("home", "Zé Café", `${pathname}/home.html`)
+      handlePushState("home")
+      // isLocal
+      //   ? window.history.pushState(
+      //       { path: `${pathname}/index.html?page=home` },
+      //       "",
+      //       `${pathname}/index.html?page=home`
+      //     )
+      //   : window.history.pushState("home", "Zé Café", `${pathname}/home.html`)
     })
   }
   for (let button of navigateCartButtons) {
     button.addEventListener("click", () => {
-      window.history.pushState(
-        { path: `${pathname}/cart.html` },
-        "",
-        `${pathname}/cart.html`
-      )
+      handlePushState("cart")
+      // isLocal
+      //   ? window.history.pushState(
+      //       { path: `${pathname}/index.html?page=cart` },
+      //       "",
+      //       `${pathname}/index.html?page=cart`
+      //     )
+      //   : window.history.pushState(
+      //       { path: `${pathname}/cart.html` },
+      //       "",
+      //       `${pathname}/cart.html`
+      //     )
     })
   }
   for (let button of navigateContactButtons) {
     button.addEventListener("click", () => {
-      window.history.pushState(
-        { path: `${pathname}/contact.html` },
-        "",
-        `${pathname}/contact.html`
-      )
+      handlePushState("contact")
+      // isLocal
+      //   ? window.history.pushState(
+      //       { path: `${pathname}/index.html?page=contact` },
+      //       "",
+      //       `${pathname}/index.html?page=contact`
+      //     )
+      //   : window.history.pushState(
+      //       { path: `${pathname}/contact.html` },
+      //       "",
+      //       `${pathname}/contact.html`
+      //     )
     })
   }
   for (let button of navigateMenuButtons) {
     button.addEventListener("click", () => {
-      window.history.pushState(
-        { path: `${pathname}/menu.html` },
-        "",
-        `${pathname}/menu.html`
-      )
+      handlePushState("menu")
+      // isLocal
+      //   ? window.history.pushState(
+      //       { path: `${pathname}/index.html?page=menu` },
+      //       "",
+      //       `${pathname}/index.html?page=menu`
+      //     )
+      //   : window.history.pushState(
+      //       { path: `${pathname}/menu.html` },
+      //       "",
+      //       `${pathname}/menu.html`
+      //     )
     })
   }
 }
@@ -147,12 +210,24 @@ handleAddFunctionToNavButtons()
 window.navigation.addEventListener("navigate", (event) => {
   const currentUrl = event.currentTarget.currentEntry.url
   let page = event.destination.url.split("/")
+  console.log(page)
   const pageLength = page.length
-  if (pageLength > 4) {
-    page = page[pageLength - 1].split(".")[0]
+
+  if (isLocal) {
+    page = page[pageLength - 1].split("=")
+    console.log(page)
+    page = page[1].split("#")[0]
   } else {
-    page = page[3].split(".")[0]
+    if (pageLength > 4) {
+      page = page[pageLength - 1].split(".")[0]
+    } else {
+      page = page[3].split(".")[0]
+    }
   }
+  console.log("navigate", page)
+  console.log(page)
+  console.log(currentUrl)
+  if (page === "index") page = "home"
   if (!currentUrl.includes(page)) {
     request(`../pages/${page}.html`)
     if (pages.some((name) => name === page)) loadPageScript(page)

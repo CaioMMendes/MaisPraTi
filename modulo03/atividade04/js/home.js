@@ -5,6 +5,9 @@ let heightValue = window.innerHeight
 let pathname = window.location.pathname.split("/")
 window.addEventListener("resize", updateWidth)
 const mobileWidth = 600
+console.log(pathname)
+const searchParams = new URLSearchParams(window.location.search)
+const isLocal = searchParams.get("page") ?? false
 
 const imagesAlt = {
   1: "É hora do café, peça já",
@@ -50,7 +53,13 @@ function handleAddFunctionToNavButtons() {
 
   function addEvent(element, path) {
     element.addEventListener("click", () => {
-      window.history.replaceState("about", "", `${pathname}/menu.html#${path}`)
+      isLocal
+        ? window.history.pushState(
+            "about",
+            "",
+            `${pathname}/index.html?page=menu#${path}`
+          )
+        : window.history.pushState("about", "", `${pathname}/menu.html#${path}`)
     })
   }
 }
