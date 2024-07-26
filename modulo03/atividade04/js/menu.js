@@ -7,6 +7,7 @@ function runMenuScript() {
   const htmlColdBeverages = document.getElementById("cold-beverages-products")
   const htmlDesserts = document.getElementById("desserts-products")
   const htmlSavorySnacks = document.getElementById("savory-snacks-products")
+  const hash = window.location.hash
 
   const hotBeverages = products.filter(
     (product) => product.category === "hot-beverages"
@@ -103,12 +104,9 @@ function runMenuScript() {
     }
   }
 
-  const hash = window.location.hash
-
   function goToElement(element) {
     element.scrollIntoView()
   }
-  console.log("menu-loaded")
 
   function showProducts() {
     showProductSection(hotBeverages, htmlHotBeverages)
@@ -117,9 +115,7 @@ function runMenuScript() {
     showProductSection(savorySnacks, htmlSavorySnacks)
   }
 
-  // setTimeout(() => {
   showProducts()
-  // }, 700)
 
   window.addEventListener("load", () => {
     console.log("load")
@@ -129,9 +125,7 @@ function runMenuScript() {
   if (hash !== "") {
     console.log(hash)
     const element = document.querySelector(hash)
-    // setTimeout(() => {
     goToElement(element)
-    // }, 800)
   }
 }
 

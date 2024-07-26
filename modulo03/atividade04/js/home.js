@@ -2,6 +2,8 @@ const numberOfSlides = 3
 
 let widthValue = Math.min(window.innerWidth, screen.width)
 let heightValue = window.innerHeight
+let pathname = window.location.pathname.split("/")
+window.addEventListener("resize", updateWidth)
 const mobileWidth = 600
 
 const imagesAlt = {
@@ -32,17 +34,10 @@ function showSlides(initial = false) {
   }
 }
 
-setTimeout(() => {
-  showSlides(true)
-}, 400)
-window.addEventListener("resize", updateWidth)
-
-let pathname = window.location.pathname.split("/")
 if (pathname.length > 0) {
   pathname.pop()
   pathname = pathname.join("/")
 }
-handleAddFunctionToNavButtons()
 
 function handleAddFunctionToNavButtons() {
   const dessertsHtml = document.getElementById("navigate-menu-desserts")
@@ -59,3 +54,8 @@ function handleAddFunctionToNavButtons() {
     })
   }
 }
+
+setTimeout(() => {
+  showSlides(true)
+  handleAddFunctionToNavButtons()
+}, 400)

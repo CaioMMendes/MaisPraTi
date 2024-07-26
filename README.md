@@ -24,3 +24,4 @@ Este repositório é destinado ao conteúdo do curso de dev fullstack da **+PraT
 
 - [Modulo03 - Fundamentos do Desenvolvimento Front-end](https://github.com/CaioMMendes/MaisPraTi/tree/main/modulo03)
   - [Atividade 03 - Desenvolvimento de uma Landing Page](https://github.com/CaioMMendes/MaisPraTi/tree/main/modulo03/atividade03)
+  - [Atividade 04 - Aprimoramento de projeto](https://github.com/CaioMMendes/MaisPraTi/tree/main/modulo03/atividade04)

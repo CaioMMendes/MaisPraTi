@@ -9,6 +9,13 @@
 
 **Zé Café** é um site de cafeteria desenvolvido como parte da atividade 03 - Criação de uma Landing Page.
 
+## 🚀 Tecnologias utilizadas
+
+O projeto foi desenvolvido utilizando as seguintes tecnologias:
+
+- [Bootstrap](https://getbootstrap.com/)
+- [Toastify-js](https://github.com/apvarun/toastify-js)
+
 ## ✏ Para iniciar o projeto, siga os passos abaixo
 
 - Abra o arquivo index.html, localizado na pasta "pages", utilizando um navegador.
@@ -25,19 +32,9 @@
 | Sepia | ![#5d3a00](https://via.placeholder.com/10/5d3a00?text=+) #5d3a00 |
 | Bistre | ![#312217](https://via.placeholder.com/10/312217?text=+) #312217 |
 | White | ![#f4f4f4](https://via.placeholder.com/10/f4f4f4?text=+) #f4f4f4 |
-| Toast-success | ![#008a2e](https://via.placeholder.com/10/008a2e?text=+) #008a2e |
-| Toast-success-background | ![#ecfdf3](https://via.placeholder.com/10/ecfdf3?text=+) #ecfdf3 |
-| Toast-error | ![#e60000](https://via.placeholder.com/10/e60000?text=+) #e60000 |
-| Toast-error-background | ![#fff0f0](https://via.placeholder.com/10/fff0f0?text=+) #fff0f0 |
 
 ## 👀 O projeto pode ser vizualizado acessando o seguinte link
 
 <https://zecafe.vercel.app/>
 
 ## 💻 Exemplo do projeto
-
-<https://github.com/CaioMMendes/MaisPraTi/assets/115363966/adc37302-f819-4de3-9a5e-8155ff167f32>
-
-## 📋 Notas
-
->O projeto não possui responsividade. Para um funcionamento adequado, ajuste a tela para as proporções de 1920x1080px

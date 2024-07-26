@@ -5,6 +5,19 @@ function runCartScript() {
   const cartItemsHtml = document.getElementById("cart-items")
   const totalPriceHtml = document.getElementById("total-price")
   const cart = getStorageCart()
+  let cartValues = Object.values(cart)
+  const totalPrice = calcTotalPrice(cartValues)
+
+  const hotBeverages = cartValues.filter(
+    (item) => item.category === "hot-beverages"
+  )
+  const coldBeverages = cartValues.filter(
+    (item) => item.category === "cold-beverages"
+  )
+  const desserts = cartValues.filter((item) => item.category === "desserts")
+  const savorySnacks = cartValues.filter(
+    (item) => item.category === "savory-snacks"
+  )
 
   function getStorageCart() {
     try {
@@ -19,19 +32,6 @@ function runCartScript() {
       return {}
     }
   }
-
-  let cartValues = Object.values(cart)
-
-  const hotBeverages = cartValues.filter(
-    (item) => item.category === "hot-beverages"
-  )
-  const coldBeverages = cartValues.filter(
-    (item) => item.category === "cold-beverages"
-  )
-  const desserts = cartValues.filter((item) => item.category === "desserts")
-  const savorySnacks = cartValues.filter(
-    (item) => item.category === "savory-snacks"
-  )
 
   function createProductItem(product) {
     const productItem = document.createElement("div")
@@ -152,8 +152,6 @@ function runCartScript() {
     }, 0)
     return currencyFormatter(totalPrice)
   }
-
-  const totalPrice = calcTotalPrice(cartValues)
 
   function showTotalPrice(price) {
     totalPriceHtml.innerHTML = ""
@@ -296,8 +294,6 @@ function runCartScript() {
     cartItemsHtml.appendChild(emptyCart)
   }
 
-  renderContent()
-
   function renderContent() {
     showProductSection(cartItemsHtml)
     showTotalPrice(totalPrice)
@@ -305,6 +301,8 @@ function runCartScript() {
       showEmptyCart()
     }
   }
+
+  renderContent()
 }
 
 setTimeout(() => {
