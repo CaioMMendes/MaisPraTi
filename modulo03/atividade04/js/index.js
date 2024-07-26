@@ -103,20 +103,6 @@ function loadPageScript(page) {
 }
 
 function handlePushState(destiny) {
-  // let page
-
-  // if (isLocal) {
-  //   page = searchParams.get("page")
-  // } else {
-  //   page = window.location.pathname.split("/")
-  //   const pageLength = page.length
-  //   page = page[pageLength - 1].split(".")[0]
-  // }
-
-  // console.log(destiny, page)
-  // console.log(searchParams.get("page"))
-
-  // if (page !== destiny) {
   isLocal
     ? window.history.pushState(
         { path: `${pathname}/index.html?page=${destiny}` },
@@ -128,7 +114,6 @@ function handlePushState(destiny) {
         "",
         `${pathname}/${destiny}.html`
       )
-  // }
 }
 
 function handleAddFunctionToNavButtons() {
@@ -140,61 +125,21 @@ function handleAddFunctionToNavButtons() {
   for (let button of navigateHomeButtons) {
     button.addEventListener("click", () => {
       handlePushState("home")
-      // isLocal
-      //   ? window.history.pushState(
-      //       { path: `${pathname}/index.html?page=home` },
-      //       "",
-      //       `${pathname}/index.html?page=home`
-      //     )
-      //   : window.history.pushState("home", "Zé Café", `${pathname}/home.html`)
     })
   }
   for (let button of navigateCartButtons) {
     button.addEventListener("click", () => {
       handlePushState("cart")
-      // isLocal
-      //   ? window.history.pushState(
-      //       { path: `${pathname}/index.html?page=cart` },
-      //       "",
-      //       `${pathname}/index.html?page=cart`
-      //     )
-      //   : window.history.pushState(
-      //       { path: `${pathname}/cart.html` },
-      //       "",
-      //       `${pathname}/cart.html`
-      //     )
     })
   }
   for (let button of navigateContactButtons) {
     button.addEventListener("click", () => {
       handlePushState("contact")
-      // isLocal
-      //   ? window.history.pushState(
-      //       { path: `${pathname}/index.html?page=contact` },
-      //       "",
-      //       `${pathname}/index.html?page=contact`
-      //     )
-      //   : window.history.pushState(
-      //       { path: `${pathname}/contact.html` },
-      //       "",
-      //       `${pathname}/contact.html`
-      //     )
     })
   }
   for (let button of navigateMenuButtons) {
     button.addEventListener("click", () => {
       handlePushState("menu")
-      // isLocal
-      //   ? window.history.pushState(
-      //       { path: `${pathname}/index.html?page=menu` },
-      //       "",
-      //       `${pathname}/index.html?page=menu`
-      //     )
-      //   : window.history.pushState(
-      //       { path: `${pathname}/menu.html` },
-      //       "",
-      //       `${pathname}/menu.html`
-      //     )
     })
   }
 }
