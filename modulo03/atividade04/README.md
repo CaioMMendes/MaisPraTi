@@ -47,3 +47,7 @@ O projeto foi desenvolvido utilizando as seguintes tecnologias:
 <https://zecafe.vercel.app/>
 
 ## 💻 Exemplo do projeto
+
+https://github.com/user-attachments/assets/1b30599c-2081-40dc-a328-1cb803f119e5
+
+
