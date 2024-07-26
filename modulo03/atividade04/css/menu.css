@@ -101,3 +101,12 @@
   display: block;
   transform: translateY(-11.4rem);
 }
+
+@media (max-width: 767.98px) {
+  #hot-beverages-section,
+  #savory-snacks-section,
+  #cold-beverages-section,
+  #desserts-section {
+    transform: translateY(-15rem);
+  }
+}

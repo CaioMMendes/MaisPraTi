@@ -1,8 +1,17 @@
 ## Atividade 04 - Aprimoramento de projeto
 
+## 🖥 Desktop
+
 <div align="center" style="justify-content:center; display:flex; flex-direction:column; gap:20px">
 <img  title="Imagem do projeto desktop" src="./github/desktop1.png" alt="Imagem do projeto desktop"  />
 <img  title="Imagem do projeto desktop" src="./github/desktop2.png" alt="Imagem do projeto desktop"  />
+</div>
+
+## 📱 Mobile
+
+<div align="center" style="justify-content:center; display:flex; flex-direction:column; gap:20px">
+<img  title="Imagem do projeto mobile" src="./github/mobile1.png" alt="Imagem do projeto mobile"  />
+<img  title="Imagem do projeto mobile" src="./github/mobile2.png" alt="Imagem do projeto mobile"  />
 </div>
 
 ## 📌 Sobre
