@@ -16,7 +16,7 @@
 
 ## 📌 Sobre
 
-**Zé Café** é um site de cafeteria desenvolvido como parte da atividade 03 - Criação de uma Landing Page.
+**Zé Café** é um site de cafeteria desenvolvido como parte da atividade 03 - Criação de uma Landing Page e refatorado na atividade 04 - Aprimoramento de projeto.
 
 ## 🚀 Tecnologias utilizadas
 
