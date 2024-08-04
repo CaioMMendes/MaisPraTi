@@ -20,7 +20,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
           variant === "primary" &&
             "bg-primary-red text-white hover:bg-primary-red/80",
           variant === "secondary" &&
-            "bg-[rgba(128, 128, 128, 0.4)] hover:bg-[rgba(128, 128, 128, 0.6)] text-white",
+            "bg-[#80808066] hover:bg-[#80808099] text-white",
           variant === "tertiary" && "bg-orange-500 text-green-400",
         )}
         ref={ref}

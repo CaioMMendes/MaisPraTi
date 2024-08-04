@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.overflow-clip-margin {
+  overflow-clip-margin: content-box;
+}

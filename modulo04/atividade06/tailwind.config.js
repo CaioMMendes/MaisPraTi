@@ -9,6 +9,10 @@ export default {
         "input-background": "#333333",
         "blue-link": "rgb(0, 128, 255)",
       },
+      backgroundImage: {
+        login: "url('/login/background-login.jpg')",
+        login2: "url('/login/bg-login-2.jpg')",
+      },
     },
     fontFamily: {
       sans: [
