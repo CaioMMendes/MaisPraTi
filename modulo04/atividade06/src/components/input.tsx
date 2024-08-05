@@ -1,3 +1,4 @@
+import { EyeIcon, EyeOffIcon } from "lucide-react";
 import {
   ChangeEvent,
   ComponentPropsWithoutRef,
@@ -5,6 +6,7 @@ import {
   LegacyRef,
   SetStateAction,
   forwardRef,
+  useState,
 } from "react";
 import { twMerge } from "tailwind-merge";
 
@@ -58,15 +60,21 @@ const InputContainer = forwardRef(
     const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
       setInputValue(e.target.value);
     };
+    const [isVisible, setIsVisible] = useState(false);
+
+    function handleVisible() {
+      setIsVisible((visible) => !visible);
+    }
+
     return (
       <div className={inputContainerClassName} {...rest} ref={ref}>
         <Input
           name={name}
           id={name}
-          type={type}
+          type={!isVisible ? type : "text"}
           value={inputValue}
           onChange={handleInputChange}
-          className="peer"
+          className="peer pr-9"
         />
         <label
           htmlFor={name}
@@ -78,6 +86,22 @@ const InputContainer = forwardRef(
         >
           <p>{labelText}</p>
         </label>
+        {type === "password" &&
+          (isVisible ? (
+            <EyeIcon
+              width={20}
+              height={20}
+              className="absolute right-2 top-1/2 -translate-y-1/2 cursor-pointer"
+              onClick={handleVisible}
+            />
+          ) : (
+            <EyeOffIcon
+              width={20}
+              height={20}
+              className="absolute right-2 top-1/2 -translate-y-1/2 cursor-pointer"
+              onClick={handleVisible}
+            />
+          ))}
       </div>
     );
   },
