@@ -1,9 +1,10 @@
-import React from "react"
-import ReactDOM from "react-dom/client"
-import "./index.css"
-import { createBrowserRouter, RouterProvider } from "react-router-dom"
-import App from "./App"
-import Login from "./pages/login/login"
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import App from "./App";
+import Login from "./pages/login/login";
+import Home from "./pages/home/home";
 
 const router = createBrowserRouter([
   {
@@ -18,19 +19,16 @@ const router = createBrowserRouter([
       },
       {
         path: "/home",
+        element: <Home />,
       },
     ],
   },
-])
+]);
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <RouterProvider router={router} />
-  </React.StrictMode>
-)
+  </React.StrictMode>,
+);
 
-// font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-//     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
 
-// font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-//     monospace;
