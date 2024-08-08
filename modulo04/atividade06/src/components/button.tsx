@@ -12,7 +12,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   ({ className, disabled = false, variant = "primary", ...props }, ref) => {
     return (
       <button
-        disabled
+        disabled={disabled}
         className={twMerge(
           "flex cursor-pointer items-center justify-center rounded-[3px] px-4 py-1.5 text-lg transition-all duration-300",
           className,
@@ -20,7 +20,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
           variant === "primary" &&
             "bg-primary-red text-white hover:bg-primary-red/80",
           variant === "secondary" &&
-            "bg-[#80808066] hover:bg-[#80808099] text-white",
+            "bg-[#80808066] text-white hover:bg-[#80808099]",
           variant === "tertiary" && "bg-orange-500 text-green-400",
         )}
         ref={ref}
