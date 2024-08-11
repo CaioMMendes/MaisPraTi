@@ -10,5 +10,11 @@
       "destination": "/pages/index.html?page=contact"
     },
     { "source": "/cart.html", "destination": "/pages/index.html?page=cart" }
-  ]
+  ],
+  "git": {
+    "deploymentEnabled": {
+      "main": false,
+      "develop": false
+    }
+  }
 }
