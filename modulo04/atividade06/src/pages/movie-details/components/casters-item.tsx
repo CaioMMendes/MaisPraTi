@@ -13,6 +13,7 @@ const CastersItem = ({ caster }: CastersItemProps) => {
     <div className="flex w-28 flex-col overflow-hidden">
       <div className="flex w-28 max-w-52 items-center justify-center rounded-lg md:w-full">
         <img
+          className="rounded-lg"
           src={
             caster.profile_path
               ? `https://image.tmdb.org/t/p/w500${caster.profile_path}`

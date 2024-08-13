@@ -55,22 +55,18 @@ const VideoItem = () => {
   }
 
   return (
-    <section className="flex h-[30rem] w-full md:h-[50rem]">
+    <section className="flex h-[30rem] w-full flex-col gap-3 md:h-[50rem]">
+      <h3 className="text-2xl font-medium">Vídeo:</h3>
       <iframe
-        className="h-[30rem] w-[22rem] md:h-full md:w-full"
-        // width="100%"
-        // height="100%"
+        className="h-[30rem] w-[22rem] rounded-lg md:h-full md:w-full"
         src={
           selectedVideo &&
           `https://www.youtube.com/embed/${selectedVideo[0]?.key}`
         }
         title={selectedVideo && selectedVideo[0]?.name}
-        // frameborder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         referrerPolicy="strict-origin-when-cross-origin"
         allowFullScreen
-        // muted={1}
-        // autoPlay={1}
       ></iframe>
     </section>
   );

@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import getMovieCasts, { CasterTypes } from "../../fetch/get-movie-casts";
 import CastersItem from "./components/casters-item";
 import getMovieDetails from "../../fetch/get-movie-details";
-import { useParams } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 import Navbar from "../../components/navbar";
 import imageNotFound from "/movies/image-not-found-backdrop.png";
 import VideoItem from "./components/video-item";
@@ -89,15 +89,15 @@ const MovieDetails = () => {
   }, []);
 
   return (
-    <div className="relative flex w-full max-w-[100vw] flex-col gap-4 bg-black xl:items-center">
+    <div className="relative flex w-full flex-col gap-4 bg-black xl:max-w-7xl xl:items-center">
       <Navbar />
       {isLoading || (movie === null && hasError === false) ? (
         <div>Loading...</div>
       ) : hasError ? (
         <div>Ocorreu um erro ao tentar buscar o filme</div>
       ) : (
-        <div className="bg-primary-3 flex w-full flex-col items-start justify-start gap-2 rounded-lg">
-          <div className="relative flex w-full items-start justify-center rounded-lg md:min-h-80">
+        <div className="bg-primary-3 flex w-full flex-col items-start justify-start gap-2 rounded-lg p-2 md:gap-4">
+          <div className="relative flex w-full items-start justify-center overflow-hidden rounded-lg md:min-h-80">
             <img
               src={
                 movie?.backdrop_path
@@ -106,18 +106,20 @@ const MovieDetails = () => {
               }
               alt={`${movie?.title} banner`}
             />
-            <Button
-              variant="primary"
-              className="absolute left-2 top-2 w-fit rounded-full p-1"
-            >
-              <MoveLeftIcon width={24} height={24} />
-            </Button>
+            <NavLink to="/home" title="Voltar para home">
+              <Button
+                variant="primary"
+                className="absolute left-2 top-2 w-fit rounded-full p-1 md:left-4 md:top-4"
+              >
+                <MoveLeftIcon width={24} height={24} />
+              </Button>
+            </NavLink>
           </div>
-          <div className="flex w-full flex-col gap-2 p-2">
+          <div className="flex w-full flex-col gap-2 md:gap-4">
             {movie && (
               <MovieDetailsDescription movie={movie} /* id={movie.id} */ />
             )}
-            <h3>Elenco:</h3>
+            <h3 className="text-2xl font-medium">Elenco:</h3>
             {isMovieCastsLoading && <div>Loading...</div>}
             {!isMovieCastsLoading && movieCasts.length > 0 && (
               <div className="flex w-full flex-wrap items-center justify-center gap-2">
