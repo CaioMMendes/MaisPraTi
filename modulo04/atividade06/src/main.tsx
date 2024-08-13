@@ -5,6 +5,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from "./App";
 import Login from "./pages/login/login";
 import Home from "./pages/home/home";
+import MovieDetails from "./pages/movie-details/movie-details";
 
 const router = createBrowserRouter([
   {
@@ -21,6 +22,10 @@ const router = createBrowserRouter([
         path: "/home",
         element: <Home />,
       },
+      {
+        path: "/movie/:id",
+        element: <MovieDetails />,
+      },
     ],
   },
 ]);
@@ -30,5 +35,3 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
     <RouterProvider router={router} />
   </React.StrictMode>,
 );
-
-

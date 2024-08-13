@@ -1,7 +1,7 @@
 import axios from "axios";
 
 interface GetMovieDetailsProps {
-  id?: number;
+  id?: string;
 }
 
 export default async function getMovieDetails({ id }: GetMovieDetailsProps) {
@@ -23,7 +23,7 @@ export default async function getMovieDetails({ id }: GetMovieDetailsProps) {
     return {
       status: response.status,
       message: "Filmes encontrados com sucesso",
-      movies: movies,
+      movie: movies,
     };
   } else {
     return {

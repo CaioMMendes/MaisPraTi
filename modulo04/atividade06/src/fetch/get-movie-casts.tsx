@@ -1,7 +1,7 @@
 import axios from "axios";
 
 interface GetMovieCastsProps {
-  id?: number;
+  id?: string;
 }
 
 export interface CasterTypes {

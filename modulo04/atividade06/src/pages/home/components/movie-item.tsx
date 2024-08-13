@@ -1,5 +1,7 @@
+import { twMerge } from "tailwind-merge";
 import { codeConversor } from "../../../fetch/get-movies-by-genre";
 import { invertObject } from "../../../utils/invert-object";
+import imageNotFound from "/movies/image-not-found-poster.png";
 
 type MovieType = {
   adult: boolean;
@@ -27,20 +29,27 @@ const MovieItem = ({ movie }: MovieItemProps) => {
   const genreConversor = invertObject(codeConversor);
 
   const genres = genre_ids.map((id) => genreConversor[id]);
-  console.log(genres);
 
   return (
-    <div>
-      <div>
-        <img
-          src={`https://image.tmdb.org/t/p/w500${poster_path}`}
-          alt={title}
-        />
-      </div>
-      <div>
-        <p>{title}</p>
-        <p>{release_date}</p>
-        <p>{vote_average}</p>
+    <div className="flex w-fit">
+      <div /* className="group hover:absolute hover:top-0 hover:-translate-y-1/2" */
+      >
+        <div /* className="h-auto w-12 group-hover:scale-[2.5]" */>
+          <img
+            src={
+              poster_path
+                ? `https://image.tmdb.org/t/p/w500${poster_path}`
+                : imageNotFound
+            }
+            alt={title}
+            className="bg-cover bg-center"
+          />
+        </div>
+        <div className={twMerge("hidden flex-col group-hover:flex")}>
+          <p>{title}</p>
+          <p>{release_date}</p>
+          <p>{vote_average}</p>
+        </div>
       </div>
     </div>
   );
