@@ -75,6 +75,7 @@ const MovieDetails = () => {
       try {
         setIsMovieCastsLoading(true);
         const response = await getMovieCasts({ id: params.id });
+        console.log(response);
         setMovieCasts(response.casts);
       } catch (error) {
         console.log(error);

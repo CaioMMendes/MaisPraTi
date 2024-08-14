@@ -82,6 +82,7 @@ const MovieList = ({ section }: MovieListProps) => {
           navigation
           pagination={{ clickable: true }}
           scrollbar={{ draggable: true }}
+          // loop={true}
           onSwiper={(swiper) => console.log(swiper)}
           slidesPerGroup={5}
           onSlideChange={() => console.log("slide change")}

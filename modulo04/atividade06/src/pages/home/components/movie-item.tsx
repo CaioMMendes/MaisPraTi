@@ -1,5 +1,7 @@
+import { CalendarDaysIcon, StarIcon } from "lucide-react";
 import { twMerge } from "tailwind-merge";
 import { codeConversor } from "../../../fetch/get-movies-by-genre";
+import dateConveror from "../../../utils/date-conversor";
 import { invertObject } from "../../../utils/invert-object";
 import imageNotFound from "/movies/image-not-found-poster.png";
 
@@ -31,10 +33,9 @@ const MovieItem = ({ movie }: MovieItemProps) => {
   const genres = genre_ids.map((id) => genreConversor[id]);
 
   return (
-    <div className="flex w-fit">
-      <div /* className="group hover:absolute hover:top-0 hover:-translate-y-1/2" */
-      >
-        <div /* className="h-auto w-12 group-hover:scale-[2.5]" */>
+    <div className="flex h-full w-fit flex-1 overflow-hidden rounded-lg bg-zinc-800">
+      <div className="flex h-full flex-1 flex-col">
+        <div>
           <img
             src={
               poster_path
@@ -45,10 +46,23 @@ const MovieItem = ({ movie }: MovieItemProps) => {
             className="bg-cover bg-center"
           />
         </div>
-        <div className={twMerge("hidden flex-col group-hover:flex")}>
+        <div
+          className={twMerge("flex flex-1 flex-col gap-1 p-2 group-hover:flex")}
+        >
           <p>{title}</p>
-          <p>{release_date}</p>
-          <p>{vote_average}</p>
+          <p className="flex items-center gap-2 text-sm">
+            <CalendarDaysIcon
+              width={20}
+              height={20}
+              className="text-primary-red"
+            />
+            {dateConveror(release_date)}
+          </p>
+
+          <p className="flex items-center gap-2 text-sm">
+            <StarIcon width={20} height={20} className="text-primary-red" />
+            {vote_average.toFixed(2)}
+          </p>
         </div>
       </div>
     </div>

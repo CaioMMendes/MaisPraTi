@@ -23,7 +23,9 @@ const CastersItem = ({ caster }: CastersItemProps) => {
         />
       </div>
       <p className="flex-nowrap truncate">{caster.name}</p>
-      <p className="flex-nowrap truncate">{caster.character}</p>
+      <p className="flex-nowrap truncate text-sm text-white/75">
+        {caster.character}
+      </p>
     </div>
   );
 };

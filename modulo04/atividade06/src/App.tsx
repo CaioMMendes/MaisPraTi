@@ -1,11 +1,11 @@
-import { Outlet } from "react-router-dom"
+import { Outlet } from "react-router-dom";
 
 function App() {
   return (
-    <div className="bg-black text-white flex min-h-screen">
+    <div className="min-w-screen max-w-screen flex min-h-screen justify-center bg-black text-white">
       <Outlet />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

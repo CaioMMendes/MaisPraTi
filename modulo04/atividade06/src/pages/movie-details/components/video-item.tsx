@@ -14,7 +14,10 @@ const VideoItem = () => {
     async function getTrailer() {
       try {
         setIsLoading(true);
-        const response = await getMovieTrailer({ id: params.id });
+        const response = await getMovieTrailer({
+          id: params.id,
+          // language: "en-US",
+        });
         setVideo(response.videos);
       } catch (error) {
         setHasError(true);
@@ -51,7 +54,12 @@ const VideoItem = () => {
   }
 
   if (selectedVideo?.length === 0 || selectedVideo === undefined) {
-    return <div>O filme não possuí nenhum vídeo disponível</div>;
+    return (
+      <div className="flex w-full flex-col gap-3">
+        <h3 className="text-2xl font-medium">Vídeo:</h3>
+        <p>O filme não possuí nenhum vídeo disponível</p>
+      </div>
+    );
   }
 
   return (
