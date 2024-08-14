@@ -1,6 +1,6 @@
 import { create } from "zustand";
 
-type MovieType = {
+export type MovieType = {
   adult: boolean;
   backdrop_path: string;
   genre_ids: number[];
@@ -20,26 +20,38 @@ type MovieType = {
 interface SearchMovieStoreTypes {
   searchMovieValue: string;
   searchMovies: MovieType[];
+  searchIsLoading: boolean;
   setSearchMovieValue: (value: string) => void;
   removeSearchMovie: () => void;
   setSearchMovies: (movies: MovieType[]) => void;
   removeSearchMovies: () => void;
+  setSearchIsLoading: (value: boolean) => void;
 }
 
 const searchMovieStore = create<SearchMovieStoreTypes>()((set) => ({
   searchMovieValue: "",
   searchMovies: [],
+  searchIsLoading: false,
+
+  setSearchIsLoading: (value) => {
+    set(() => ({
+      searchIsLoading: value,
+    }));
+  },
 
   setSearchMovieValue: (value) => {
     set(() => ({
       searchMovieValue: value,
-      searchMovies: [],
     }));
+    if (value.trim() === "") {
+      searchMovieStore.getState().removeSearchMovies();
+    }
   },
 
   removeSearchMovie: () => {
     set(() => ({
       searchMovieValue: "",
+      searchMovies: [],
     }));
   },
 

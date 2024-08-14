@@ -1,21 +1,27 @@
-import { Loader2Icon, SearchIcon } from "lucide-react";
+import { Loader2Icon, SearchIcon, XIcon } from "lucide-react";
 import { ChangeEvent, useEffect, useState } from "react";
 import getMovies from "../fetch/get-movies";
 import { useDebounce } from "../hooks/use-debounce";
 import searchMovieStore from "../stores/search-movie-store";
 import { Input } from "./input";
+import { twMerge } from "tailwind-merge";
 
 const SearchMovie = () => {
-  const { setSearchMovieValue, setSearchMovies, searchMovies } =
-    searchMovieStore();
+  const {
+    setSearchMovieValue,
+    setSearchMovies,
+    searchMovieValue,
+    removeSearchMovie,
+    setSearchIsLoading,
+  } = searchMovieStore();
 
-  const [searchInput, setSearchInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
-  const debounceSearch = useDebounce(searchInput);
+  const debounceSearch = useDebounce(searchMovieValue);
   const handleSearchInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setSearchInput(e.target.value.trim());
+    setSearchMovieValue(e.target.value.trim());
     setIsLoading(true);
+    setSearchIsLoading(true);
   };
 
   useEffect(() => {
@@ -30,16 +36,15 @@ const SearchMovie = () => {
 
     try {
       setIsLoading(true);
-      setSearchMovieValue(debounceSearch);
       getSearchMovies();
     } catch (error) {
       console.log(error);
     } finally {
       setIsLoading(false);
+      setSearchIsLoading(false);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [debounceSearch]);
-  console.log(searchMovies);
 
   return (
     <div className="relative flex flex-1">
@@ -55,11 +60,23 @@ const SearchMovie = () => {
         />
       )}
       <Input
-        className="w-full items-center justify-start p-2 pl-9"
+        className={twMerge(
+          "w-full items-center justify-start p-2 pl-9",
+          searchMovieValue !== "" && "pr-8",
+        )}
         placeholder="Busque por um filme ..."
-        value={searchInput}
+        value={searchMovieValue}
         onChange={handleSearchInputChange}
       />
+
+      {searchMovieValue !== "" && (
+        <XIcon
+          width={20}
+          height={20}
+          className="absolute right-2 top-1/2 -translate-y-1/2 cursor-pointer text-white/80"
+          onClick={removeSearchMovie}
+        />
+      )}
     </div>
   );
 };
