@@ -2,6 +2,7 @@ import axios from "axios";
 
 interface GetMovieCastsProps {
   id?: string;
+  language?: string;
 }
 
 export interface MovieVideoTypes {
@@ -17,11 +18,14 @@ export interface MovieVideoTypes {
   id: string;
 }
 
-export default async function getMovieTrailer({ id }: GetMovieCastsProps) {
+export default async function getMovieTrailer({
+  id,
+  language = "pt-BR",
+}: GetMovieCastsProps) {
   const apiKey = import.meta.env.VITE_API_KEY;
   const token = import.meta.env.VITE_API_TOKEN;
   const response = await axios(
-    `https://api.themoviedb.org/3/movie/${id}/videos?api_key=${apiKey}&language=pt-BR&include_adult=false`,
+    `https://api.themoviedb.org/3/movie/${id}/videos?api_key=${apiKey}&language=${language}&include_adult=false`,
     {
       method: "GET",
       headers: {
