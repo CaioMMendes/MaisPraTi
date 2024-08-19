@@ -3,7 +3,7 @@ import getGenreMovies from "../../../fetch/get-movies-by-genre";
 import MovieItem from "./movie-item";
 
 // import Swiper core and required modules
-import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
+import { Navigation, Scrollbar, A11y } from "swiper/modules";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -13,6 +13,8 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import { useNavigate } from "react-router-dom";
+import { useWindowDimensions } from "./use-window-dimensions";
+import { Genre, translateGenre } from "../../../utils/translate-genre";
 
 type MovieType = {
   adult: boolean;
@@ -32,13 +34,14 @@ type MovieType = {
 };
 
 type MovieListProps = {
-  section: string;
+  section: Genre;
 };
 
 const MovieList = ({ section }: MovieListProps) => {
   const [movies, setMovies] = useState<MovieType[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
+  const { width } = useWindowDimensions();
 
   useEffect(() => {
     async function getMoviesList() {
@@ -70,23 +73,34 @@ const MovieList = ({ section }: MovieListProps) => {
     return <div>Loading...</div>;
   }
   console.log(movies.length);
+
+  function handleNumberOfSlides() {
+    if (width < 600) {
+      return 4;
+    } else if (width <= 1024) {
+      return 5;
+    } else if (width > 1024) {
+      return 5;
+    }
+  }
   return (
-    <section className="w-full md:p-5">
-      <h2>{section}</h2>
+    <section className="flex w-full flex-col gap-2 md:p-5">
+      <h2 className="flex text-xl font-semibold capitalize text-white lg:text-3xl">
+        {translateGenre(section)}
+      </h2>
       <div className="w-full">
         <Swiper
-          // install Swiper modules
-          modules={[Navigation, Pagination, Scrollbar, A11y]}
+          modules={[Navigation, Scrollbar, A11y]}
           spaceBetween={0}
-          slidesPerView={5}
+          slidesPerView={handleNumberOfSlides()}
           navigation
-          pagination={{ clickable: true }}
           scrollbar={{ draggable: true }}
-          // loop={true}
+          loop={true}
           onSwiper={(swiper) => console.log(swiper)}
-          slidesPerGroup={5}
+          slidesPerGroup={handleNumberOfSlides()}
+          loopAddBlankSlides={true}
           onSlideChange={() => console.log("slide change")}
-          className="flex w-full"
+          className="flex w-full select-none"
         >
           {movies.length > 0 &&
             movies.map((movie) => {
@@ -94,9 +108,9 @@ const MovieList = ({ section }: MovieListProps) => {
                 <SwiperSlide
                   onClick={() => handleSlideClick(movie.id)}
                   key={movie.id}
-                  className="flex w-fit cursor-pointer border border-red-400"
+                  className="group flex !h-auto w-fit cursor-pointer gap-2"
                 >
-                  <MovieItem movie={movie} />
+                  <MovieItem movie={movie} useSwiper={true} />
                 </SwiperSlide>
               );
             })}

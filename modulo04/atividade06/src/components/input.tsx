@@ -12,6 +12,7 @@ import { twMerge } from "tailwind-merge";
 
 export type InputProps = ComponentPropsWithoutRef<"input"> & {
   error?: boolean;
+  hasPlaceholder?: boolean;
 };
 
 export type InputContainerProps = ComponentPropsWithoutRef<"div"> & {
@@ -24,15 +25,16 @@ export type InputContainerProps = ComponentPropsWithoutRef<"div"> & {
 
 const Input = forwardRef(
   (
-    { className, ...props }: InputProps,
+    { className, hasPlaceholder = false, ...props }: InputProps,
     ref: LegacyRef<HTMLInputElement> | undefined,
   ) => {
     return (
       <input
         ref={ref}
         className={twMerge(
-          "flex rounded-[3px] bg-input-background px-4 pb-2 pt-6 font-normal leading-[18px] text-white placeholder-input-text outline-none ring-0 transition-all focus:outline-none focus:ring-0 active:right-0 active:outline-none md:placeholder:text-transparent",
+          "flex rounded-[3px] bg-input-background px-4 pb-2 pt-6 font-normal leading-[18px] text-white placeholder-input-text outline-none ring-0 transition-all focus:outline-none focus:ring-0 active:right-0 active:outline-none",
           className,
+          hasPlaceholder === false && "md:placeholder:text-transparent",
         )}
         {...props}
       />

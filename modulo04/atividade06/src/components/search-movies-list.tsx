@@ -17,9 +17,9 @@ const SearchMoviesList = () => {
   }
 
   return (
-    <section className="flex w-full flex-wrap items-start justify-center gap-4">
+    <section className="flex w-full flex-wrap items-stretch justify-center gap-4 py-2">
       <div className="flex w-full items-center justify-start gap-3">
-        <h1 className="text-3xl font-medium">
+        <h1 className="flex w-fit text-xl font-medium md:text-3xl">
           Vídeos encontrados pela busca: {searchMovieValue}
         </h1>
         <Button
@@ -32,7 +32,7 @@ const SearchMoviesList = () => {
         </Button>
       </div>
 
-      <div className="flex w-full flex-wrap items-start justify-center gap-3">
+      <div className="flex w-full flex-wrap justify-center gap-3">
         {searchMovies.length === 0 ? (
           <p className="text-lg">Não foi possível encontrar nenhum filme.</p>
         ) : (
@@ -41,7 +41,7 @@ const SearchMoviesList = () => {
               <NavLink
                 key={movie.id}
                 to={`/movie/${movie.id}`}
-                className="md:w-50 flex h-full w-40 flex-1"
+                className="md:w-50 flex w-40"
                 title={movie.title}
               >
                 <MovieItem movie={movie} />

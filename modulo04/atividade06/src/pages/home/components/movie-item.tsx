@@ -1,8 +1,6 @@
 import { CalendarDaysIcon, StarIcon } from "lucide-react";
 import { twMerge } from "tailwind-merge";
-import { codeConversor } from "../../../fetch/get-movies-by-genre";
 import dateConveror from "../../../utils/date-conversor";
-import { invertObject } from "../../../utils/invert-object";
 import imageNotFound from "/movies/image-not-found-poster.png";
 
 type MovieType = {
@@ -24,17 +22,20 @@ type MovieType = {
 
 type MovieItemProps = {
   movie: MovieType;
+  useSwiper?: boolean;
 };
 
-const MovieItem = ({ movie }: MovieItemProps) => {
-  const { title, poster_path, genre_ids, release_date, vote_average } = movie;
-  const genreConversor = invertObject(codeConversor);
-
-  const genres = genre_ids.map((id) => genreConversor[id]);
+const MovieItem = ({ movie, useSwiper = false }: MovieItemProps) => {
+  const { title, poster_path, release_date, vote_average } = movie;
 
   return (
-    <div className="flex h-full w-fit flex-1 overflow-hidden rounded-lg bg-zinc-800">
-      <div className="flex h-full flex-1 flex-col">
+    <div
+      className={twMerge(
+        "flex w-fit overflow-hidden rounded-lg",
+        useSwiper ? "rounded-none bg-zinc-800" : "group-hover:bg-transparent",
+      )}
+    >
+      <div className={twMerge("flex flex-1 flex-col", "group-hover:relative")}>
         <div>
           <img
             src={
@@ -43,11 +44,16 @@ const MovieItem = ({ movie }: MovieItemProps) => {
                 : imageNotFound
             }
             alt={title}
-            className="bg-cover bg-center"
+            className={twMerge("bg-cover bg-center")}
           />
         </div>
         <div
-          className={twMerge("flex flex-1 flex-col gap-1 p-2 group-hover:flex")}
+          className={twMerge(
+            "flex flex-col gap-1 p-2 group-hover:flex",
+
+            useSwiper &&
+              "hidden w-full group-hover:absolute group-hover:bottom-0 group-hover:bg-black/80",
+          )}
         >
           <p>{title}</p>
           <p className="flex items-center gap-2 text-sm">

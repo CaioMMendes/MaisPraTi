@@ -1,12 +1,14 @@
 import { Loader2Icon, SearchIcon, XIcon } from "lucide-react";
-import { ChangeEvent, useEffect, useState } from "react";
+import { ChangeEvent, HTMLAttributes, useEffect, useState } from "react";
 import getMovies from "../fetch/get-movies";
 import { useDebounce } from "../hooks/use-debounce";
 import searchMovieStore from "../stores/search-movie-store";
 import { Input } from "./input";
 import { twMerge } from "tailwind-merge";
 
-const SearchMovie = () => {
+interface SearchMovieProps extends HTMLAttributes<HTMLDivElement> {}
+
+const SearchMovie = ({ className, ...rest }: SearchMovieProps) => {
   const {
     setSearchMovieValue,
     setSearchMovies,
@@ -47,7 +49,7 @@ const SearchMovie = () => {
   }, [debounceSearch]);
 
   return (
-    <div className="relative flex flex-1">
+    <div className={twMerge("relative flex flex-1", className)} {...rest}>
       {isLoading ? (
         <span className="absolute left-2 top-1/2 -translate-y-1/2">
           <Loader2Icon width={20} height={20} className="animate-spin" />
@@ -65,6 +67,7 @@ const SearchMovie = () => {
           searchMovieValue !== "" && "pr-8",
         )}
         placeholder="Busque por um filme ..."
+        hasPlaceholder={true}
         value={searchMovieValue}
         onChange={handleSearchInputChange}
       />

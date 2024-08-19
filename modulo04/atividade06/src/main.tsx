@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, Navigate, RouterProvider } from "react-router-dom";
 import App from "./App";
 import Login from "./pages/login/login";
 import Home from "./pages/home/home";
@@ -12,10 +12,13 @@ const router = createBrowserRouter([
     path: "/",
     element: <App />,
     //  errorElement: <ErrorPage />,
-
     children: [
       {
         index: true,
+        element:  <Navigate to="/login" replace /> ,
+      },
+      {
+        path:'/login',
         element: <Login />,
       },
       {
