@@ -27,7 +27,7 @@ O projeto foi desenvolvido utilizando as seguintes tecnologias:
 
 ## ✏ Para iniciar o projeto, siga os passos abaixo
 
-- Abra o arquivo index.html, localizado na pasta "pages", utilizando um navegador.
+- Abra o arquivo index.html, localizado na pasta "pages", utilizando um navegador. De preferência abra utilizando o Live Server do vscode para evitar problemas com cors.
 
 ## 🎨 Cores
 
