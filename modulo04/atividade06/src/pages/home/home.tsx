@@ -52,12 +52,10 @@ const Home = () => {
             <div className="z-10 flex w-full justify-center gap-4 bg-black/70">
               <div className="flex w-full max-w-7xl flex-col gap-4">
                 <MovieList section="new" />
-                <MovieList section="comedy" />
-                <MovieList section="action" page={2} />
                 <MovieList section="animation" page={3} />
-                {/* <MovieList section="family" /> */}
-                {/* <MovieList section="science fiction" /> */}
-                {/* <MovieList section="documentary" /> */}
+                <MovieList section="science fiction" page={2} />
+                <MovieList section="comedy" />
+                <MovieList section="documentary" />
               </div>
             </div>
           </main>
