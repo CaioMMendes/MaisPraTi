@@ -9,6 +9,8 @@ import { NavLink, useParams } from "react-router-dom";
 import Navbar from "../../components/navbar";
 import imageNotFound from "/movies/image-not-found-backdrop.png";
 import VideoItem from "./components/video-item";
+import searchMovieStore from "../../stores/search-movie-store";
+import SearchMoviesList from "../../components/search-movies-list";
 
 export interface MovieDetailsDataTypes {
   adult: boolean;
@@ -50,6 +52,7 @@ export interface MovieDetailsDataTypes {
 
 const MovieDetails = () => {
   const [movie, setMovie] = useState<null | MovieDetailsDataTypes>(null);
+  const { searchMovieValue } = searchMovieStore();
   const [isLoading, setIsLoading] = useState(false);
   const [hasError, setHasError] = useState(false);
   const [movieCasts, setMovieCasts] = useState([]);
@@ -85,59 +88,64 @@ const MovieDetails = () => {
     getCasts();
     getMovie();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [params]);
 
   return (
     <div className="relative flex w-full flex-col items-center">
       <Navbar />
-      <div className="relative flex w-full flex-col gap-4 bg-black xl:max-w-7xl xl:items-center">
-        {isLoading || (movie === null && hasError === false) ? (
-          <div>Loading...</div>
-        ) : hasError ? (
-          <div>Ocorreu um erro ao tentar buscar o filme</div>
-        ) : (
-          <div className="bg-primary-3 flex w-full flex-col items-start justify-start gap-2 rounded-lg p-2 md:gap-4">
-            <div className="relative flex w-full items-start justify-center overflow-hidden rounded-lg md:min-h-80">
-              <img
-                src={
-                  movie?.backdrop_path
-                    ? `https://image.tmdb.org/t/p/w1280${movie?.backdrop_path}`
-                    : imageNotFound
-                }
-                alt={`${movie?.title} banner`}
-              />
-              <NavLink to="/home" title="Voltar para home">
-                <Button
-                  variant="primary"
-                  className="absolute left-2 top-2 w-fit rounded-full p-1 md:left-4 md:top-4"
-                >
-                  <MoveLeftIcon width={24} height={24} />
-                </Button>
-              </NavLink>
-            </div>
-            <div className="flex w-full flex-col gap-2 md:gap-4">
-              {movie && (
-                <MovieDetailsDescription movie={movie} /* id={movie.id} */ />
-              )}
-              <h3 className="text-2xl font-medium">Elenco:</h3>
-              {isMovieCastsLoading && <div>Loading...</div>}
-              {!isMovieCastsLoading && movieCasts.length > 0 && (
-                <div className="flex w-full flex-wrap items-center justify-center gap-2">
-                  {movieCasts.map((caster: CasterTypes, index: number) => {
-                    return (
-                      index < 50 && (
-                        <CastersItem key={caster.id} caster={caster} />
-                      )
-                    );
-                  })}
-                </div>
-              )}
-            </div>
 
-            <VideoItem />
-          </div>
-        )}
-      </div>
+      {searchMovieValue.trim() !== "" ? (
+        <SearchMoviesList />
+      ) : (
+        <div className="relative flex w-full flex-col gap-4 bg-black xl:max-w-7xl xl:items-center">
+          {isLoading || (movie === null && hasError === false) ? (
+            <div>Loading...</div>
+          ) : hasError ? (
+            <div>Ocorreu um erro ao tentar buscar o filme</div>
+          ) : (
+            <div className="bg-primary-3 flex w-full flex-col items-start justify-start gap-2 rounded-lg p-2 md:gap-4">
+              <div className="relative flex w-full items-start justify-center overflow-hidden rounded-lg md:min-h-80">
+                <img
+                  src={
+                    movie?.backdrop_path
+                      ? `https://image.tmdb.org/t/p/w1280${movie?.backdrop_path}`
+                      : imageNotFound
+                  }
+                  alt={`${movie?.title} banner`}
+                />
+                <NavLink to="/home" title="Voltar para home">
+                  <Button
+                    variant="primary"
+                    className="absolute left-2 top-2 w-fit rounded-full p-1 md:left-4 md:top-4"
+                  >
+                    <MoveLeftIcon width={24} height={24} />
+                  </Button>
+                </NavLink>
+              </div>
+              <div className="flex w-full flex-col gap-2 md:gap-4">
+                {movie && (
+                  <MovieDetailsDescription movie={movie} /* id={movie.id} */ />
+                )}
+                <h3 className="text-2xl font-medium">Elenco:</h3>
+                {isMovieCastsLoading && <div>Loading...</div>}
+                {!isMovieCastsLoading && movieCasts.length > 0 && (
+                  <div className="flex w-full flex-wrap items-center justify-center gap-2">
+                    {movieCasts.map((caster: CasterTypes, index: number) => {
+                      return (
+                        index < 50 && (
+                          <CastersItem key={caster.id} caster={caster} />
+                        )
+                      );
+                    })}
+                  </div>
+                )}
+              </div>
+
+              <VideoItem />
+            </div>
+          )}
+        </div>
+      )}
     </div>
   );
 };

@@ -63,8 +63,8 @@ const VideoItem = () => {
   }
 
   return (
-    <section className="flex h-[30rem] w-full flex-col gap-3 md:h-[50rem]">
-      <h3 className="text-2xl font-medium">Vídeo:</h3>
+    <section className="flex h-[30rem] w-full flex-col items-center gap-3 md:h-[50rem]">
+      <h3 className="flex w-full justify-start text-2xl font-medium">Vídeo:</h3>
       <iframe
         className="h-[30rem] w-[22rem] rounded-lg md:h-full md:w-full"
         src={

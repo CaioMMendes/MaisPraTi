@@ -21,7 +21,7 @@ const SearchMovie = ({ className, ...rest }: SearchMovieProps) => {
 
   const debounceSearch = useDebounce(searchMovieValue);
   const handleSearchInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setSearchMovieValue(e.target.value.trim());
+    setSearchMovieValue(e.target.value);
     setIsLoading(true);
     setSearchIsLoading(true);
   };

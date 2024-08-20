@@ -5,8 +5,13 @@ import { NavLink } from "react-router-dom";
 import { Button } from "./button";
 
 const SearchMoviesList = () => {
-  const { searchMovieValue, searchMovies, searchIsLoading, removeSearchMovie } =
-    searchMovieStore();
+  const {
+    searchMovieValue,
+    searchMovies,
+    searchIsLoading,
+    removeSearchMovie,
+    setSearchMovieValue,
+  } = searchMovieStore();
 
   if (searchIsLoading) {
     return (
@@ -43,6 +48,7 @@ const SearchMoviesList = () => {
                 to={`/movie/${movie.id}`}
                 className="md:w-50 flex w-40"
                 title={movie.title}
+                onClick={() => setSearchMovieValue("")}
               >
                 <MovieItem movie={movie} />
               </NavLink>
