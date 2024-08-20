@@ -18,43 +18,49 @@ const Home = () => {
           <div className="pointer-events-none absolute top-0 flex w-full min-w-0 select-none bg-black xl:items-center">
             <iframe
               className="aspect-video h-auto w-full"
-              src="//www.youtube.com/embed/i6avfCqKcQo?autoplay=1&mute=1&controls=0&loop=1&vq=hd1080&modestbranding=1&autohide=1&showinfo=0"
+              src="//www.youtube.com/embed/ukQeR3zYncw?autoplay=1&playlist=ukQeR3zYncw&mute=1&controls=0&loop=1&vq=hd1080&modestbranding=1&showinfo=0"
               name="youtube embed"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; loop; showinfo;"
               referrerPolicy="strict-origin-when-cross-origin"
             ></iframe>
           </div>
 
-          <div className="z-10 flex aspect-video w-full items-end">
-            <div className="flex h-fit w-full flex-col items-start justify-end gap-4 bg-black/70 p-4 md:p-6">
-              <h2 className="text-3xl font-bold">Titulo</h2>
-              <p className="hidden text-lg lg:flex">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis
-                recusandae fugiat, voluptatum distinctio minus incidunt tempore
-                qui quasi iusto. At facere consequuntur exercitationem odit
-                similique!
-              </p>
-              <div className="flex gap-4">
-                <Button className="flex gap-2">
-                  <PlayIcon width={24} height={24} />
-                  Assistir
-                </Button>
-                <Button className="flex gap-2 !bg-zinc-800/85">
-                  <InfoIcon width={24} height={24} />
-                  Informações
-                </Button>
+          <main className="z-10 mt-20 flex w-full flex-col items-center justify-start gap-4 sm:mt-40 md:mt-80 lg:mt-[30rem]">
+            <div className="z-10 flex w-full items-end justify-start">
+              <div className="flex h-fit w-full flex-col items-start justify-end gap-4 p-4 md:p-6">
+                <h2 className="text-3xl font-bold">Divertida Mente</h2>
+                <p className="hidden max-w-5xl text-justify text-lg lg:flex">
+                  Baseadas na Sala de Comando, o centro de controle dentro da
+                  mente de Riley de 11 anos, cinco emoções trabalham sem parar,
+                  lideradas pela otimista Alegria. Ela se esforça muito para
+                  garantir que Riley esteja sempre feliz, e trabalha ao lado do
+                  Medo, Raiva, Nojinho e Tristeza.
+                </p>
+                <div className="flex gap-4">
+                  <Button className="flex gap-2">
+                    <PlayIcon width={24} height={24} />
+                    Assistir
+                  </Button>
+                  <Button className="flex gap-2 !bg-zinc-800/85">
+                    <InfoIcon width={24} height={24} />
+                    Informações
+                  </Button>
+                </div>
               </div>
             </div>
-          </div>
 
-          <div className="z-10 flex w-full max-w-7xl flex-col gap-4 bg-transparent">
-            <MovieList section="comedy" />
-            {/* <MovieList section="action" />
-            <MovieList section="animation" />
-            <MovieList section="family" />
-            <MovieList section="science fiction" />
-            <MovieList section="documentary" /> */}
-          </div>
+            <div className="z-10 flex w-full justify-center gap-4 bg-black/70">
+              <div className="flex w-full max-w-7xl flex-col gap-4">
+                <MovieList section="new" />
+                <MovieList section="comedy" />
+                <MovieList section="action" page={2} />
+                <MovieList section="animation" page={3} />
+                {/* <MovieList section="family" /> */}
+                {/* <MovieList section="science fiction" /> */}
+                {/* <MovieList section="documentary" /> */}
+              </div>
+            </div>
+          </main>
         </div>
       )}
     </div>

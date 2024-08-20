@@ -35,9 +35,10 @@ type MovieType = {
 
 type MovieListProps = {
   section: Genre;
+  page?: number;
 };
 
-const MovieList = ({ section }: MovieListProps) => {
+const MovieList = ({ section, page = 1 }: MovieListProps) => {
   const [movies, setMovies] = useState<MovieType[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
@@ -46,8 +47,8 @@ const MovieList = ({ section }: MovieListProps) => {
   useEffect(() => {
     async function getMoviesList() {
       const response = await getGenreMovies({
-        pageParam: 1,
-        genre: section,
+        pageParam: page ? page : 1,
+        genre: section === "new" ? "" : section,
       });
 
       setMovies(response.movies.results);
@@ -56,7 +57,6 @@ const MovieList = ({ section }: MovieListProps) => {
     try {
       setIsLoading(true);
       getMoviesList();
-      console.log(movies);
     } catch (error) {
       console.log(error);
     } finally {
@@ -72,7 +72,6 @@ const MovieList = ({ section }: MovieListProps) => {
   if (isLoading) {
     return <div>Loading...</div>;
   }
-  console.log(movies.length);
 
   function handleNumberOfSlides() {
     if (width < 600) {
@@ -96,10 +95,8 @@ const MovieList = ({ section }: MovieListProps) => {
           navigation
           scrollbar={{ draggable: true }}
           loop={true}
-          onSwiper={(swiper) => console.log(swiper)}
           slidesPerGroup={handleNumberOfSlides()}
           loopAddBlankSlides={true}
-          onSlideChange={() => console.log("slide change")}
           className="flex w-full select-none"
         >
           {movies.length > 0 &&

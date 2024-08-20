@@ -11,7 +11,6 @@ export default async function getMovies({
 }: GetMoviesProps) {
   const apiKey = import.meta.env.VITE_API_KEY;
   const token = import.meta.env.VITE_API_TOKEN;
-  console.log(apiKey, token);
   const url =
     search === ""
       ? `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&include_adult=false&language=pt-BR&page=${pageParam}`

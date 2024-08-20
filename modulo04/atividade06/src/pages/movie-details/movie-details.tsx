@@ -55,7 +55,6 @@ const MovieDetails = () => {
   const [movieCasts, setMovieCasts] = useState([]);
   const [isMovieCastsLoading, setIsMovieCastsLoading] = useState(false);
   const params = useParams();
-  console.log(params);
 
   useEffect(() => {
     async function getMovie() {
@@ -75,7 +74,6 @@ const MovieDetails = () => {
       try {
         setIsMovieCastsLoading(true);
         const response = await getMovieCasts({ id: params.id });
-        console.log(response);
         setMovieCasts(response.casts);
       } catch (error) {
         console.log(error);

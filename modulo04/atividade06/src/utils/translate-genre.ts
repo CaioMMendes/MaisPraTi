@@ -1,4 +1,5 @@
 export type Genre =
+  | "new"
   | "action"
   | "adventure"
   | "animation"
@@ -17,6 +18,7 @@ export type Genre =
 
 function translateGenre(genre: Genre) {
   const genres = {
+    new: "recentes",
     action: "ação",
     adventure: "aventura",
     animation: "animação",

@@ -19,7 +19,6 @@ export default async function getMovieDetails({ id }: GetMovieDetailsProps) {
   );
   if (response.status >= 200 && response.status < 300) {
     const movies = await response.data;
-    console.log(movies);
     return {
       status: response.status,
       message: "Filmes encontrados com sucesso",
