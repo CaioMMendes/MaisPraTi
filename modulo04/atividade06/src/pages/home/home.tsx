@@ -4,6 +4,7 @@ import SearchMoviesList from "../../components/search-movies-list";
 import searchMovieStore from "../../stores/search-movie-store";
 import MovieList from "./components/movie-list";
 import { Button } from "../../components/button";
+import { NavLink } from "react-router-dom";
 
 const Home = () => {
   const { searchMovieValue } = searchMovieStore();
@@ -37,14 +38,18 @@ const Home = () => {
                   Medo, Raiva, Nojinho e Tristeza.
                 </p>
                 <div className="flex gap-4">
-                  <Button className="flex gap-2">
-                    <PlayIcon width={24} height={24} />
-                    Assistir
-                  </Button>
-                  <Button className="flex gap-2 !bg-zinc-800/85">
-                    <InfoIcon width={24} height={24} />
-                    Informações
-                  </Button>
+                  <NavLink to={"/movie/150540"}>
+                    <Button className="flex gap-2">
+                      <PlayIcon width={24} height={24} />
+                      Assistir
+                    </Button>
+                  </NavLink>
+                  <NavLink to={"/movie/150540"}>
+                    <Button className="flex gap-2 !bg-zinc-800/85">
+                      <InfoIcon width={24} height={24} />
+                      Informações
+                    </Button>
+                  </NavLink>
                 </div>
               </div>
             </div>
