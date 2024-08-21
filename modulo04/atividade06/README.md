@@ -50,3 +50,7 @@ O projeto foi desenvolvido utilizando as seguintes tecnologias:
 <https://atividade06-caio.vercel.app/>
 
 ## 👀 Exemplo
+
+
+https://github.com/user-attachments/assets/5198927a-572a-44ef-b362-18a6451781a3
+
