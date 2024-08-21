@@ -1,34 +1,27 @@
 // Importa hooks e componentes do React e bibliotecas externas.
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react"
 import {
-  Route,
-  Routes,
-  Navigate,
-  useNavigate,
-  useLocation,
-  Link,
-} from "react-router-dom";
-import { Carousel } from "react-responsive-carousel";
-import styled from "styled-components";
-import {
-  FaQrcode,
-  FaSearch,
-  FaTasks,
-  FaRegQuestionCircle,
+  FaArrowLeft,
+  FaBars,
   FaGlobeAmericas,
   FaNetworkWired,
-  FaBars,
-  FaArrowLeft,
-} from "react-icons/fa";
-import QRCodeGenerator from "./components/QRCodeGenarator";
-import IPAddressFinder from "./components/IPAddressFinder";
-import MovieSearchEngine from "./components/MovieSearchEngine";
-import TodoApp from "./components/TodoApp";
-import QuizApp from "./components/QuizApp";
-import LanguageTranslator from "./components/LanguageTranslator";
-import Login from "./components/Login";
-import "./App.css";
-import "react-responsive-carousel/lib/styles/carousel.min.css";
+  FaQrcode,
+  FaRegQuestionCircle,
+  FaSearch,
+  FaTasks,
+} from "react-icons/fa"
+import { Carousel } from "react-responsive-carousel"
+import "react-responsive-carousel/lib/styles/carousel.min.css"
+import { Link, Outlet, useNavigate } from "react-router-dom"
+import styled from "styled-components"
+import "./App.css"
+import IPAddressFinder from "./pages/IPAddressFinder"
+import LanguageTranslator from "./pages/LanguageTranslator"
+import Login from "./pages/Login"
+import MovieSearchEngine from "./pages/MovieSearchEngine"
+import QRCodeGenerator from "./pages/QRCodeGenarator"
+import QuizApp from "./pages/QuizApp"
+import TodoApp from "./pages/TodoApp"
 
 // Estiliza o contêiner principal do aplicativo.
 const AppContainer = styled.div`
@@ -37,7 +30,7 @@ const AppContainer = styled.div`
   width: 100%;
   height: 100vh;
   background-color: #f0f0f0;
-`;
+`
 
 // Estiliza o conteúdo principal do aplicativo.
 const MainContent = styled.div`
@@ -49,7 +42,7 @@ const MainContent = styled.div`
   width: 100%;
   min-height: 100vh;
   overflow: hidden;
-`;
+`
 
 // Estiliza o contêiner do carrossel.
 const CarouselContainer = styled.div`
@@ -63,7 +56,7 @@ const CarouselContainer = styled.div`
   background-color: #2c3e50;
   border-radius: 20px;
   padding: 20px;
-`;
+`
 
 // Estiliza a barra de navegação.
 const NavBar = styled.div`
@@ -85,7 +78,7 @@ const NavBar = styled.div`
     right: 0;
     display: ${({ isOpen }) => (isOpen ? "flex" : "none")};
   }
-`;
+`
 
 // Estiliza o botão de alternância da barra de navegação.
 const NavBarToggle = styled.div`
@@ -99,7 +92,7 @@ const NavBarToggle = styled.div`
   @media (max-width: 768px) {
     display: block;
   }
-`;
+`
 
 // Estiliza os links na barra de navegação.
 const StyledLink = styled(Link)`
@@ -115,7 +108,7 @@ const StyledLink = styled(Link)`
     background-color: #34495e;
     color: #ecf0f1;
   }
-`;
+`
 
 // Estiliza o rodapé do aplicativo.
 const Footer = styled.div`
@@ -131,7 +124,7 @@ const Footer = styled.div`
     padding: 5px 0;
     font-size: 12px;
   }
-`;
+`
 
 // Estiliza os itens individuais do carrossel.
 const CarouselItem = styled.div`
@@ -173,7 +166,7 @@ const CarouselItem = styled.div`
       background-color: #0056b3;
     }
   }
-`;
+`
 
 // Estiliza o botão de retorno.
 const ReturnButton = styled.button`
@@ -191,7 +184,7 @@ const ReturnButton = styled.button`
   &:hover {
     background-color: #0056b3;
   }
-`;
+`
 
 // Estiliza o carrossel personalizado.
 const CustomCarousel = styled(Carousel)`
@@ -199,71 +192,71 @@ const CustomCarousel = styled(Carousel)`
   .carousel-status {
     display: none;
   }
-`;
+`
 
 // Define o componente principal do aplicativo.
 const App = () => {
   // Cria estados para autenticação, visibilidade da barra de navegação, componente atual, e índice do carrossel.
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [isNavBarOpen, setIsNavBarOpen] = useState(false);
-  const [currentComponent, setCurrentComponent] = useState(null);
-  const [carouselIndex, setCarouselIndex] = useState(0);
-  const navigate = useNavigate(); // Hook para navegação.
+  const [isAuthenticated, setIsAuthenticated] = useState(false)
+  const [isNavBarOpen, setIsNavBarOpen] = useState(false)
+  const [currentComponent, setCurrentComponent] = useState(null)
+  const [carouselIndex, setCarouselIndex] = useState(0)
+  const navigate = useNavigate() // Hook para navegação.
 
   // Efeito colateral que redireciona para a página de login se não estiver autenticado.
   useEffect(() => {
     if (!isAuthenticated) {
-      navigate("/");
+      navigate("/")
     }
-  }, [isAuthenticated, navigate]);
+  }, [isAuthenticated, navigate])
 
   // Função para simular login e redirecionar para o gerador de QR code.
   const handleLogin = () => {
-    setIsAuthenticated(true);
-    navigate("/qrcode-generator");
-  };
+    setIsAuthenticated(true)
+    navigate("/qrcode-generator")
+  }
 
   // Função para simular logout e redirecionar para a página de login.
   const handleLogout = () => {
-    setIsAuthenticated(false);
-    navigate("/");
-  };
+    setIsAuthenticated(false)
+    navigate("/")
+  }
 
   // Alterna a visibilidade da barra de navegação.
   const toggleNavBar = () => {
-    setIsNavBarOpen(!isNavBarOpen);
-  };
+    setIsNavBarOpen(!isNavBarOpen)
+  }
 
   // Função para definir o componente atual a ser exibido e atualizar o índice do carrossel.
   const handleAccess = (index, component) => {
-    setCarouselIndex(index);
-    setCurrentComponent(component);
-  };
+    setCarouselIndex(index)
+    setCurrentComponent(component)
+  }
 
   // Função para retornar ao carrossel principal.
   const handleReturn = () => {
-    setCurrentComponent(null);
-  };
+    setCurrentComponent(null)
+  }
 
   // Função para renderizar o componente atual com base no estado.
   const renderComponent = () => {
     switch (currentComponent) {
       case "QRCodeGenerator":
-        return <QRCodeGenerator />;
+        return <QRCodeGenerator />
       case "IPAddressFinder":
-        return <IPAddressFinder />;
+        return <IPAddressFinder />
       case "MovieSearchEngine":
-        return <MovieSearchEngine />;
+        return <MovieSearchEngine />
       case "TodoApp":
-        return <TodoApp />;
+        return <TodoApp />
       case "QuizApp":
-        return <QuizApp />;
+        return <QuizApp />
       case "LanguageTranslator":
-        return <LanguageTranslator />;
+        return <LanguageTranslator />
       default:
-        return null;
+        return null
     }
-  };
+  }
 
   // Renderiza o componente principal.
   return (
@@ -379,9 +372,10 @@ const App = () => {
           </MainContent>
         </>
       )}
+      <Outlet />
     </AppContainer>
-  );
-};
+  )
+}
 
 // Exporta o componente App para ser utilizado em outras partes da aplicação.
-export default App;
+export default App
