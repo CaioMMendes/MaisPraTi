@@ -5,6 +5,7 @@ import searchMovieStore from "../../stores/search-movie-store";
 import MovieList from "./components/movie-list";
 import { Button } from "../../components/button";
 import { NavLink } from "react-router-dom";
+import video from "../../assets/video-home.mp4";
 
 const Home = () => {
   const { searchMovieValue } = searchMovieStore();
@@ -16,15 +17,15 @@ const Home = () => {
         <SearchMoviesList />
       ) : (
         <div className="flex w-full flex-col items-center gap-4">
-          <div className="pointer-events-none absolute top-0 flex w-full min-w-0 select-none bg-black xl:items-center">
-            <iframe
-              className="aspect-video h-auto w-full"
-              src="//www.youtube.com/embed/ukQeR3zYncw?autoplay=1&playlist=ukQeR3zYncw&mute=1&controls=0&loop=1&vq=hd1080&modestbranding=1&showinfo=0"
-              name="youtube embed"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; loop; showinfo;"
-              referrerPolicy="strict-origin-when-cross-origin"
-            ></iframe>
-          </div>
+          <video
+            src={video}
+            loop
+            autoPlay
+            muted
+            controls={false}
+            title="Divertida Mente"
+            className="pointer-events-none absolute top-0 flex w-full min-w-0 select-none bg-black xl:items-center"
+          ></video>
 
           <main className="z-10 mt-20 flex w-full flex-col items-center justify-start gap-4 sm:mt-40 md:mt-80 lg:mt-[30rem]">
             <div className="z-10 flex w-full items-end justify-start">

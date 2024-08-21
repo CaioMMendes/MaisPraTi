@@ -25,3 +25,7 @@ Este repositório é destinado ao conteúdo do curso de dev fullstack da **+PraT
 - [Modulo03 - Fundamentos do Desenvolvimento Front-end](https://github.com/CaioMMendes/MaisPraTi/tree/main/modulo03)
   - [Atividade 03 - Desenvolvimento de uma Landing Page](https://github.com/CaioMMendes/MaisPraTi/tree/main/modulo03/atividade03)
   - [Atividade 04 - Aprimoramento de projeto](https://github.com/CaioMMendes/MaisPraTi/tree/main/modulo03/atividade04)
+  -
+- [Modulo04 - Desenvolvendo Front-end com ReactJS](https://github.com/CaioMMendes/MaisPraTi/tree/main/modulo04)
+  - [Atividade 05 - Melhoria do Código Front-End](https://github.com/CaioMMendes/MaisPraTi/tree/main/modulo04/atividade05)
+  - [Atividade 06 - Criação de um Clone Front-end da Netflix](https://github.com/CaioMMendes/MaisPraTi/tree/main/modulo04/atividade06)
