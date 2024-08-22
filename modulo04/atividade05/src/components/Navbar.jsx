@@ -86,27 +86,27 @@ const Navbar = () => {
         <FaBars size={24} color={isNavBarOpen ? "#ecf0f1" : "#2C3E50"} />
       </NavBarToggle>
       <NavBar isOpen={isNavBarOpen}>
-        <StyledLink /* onClick={() => handleAccess(0, "QRCodeGenerator")} */>
+        <StyledLink to="/app/QRCodeGenerator">
           <FaQrcode />
           QR Code Generator
         </StyledLink>
-        <StyledLink /* onClick={() => handleAccess(1, "IPAddressFinder")} */>
+        <StyledLink to="/app/ipAddressFinder">
           <FaNetworkWired />
           IP Address Finder
         </StyledLink>
-        <StyledLink /* onClick={() => handleAccess(2, "MovieSearchEngine")} */>
+        <StyledLink to="/app/movieSearchEngine">
           <FaSearch />
           Movie Search
         </StyledLink>
-        <StyledLink /* onClick={() => handleAccess(3, "TodoApp")} */>
+        <StyledLink to="/app/todoApp">
           <FaTasks />
           Todo App
         </StyledLink>
-        <StyledLink /* onClick={() => handleAccess(4, "QuizApp")} */>
+        <StyledLink to="/app/quizApp">
           <FaRegQuestionCircle />
           Quiz App
         </StyledLink>
-        <StyledLink /* onClick={() => handleAccess(5, "LanguageTranslator")} */>
+        <StyledLink to="/app/languageTranslator">
           <FaGlobeAmericas />
           Translator
         </StyledLink>
