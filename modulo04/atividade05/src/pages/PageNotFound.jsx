@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 import styled from "styled-components"
 
 const PageNotFoundContainer = styled.div`
@@ -9,16 +10,31 @@ const PageNotFoundContainer = styled.div`
   align-items: center;
 `
 
-const Button = styled.div`
-  padding: 0.5rem 1rem;
+const StyledLink = styled(Link)`
+  padding: 10px 20px;
   background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+  font-size: 16px;
+  text-decoration: none;
+
+  &:hover {
+    background-color: #0056b3;
+  }
+`
+
+const Title = styled.h1`
+  font-size: 2rem;
 `
 
 const PageNotFound = () => {
   return (
     <PageNotFoundContainer>
-      Página não encontrada
-      <Button>Voltar</Button>
+      <Title>Página não encontrada</Title>
+      <StyledLink to="/app">Ir para o início</StyledLink>
     </PageNotFoundContainer>
   )
 }
