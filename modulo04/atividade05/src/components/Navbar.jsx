@@ -9,11 +9,13 @@ import {
   FaRegQuestionCircle,
   FaSearch,
   FaTasks,
+  FaUser,
 } from "react-icons/fa"
 import { Link, useNavigate } from "react-router-dom"
 import styled from "styled-components"
 import AuthStore from "../stores/auth"
 import Button from "./Button"
+import { toastSuccess } from "../utils/toast"
 
 // Estiliza a barra de navegação.
 const NavBar = styled.div`
@@ -67,8 +69,16 @@ const NavBarToggle = styled.div`
   }
 `
 
+const UserDiv = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+`
+
 const Navbar = () => {
-  const { logout } = AuthStore()
+  const { logout, user } = AuthStore()
 
   const [isNavBarOpen, setIsNavBarOpen] = useState(false)
   // Alterna a visibilidade da barra de navegação.
@@ -81,6 +91,7 @@ const Navbar = () => {
   const handleLogout = () => {
     logout()
     navigate("/")
+    toastSuccess({ text: "Logout realizado com sucesso!" })
   }
 
   return (
@@ -89,6 +100,10 @@ const Navbar = () => {
         <FaBars size={24} color={isNavBarOpen ? "#ecf0f1" : "#2C3E50"} />
       </NavBarToggle>
       <NavBar $isOpen={!!isNavBarOpen}>
+        <UserDiv>
+          <FaUser />
+          <h2>{user}</h2>
+        </UserDiv>
         <StyledLink to="/app">
           <FaHome />
           Home

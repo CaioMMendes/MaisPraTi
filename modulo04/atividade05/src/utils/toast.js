@@ -12,7 +12,7 @@ export function toastSuccess({
 }
 export function toastError({
   position = "top-right",
-  text = "Sucesso!",
+  text = "Erro!",
   duration = 4000,
 }) {
   toast.error(text, {

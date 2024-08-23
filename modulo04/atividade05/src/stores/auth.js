@@ -2,16 +2,19 @@ import { create } from "zustand"
 
 const AuthStore = create()((set) => ({
   isAuthenticated: false,
+  user: null,
 
   logout: () => {
-    //remover token
+    localStorage.removeItem("token")
     set(() => ({
+      user: null,
       isAuthenticated: false,
     }))
   },
 
-  login: () => {
+  login: (user) => {
     set(() => ({
+      user: user,
       isAuthenticated: true,
     }))
   },
