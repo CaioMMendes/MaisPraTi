@@ -83,6 +83,7 @@ const HomePage = () => {
         autoPlay={true}
         interval={5000}
         selectedItem={carouselIndex}
+        showThumbs={false}
         onChange={(index) => setCarouselIndex(index)}
       >
         <CarouselItem>
