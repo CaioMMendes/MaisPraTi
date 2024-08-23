@@ -114,7 +114,7 @@ const Form = styled.form`
 // Componente principal MovieSearchEngine
 const MovieSearchEngine = () => {
   const [query, setQuery] = useState("") // Define o estado para a consulta de busca
-  const [movies, setMovies] = useState([]) // Define o estado para armazenar os filmes
+  const [movies, setMovies] = useState(null) // Define o estado para armazenar os filmes
 
   // Função para buscar filmes
   const searchMovies = async () => {
@@ -153,26 +153,30 @@ const MovieSearchEngine = () => {
       {/* Botão que chama a função searchMovies quando clicado */}
       <MoviesContainer>
         {movies &&
-          movies?.map(
-            (
-              movie // Verifica se há filmes e os mapeia para exibir MovieCard
-            ) => (
-              <MovieCard key={movie.imdbID}>
-                <img
-                  src={
-                    movie.poster_path
-                      ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
-                      : imageNotFound
-                  }
-                  alt={`${movie.Title} Poster`}
-                />
-                {/* Exibe o pôster do filme */}
-                <h3>{movie.title}</h3> {/* Exibe o título do filme */}
-                <p>{dateConveror(movie.release_date)}</p>
-                {/* Exibe o ano do filme */}
-              </MovieCard>
+          (movies?.length > 0 ? (
+            movies?.map(
+              (
+                movie // Verifica se há filmes e os mapeia para exibir MovieCard
+              ) => (
+                <MovieCard key={movie.imdbID}>
+                  <img
+                    src={
+                      movie.poster_path
+                        ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
+                        : imageNotFound
+                    }
+                    alt={`${movie.Title} Poster`}
+                  />
+                  {/* Exibe o pôster do filme */}
+                  <h3>{movie.title}</h3> {/* Exibe o título do filme */}
+                  <p>{dateConveror(movie.release_date)}</p>
+                  {/* Exibe o ano do filme */}
+                </MovieCard>
+              )
             )
-          )}
+          ) : (
+            <h2>Não foi possível encontrar nenhum filme.</h2>
+          ))}
       </MoviesContainer>
     </Container>
   )
