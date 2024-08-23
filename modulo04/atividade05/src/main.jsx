@@ -9,10 +9,11 @@ import Login from "./pages/Login.jsx"
 import MovieSearchEngine from "./pages/MovieSearchEngine.jsx"
 import QuizApp from "./pages/QuizApp.jsx"
 import TodoApp from "./pages/TodoApp.jsx"
-import HomePage from "./pages/home.jsx"
+import HomePage from "./pages/Home.jsx"
 import { Toaster } from "sonner"
-import AuthenticatedLayout from "./components/AuthenticatedLayout.jsx"
+import AuthenticatedLayout from "./layout/AuthenticatedLayout.jsx"
 import PageNotFound from "./pages/PageNotFound.jsx"
+import QRCodeGenerator from "./pages/QRCodeGenarator.jsx"
 
 const router = createBrowserRouter([
   {
@@ -24,10 +25,11 @@ const router = createBrowserRouter([
         path: "app",
         element: <AuthenticatedLayout />,
         children: [
-          { path: "home", element: <HomePage /> },
+          { index: true, element: <HomePage /> },
           { path: "ipAddressFinder", element: <IPAddressFinder /> },
           { path: "languageTranslator", element: <LanguageTranslator /> },
           { path: "movieSearchEngine", element: <MovieSearchEngine /> },
+          { path: "QRCodeGenerator", element: <QRCodeGenerator /> },
           { path: "quizApp", element: <QuizApp /> },
           { path: "todoApp", element: <TodoApp /> },
         ],
@@ -42,10 +44,7 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    {/* <Router> */}
-    {/* <App /> */}
     <RouterProvider router={router} />
     <Toaster position="top-right" richColors={true} />
-    {/* </Router> */}
   </React.StrictMode>
 )
