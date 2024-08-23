@@ -1,16 +1,19 @@
-import styled from "styled-components"
-import AuthStore from "../stores/auth"
-import { Link, useNavigate } from "react-router-dom"
+import { useState } from "react"
 import {
+  FaArrowLeft,
   FaBars,
   FaGlobeAmericas,
+  FaHome,
   FaNetworkWired,
   FaQrcode,
   FaRegQuestionCircle,
   FaSearch,
   FaTasks,
 } from "react-icons/fa"
-import { useState } from "react"
+import { Link, useNavigate } from "react-router-dom"
+import styled from "styled-components"
+import AuthStore from "../stores/auth"
+import Button from "./Button"
 
 // Estiliza a barra de navegação.
 const NavBar = styled.div`
@@ -30,7 +33,7 @@ const NavBar = styled.div`
     top: 0;
     left: 0;
     right: 0;
-    display: ${({ isOpen }) => (isOpen ? "flex" : "none")};
+    display: ${({ $isOpen }) => ($isOpen ? "flex" : "none")};
   }
 `
 
@@ -85,7 +88,11 @@ const Navbar = () => {
       <NavBarToggle onClick={toggleNavBar}>
         <FaBars size={24} color={isNavBarOpen ? "#ecf0f1" : "#2C3E50"} />
       </NavBarToggle>
-      <NavBar isOpen={isNavBarOpen}>
+      <NavBar $isOpen={!!isNavBarOpen}>
+        <StyledLink to="/app">
+          <FaHome />
+          Home
+        </StyledLink>
         <StyledLink to="/app/QRCodeGenerator">
           <FaQrcode />
           QR Code Generator
@@ -110,17 +117,10 @@ const Navbar = () => {
           <FaGlobeAmericas />
           Translator
         </StyledLink>
-        <button
-          onClick={handleLogout}
-          style={{
-            marginTop: "20px",
-            color: "white",
-            backgroundColor: "transparent",
-            border: "none",
-          }}
-        >
+        <Button onClick={handleLogout}>
+          <FaArrowLeft width={24} height={24} />
           Logout
-        </button>
+        </Button>
       </NavBar>
     </>
   )
