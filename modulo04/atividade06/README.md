@@ -28,6 +28,8 @@ O projeto foi desenvolvido utilizando as seguintes tecnologias:
 - [Lucide-icons](https://lucide.dev/icons/)
 - [Zustand](https://zustand-demo.pmnd.rs/)
 - [Swiper](https://swiperjs.com/)
+- [Axios](https://axios-http.com/)
+-
 
 ## ✏ Como rodar localmente
 
@@ -51,6 +53,4 @@ O projeto foi desenvolvido utilizando as seguintes tecnologias:
 
 ## 👀 Exemplo
 
-
-https://github.com/user-attachments/assets/5198927a-572a-44ef-b362-18a6451781a3
-
+<https://github.com/user-attachments/assets/5198927a-572a-44ef-b362-18a6451781a3>
