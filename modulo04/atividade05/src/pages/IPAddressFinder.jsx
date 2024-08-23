@@ -1,7 +1,6 @@
 import { useState } from "react" // Importa o hook useState do React
-import axios from "axios" // Importa a biblioteca axios para fazer requisições HTTP
 import styled from "styled-components" // Importa styled-components para estilizar os componentes
-import { toastError, toastSuccess } from "../utils/toast"
+import { getIp } from "../services/getIp"
 
 // Define o estilo do container principal
 const Container = styled.div`
@@ -84,16 +83,7 @@ const IPAddressFinder = () => {
   // Função para buscar os dados do IP
   const handleFindIp = async (e) => {
     e.preventDefault()
-    try {
-      const url = `https://ipinfo.io/${ip}/json`
-      const response = await axios.get(url) // Faz uma requisição GET para a API ipinfo.io
-      setIpData(response.data) // Armazena os dados da resposta no estado ipData
-
-      toastSuccess({ text: "Ip encontrado com sucesso!" })
-    } catch (error) {
-      console.error("Error fetching IP address data:", error) // Exibe um erro no console em caso de falha
-      toastError({ text: `Não foi possível encontrar o ip: ${ip}` })
-    }
+    await getIp(ip, setIpData)
   }
 
   return (
