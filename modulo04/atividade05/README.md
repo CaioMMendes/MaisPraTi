@@ -1,50 +1,67 @@
-## Atividade 5 - Melhoria do Código Front-End
+## 🖥 Desktop
 
-Objetivo:
+<div align="center" style="justify-content:center; display:flex; flex-direction:column; gap:20px">
+<img  title="Imagem do projeto desktop" src="./github/desktop-1.png" alt="Imagem do projeto desktop"  />
+<img  title="Imagem do projeto desktop" src="./github/desktop-2.png" alt="Imagem do projeto desktop"  />
+</div>
 
-O objetivo deste projeto é aprimorar o código do front-end do repositório <https://github.com/jhyago/maisPraTi/tree/main/module04/atv5/multi-app>.
+## 📱 Mobile
 
-Vocês deverão aplicar melhorias em várias áreas, incluindo arquitetura, autenticação, trabalho com JSON e qualidade de código. Este projeto permitirá que vocês pratiquem e desenvolvam habilidades essenciais em desenvolvimento front-end.
+<div align="center" style="justify-content:center; display:flex; flex-direction:column; gap:20px">
+<img  title="Imagem do projeto mobile" src="./github/mobile-1.png" alt="Imagem do projeto mobile"  />
+<img  title="Imagem do projeto mobile" src="./github/mobile-2.png" alt="Imagem do projeto mobile"  />
+</div>
 
-Requisitos Mínimos:
+## 📌 Sobre
 
-Arquitetura:
+**Atividade 5 - Melhoria do Código Front-End.**
 
-- Modularização: Reestruture o código em módulos distintos para melhorar a manutenção e a legibilidade. Separe componentes, páginas, serviços e utilitários.
+O projeto já continha os códigos das páginas, mas passou por uma refatoração para melhorar a funcionalidade, legibilidade e manutenção do código.
 
-- Tratamento de Erros: Melhore o tratamento de erros, garantindo que o aplicativo lide com erros de forma clara e amigável para o usuário.
+### Funcionalidades
 
-Autenticação:
+- **Login**
+- **Buscador de IP**
+- **Tradutor**
+- **Busca de filmes**
+- **Gerador de QRCode**
+- **Quiz**
+- **Todo App**
 
-- JWT (JSON Web Tokens): Implemente JWT para autenticação. Proteja rotas sensíveis no front-end e implemente mecanismos básicos de renovação de tokens.
+## 🚀 Tecnologias utilizadas
 
-Validação de Dados: Valide os dados JSON recebidos e enviados para garantir que estejam corretos e completos.
-Interação com API: Melhore a interação com APIs, garantindo que as requisições sejam eficientes e seguras.
+O projeto foi desenvolvido utilizando as seguintes tecnologias:
 
-Qualidade de Código e Melhores Práticas:
-Revisões de Código: Estabeleça um processo de revisão de código para garantir qualidade e consistência.
+- [Vite](https://vitejs.dev/)
+- [TMDB](https://www.themoviedb.org/?language=pt-BR)
+- [Styled Components](https://styled-components.com/)
+- [React-router](https://reactrouter.com/en/main)
+- [React-icons](https://react-icons.github.io/react-icons/)
+- [Zustand](https://zustand-demo.pmnd.rs/)
+- [React-responsive-carousel](https://react-responsive-carousel.js.org/)
+- [Axios](https://axios-http.com/)
+- [Qrcode.react](https://github.com/zpao/qrcode.react)
+- [Sonner](https://sonner.emilkowal.ski/)
+- [Jose](https://github.com/panva/jose)
 
-Documentação: Melhore a documentação do código utilizando comentários claros e mantendo um README detalhado.
-Desempenho e Escalabilidade
+## ✏ Como rodar localmente
 
-Diferenciais extras e opcionais:
+- Clonar o repositório
+    <pre><code>git clone https://github.com/CaioMMendes/MaisPraTi</code></pre>
 
-- Uso de Padrões de Projeto: Aplique padrões de projeto simples como Singleton e Factory onde for adequado.
+- Acessar a pasta da atividade desejada pelo terminal (caso não esteja na pasta da atividade)
+    <pre><code>cd modulo04/atividade05</code></pre>
 
-- OAuth2: Se possível, integre autenticação com provedores de identidade de terceiros (Google, Facebook, etc.).
+- Instalar as dependências (precisa ter o node instalado no computador)
+    <pre><code>npm i</code></pre>
 
-Cache: Implemente cache no front-end para melhorar a performance, armazenando dados frequentemente acessados no localStorage ou sessionStorage.
+- Executar o projeto
+    <pre><code>npm run dev</code></pre>
 
-Lazy Loading: Utilize lazy loading para carregar componentes e recursos sob demanda, melhorando o tempo de carregamento inicial da aplicação.
+- Abrir o navegador na porta informada no terminal
 
-Exemplos de Melhoria Específica:
+## 💻 O projeto pode ser vizualizado acessando o seguinte link
 
-- Substituição de APIs: OMDB para TMDB: Se você está utilizando a API do OMDB para buscar informações sobre filmes, considere substituir pela API do TMDB, que oferece mais funcionalidades e dados.
+<https://atividade05-caio.vercel.app/>
 
-    OMDB API: <http://www.omdbapi.com/?apikey=[sua_api_key]&s=filme>
-    TMDB API: <https://api.themoviedb.org/3/search/movie?api_key=[sua_api_key]&query=filme>
-    A mudança pode envolver alterações na estrutura das respostas e nos componentes que exibem os dados.
-
-Melhorias no Todo App
-
-- Funcionamento sem JSON Server: Modifique o todo app para funcionar sem o JSON Server, utilizando LocalStorage para persistência dos dados.
+## 👀 Exemplo
