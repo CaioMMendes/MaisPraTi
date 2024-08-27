@@ -1,36 +1,40 @@
-package browsingHistory;
+package undo;
 
 import java.util.Scanner;
 
-public class BrowsingHistoryExec {
+public class UndoExec {
 
   public static void execute() {
     try {
       Scanner scanner = new Scanner(System.in);
       boolean loop = true;
-      System.out.print("Digite o tamanho máximo da lista: ");
-      int length = scanner.nextInt();
-      BrowsingHistory browsingHistory = new BrowsingHistory(length);
+      Undo browsingHistory = new Undo();
       while (loop) {
         System.out.println("Escolha uma da opções: ");
-        System.out.println("1 - Adicionar url");
-        System.out.println("2 - Printar urls");
-        System.out.println("3 - Sair");
-        int option = scanner.nextInt();
+        System.out.println("1 - Realizar ação");
+        System.out.println("2 - Reverter última ação");
+        System.out.println("3 - Printar ações");
+        System.out.println("4 - Sair");
+        String input = scanner.nextLine();
+        int option = Integer.parseInt(input);
         System.out.println("--------------------------------");
         switch (option) {
           case 1:
-            System.out.print("Digite a url: ");
-            String url = scanner.next();
-            browsingHistory.add(url);
+            System.out.print("Digite a ação: ");
+            String action = scanner.nextLine();
+            browsingHistory.add(action);
             break;
 
           case 2:
-            browsingHistory.printUrls();
+            browsingHistory.undoLast();
             break;
 
           case 3:
-            System.out.println("Saindo do Browsing History...");
+            browsingHistory.printActions();
+            break;
+
+          case 4:
+            System.out.println("Saindo do Undo...");
             loop = false;
             break;
 

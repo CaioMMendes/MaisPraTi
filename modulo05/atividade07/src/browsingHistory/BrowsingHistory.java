@@ -20,9 +20,9 @@ public class BrowsingHistory {
   protected void add(String url) {
     System.out.println("Adicionando: " + url);
     if (this.tail == null) {
-      this.tail = new Node(url);
+      this.tail = new Node<>(url);
     } else {
-      Node node = new Node(url);
+      Node<String> node = new Node<>(url);
       node.next = tail;
       tail = node;
     }

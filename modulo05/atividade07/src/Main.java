@@ -1,5 +1,6 @@
 import browsingHistory.BrowsingHistoryExec;
 import taskManager.TaskManagerExec;
+import undo.UndoExec;
 
 import java.util.LinkedList;
 import java.util.Scanner;
@@ -15,6 +16,7 @@ public class Main {
         System.out.println("Escolha uma da opções: ");
         System.out.println("1 - Task Manager");
         System.out.println("2 - Browsing History");
+        System.out.println("3 - Undo");
         System.out.println("10 - Sair");
         int option = scanner.nextInt();
 
@@ -27,6 +29,11 @@ public class Main {
           case 2:
             System.out.println("Executando browsing history.");
             BrowsingHistoryExec.execute();
+            break;
+
+          case 3:
+            System.out.println("Executando Undo.");
+            UndoExec.execute();
             break;
 
           case 10:
