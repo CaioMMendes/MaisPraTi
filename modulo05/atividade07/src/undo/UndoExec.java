@@ -13,8 +13,9 @@ public class UndoExec {
         System.out.println("Escolha uma da opções: ");
         System.out.println("1 - Realizar ação");
         System.out.println("2 - Reverter última ação");
-        System.out.println("3 - Printar ações");
-        System.out.println("4 - Sair");
+        System.out.println("3 - Reverter uma quantidade de ações");
+        System.out.println("4 - Printar ações");
+        System.out.println("5 - Sair");
         String input = scanner.nextLine();
         int option = Integer.parseInt(input);
         System.out.println("--------------------------------");
@@ -30,10 +31,16 @@ public class UndoExec {
             break;
 
           case 3:
-            browsingHistory.printActions();
+            System.out.print("Digite a quantidade de ações a serem revertidas: ");
+            int quantity = Integer.parseInt(scanner.nextLine());
+            browsingHistory.undoQuantity(quantity);
             break;
 
           case 4:
+            browsingHistory.printActions();
+            break;
+
+          case 5:
             System.out.println("Saindo do Undo...");
             loop = false;
             break;
