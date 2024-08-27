@@ -1,4 +1,4 @@
-import taskManager.TaskManager;
+import browsingHistory.BrowsingHistoryExec;
 import taskManager.TaskManagerExec;
 
 import java.util.LinkedList;
@@ -6,50 +6,46 @@ import java.util.Scanner;
 
 public class Main {
   public static void main(String[] args) {
-try{
+    try {
 
-      Scanner scanner=new Scanner(System.in);
+      Scanner scanner = new Scanner(System.in);
 
-    while(true){
+      while (true) {
 
+        System.out.println("Escolha uma da opções: ");
+        System.out.println("1 - Task Manager");
+        System.out.println("2 - Browsing History");
+        System.out.println("10 - Sair");
+        int option = scanner.nextInt();
 
-      System.out.println("Escolha uma da opções: ");
-      System.out.println("1 - Task Manager");
-      System.out.println("10 - Sair");
-      int option=scanner.nextInt();
+        switch (option) {
+          case 1:
+            System.out.println("Executando task manager.");
+            TaskManagerExec.execute();
+            break;
 
-      switch (option){
-        case 1:
-          System.out.println("Executando task manager.");
-          TaskManagerExec.execute();
-          break;
+          case 2:
+            System.out.println("Executando browsing history.");
+            BrowsingHistoryExec.execute();
+            break;
 
+          case 10:
+            System.out.println("👋 Saindo...");
+            return;
+          default:
+            System.out.println("Escolha uma opção válida.");
+            break;
+        }
 
-        case 10:
-          System.out.println("👋 Saindo...");
-          return;
-        default:
-          System.out.println("Escolha uma opção válida.");
-          break;
+        System.out.println("-------------------------------");
       }
 
-
-      System.out.println("-------------------------------");
+    } catch (Exception error) {
+      System.out.println("---------------");
+      System.out.println(error);
+      System.out.println("---------------");
     }
 
-
-
-
-
-
-
-}catch (Exception error){
-  System.out.println("---------------");
-  System.out.println(error);
-  System.out.println("---------------");
-}
-
-
-    LinkedList<String> teste=new LinkedList<>();
+    LinkedList<String> teste = new LinkedList<>();
   }
 }
