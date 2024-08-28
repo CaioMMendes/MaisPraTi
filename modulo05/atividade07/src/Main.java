@@ -1,5 +1,6 @@
 import bankQueue.BankQueueExec;
 import browsingHistory.BrowsingHistoryExec;
+import printingQueue.PrintingQueueExec;
 import taskManager.TaskManagerExec;
 import undo.UndoExec;
 
@@ -19,6 +20,7 @@ public class Main {
         System.out.println("2 - Browsing History");
         System.out.println("3 - Undo");
         System.out.println("6 - Bank Queue");
+        System.out.println("7 - Printing Queue");
         System.out.println("10 - Sair");
         int option = scanner.nextInt();
 
@@ -41,6 +43,11 @@ public class Main {
           case 6:
             System.out.println("Executando Bank Queue.");
             BankQueueExec.execute();
+            break;
+
+          case 7:
+            System.out.println("Executando Printing Queue.");
+            PrintingQueueExec.execute();
             break;
 
           case 10:
