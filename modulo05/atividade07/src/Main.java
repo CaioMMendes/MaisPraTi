@@ -4,6 +4,7 @@ import printingQueue.PrintingQueueExec;
 import processesQueue.ProcessesQueueExec;
 import taskManager.TaskManagerExec;
 import undo.UndoExec;
+import undoRedo.UndoRedoExec;
 
 import java.util.LinkedList;
 import java.util.Scanner;
@@ -20,6 +21,7 @@ public class Main {
         System.out.println("1 - Task Manager");
         System.out.println("2 - Browsing History");
         System.out.println("3 - Undo");
+        System.out.println("4 - Undo Redo");
         System.out.println("6 - Bank Queue");
         System.out.println("7 - Printing Queue");
         System.out.println("8 - Processes Queue");
@@ -40,6 +42,11 @@ public class Main {
           case 3:
             System.out.println("Executando Undo.");
             UndoExec.execute();
+            break;
+
+          case 4:
+            System.out.println("Executando Undo Redo.");
+            UndoRedoExec.execute();
             break;
 
           case 6:
