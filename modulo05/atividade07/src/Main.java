@@ -1,5 +1,6 @@
 import bankQueue.BankQueueExec;
 import browsingHistory.BrowsingHistoryExec;
+import cardGame.CardGameExec;
 import printingQueue.PrintingQueueExec;
 import processesQueue.ProcessesQueueExec;
 import taskManager.TaskManagerExec;
@@ -22,6 +23,7 @@ public class Main {
         System.out.println("2 - Browsing History");
         System.out.println("3 - Undo");
         System.out.println("4 - Undo Redo");
+        System.out.println("5 - Card Game");
         System.out.println("6 - Bank Queue");
         System.out.println("7 - Printing Queue");
         System.out.println("8 - Processes Queue");
@@ -47,6 +49,11 @@ public class Main {
           case 4:
             System.out.println("Executando Undo Redo.");
             UndoRedoExec.execute();
+            break;
+
+          case 5:
+            System.out.println("Executando Card Game.");
+            CardGameExec.execute();
             break;
 
           case 6:
