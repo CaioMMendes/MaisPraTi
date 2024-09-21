@@ -31,7 +31,8 @@ Este repositório é destinado ao conteúdo do curso de dev fullstack da **+PraT
   - [Atividade 06 - Criação de um Clone Front-end da Netflix](https://github.com/CaioMMendes/MaisPraTi/tree/main/modulo04/atividade06)
   
 - [Modulo05 - Introdução à Linguagem Java](https://github.com/CaioMMendes/MaisPraTi/tree/main/modulo05)
-  - [Atividade 07 - Melhoria do Código Front-End](https://github.com/CaioMMendes/MaisPraTi/tree/main/modulo05/atividade07)
+  - [Atividade 07 - Lista de exercícios sobre ED](https://github.com/CaioMMendes/MaisPraTi/tree/main/modulo05/atividade07)
+  - [Atividade 08 - Lista de exercícios sobre OO](https://github.com/CaioMMendes/MaisPraTi/tree/main/modulo05/atividade08)
   
 - [Modulo06 - Fundamentos de Bancos de Dados Relacionais](https://github.com/CaioMMendes/MaisPraTi/tree/main/modulo06)
   - [Atividade 09 - Modelagem Conceitual de Bancos de Dados](https://github.com/CaioMMendes/MaisPraTi/tree/main/modulo06/atividade09)
