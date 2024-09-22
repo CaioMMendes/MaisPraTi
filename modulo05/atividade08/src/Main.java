@@ -1,4 +1,5 @@
 import encapsulation.EncapsulationExec;
+import inheritance.ExerciseTreeExec;
 
 import java.util.Scanner;
 
@@ -14,7 +15,7 @@ public class Main {
         System.out.println("Escolha uma da opções: ");
         System.out.println("1 - Product");
         System.out.println("2 - Product With Discount");
-        System.out.println("3 - Undo");
+        System.out.println("3 - Employees");
         System.out.println("4 - Undo Redo");
         System.out.println("5 - Card Game");
         System.out.println("6 - Bank Queue");
@@ -35,15 +36,17 @@ public class Main {
           case 2:
             System.out.println();
             System.out.println("-------------------------------");
-            System.out.println("Product With Discount.");
+            System.out.println("Executando Product With Discount.");
             System.out.println();
             EncapsulationExec.executeProductWithDiscount();
             break;
 
-//          case 3:
-//            System.out.println("Executando Undo.");
-//            UndoExec.execute();
-//            break;
+          case 3:
+            System.out.println("-------------------------------");
+            System.out.println("Executando Employees.");
+            System.out.println();
+            ExerciseTreeExec.execute();
+            break;
 //
 //          case 4:
 //            System.out.println("Executando Undo Redo.");
