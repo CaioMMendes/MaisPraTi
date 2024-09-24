@@ -1,5 +1,7 @@
 import encapsulation.EncapsulationExec;
-import inheritance.ExerciseTreeExec;
+import inheritance.InheritanceExec;
+import polymorphism.abstracts.AnimalExec;
+import polymorphism.interfaces.VehicleExec;
 
 import java.util.Scanner;
 
@@ -16,8 +18,8 @@ public class Main {
         System.out.println("1 - Product");
         System.out.println("2 - Product With Discount");
         System.out.println("3 - Employees");
-        System.out.println("4 - Undo Redo");
-        System.out.println("5 - Card Game");
+        System.out.println("4 - Vehicles");
+        System.out.println("5 - Animals");
         System.out.println("6 - Bank Queue");
         System.out.println("7 - Printing Queue");
         System.out.println("8 - Processes Queue");
@@ -45,18 +47,18 @@ public class Main {
             System.out.println("-------------------------------");
             System.out.println("Executando Employees.");
             System.out.println();
-            ExerciseTreeExec.execute();
+            InheritanceExec.execute();
             break;
-//
-//          case 4:
-//            System.out.println("Executando Undo Redo.");
-//            UndoRedoExec.execute();
-//            break;
-//
-//          case 5:
-//            System.out.println("Executando Card Game.");
-//            CardGameExec.execute();
-//            break;
+
+          case 4:
+            System.out.println("Executando Veículos.");
+            VehicleExec.execute();
+            break;
+
+          case 5:
+            System.out.println("Executando Animais.");
+            AnimalExec.execute();
+            break;
 //
 //          case 6:
 //            System.out.println("Executando Bank Queue.");

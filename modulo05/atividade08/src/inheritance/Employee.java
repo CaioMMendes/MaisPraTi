@@ -25,4 +25,8 @@ public class Employee {
   protected void setSalary(double salary) {
     this.salary = salary;
   }
+
+  protected void trabalhar() {
+    System.out.println("Mensagem genérica sobre o trabalho realizado");
+  }
 }

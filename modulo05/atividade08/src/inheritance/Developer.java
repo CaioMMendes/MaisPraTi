@@ -14,10 +14,15 @@ public class Developer extends Employee {
   protected double calcularBonus() {
     double bonus = this.getSalary() * 0.1;
     System.out.println();
-    System.out.println("Calculando bonus do Desenvolvedor");
+    System.out.println("Calculando bonus do Desenvolvedor, 10%");
     System.out.println("Salario: " + this.getSalary() + " , Bonus: " + bonus);
     System.out.println();
     return bonus;
+  }
+
+  @Override
+  protected void trabalhar() {
+    System.out.println("Desenvolvedor trabalhando.");
   }
 
 }

@@ -1,6 +1,6 @@
 package inheritance;
 
-public class ExerciseTreeExec {
+public class InheritanceExec {
 
   public static void execute() {
 
@@ -10,6 +10,9 @@ public class ExerciseTreeExec {
 
     developer.calcularBonus();
     manager.calcularBonus();
+
+    developer.trabalhar();
+    manager.trabalhar();
 
   }
 
