@@ -1,3 +1,4 @@
+import abstraction.paymentSystem.PaymentExec;
 import encapsulation.EncapsulationExec;
 import inheritance.InheritanceExec;
 import polymorphism.abstracts.AnimalExec;
@@ -20,7 +21,7 @@ public class Main {
         System.out.println("3 - Employees");
         System.out.println("4 - Vehicles");
         System.out.println("5 - Animals");
-        System.out.println("6 - Bank Queue");
+        System.out.println("6 - Payment");
         System.out.println("7 - Printing Queue");
         System.out.println("8 - Processes Queue");
         System.out.println("10 - Sair");
@@ -51,19 +52,25 @@ public class Main {
             break;
 
           case 4:
+            System.out.println("-------------------------------");
             System.out.println("Executando Veículos.");
+            System.out.println();
             VehicleExec.execute();
             break;
 
           case 5:
+            System.out.println("-------------------------------");
             System.out.println("Executando Animais.");
+            System.out.println();
             AnimalExec.execute();
             break;
-//
-//          case 6:
-//            System.out.println("Executando Bank Queue.");
-//            BankQueueExec.execute();
-//            break;
+
+          case 6:
+            System.out.println("-------------------------------");
+            System.out.println("Executando Payment.");
+            System.out.println();
+            PaymentExec.execute();
+            break;
 //
 //          case 7:
 //            System.out.println("Executando Printing Queue.");
