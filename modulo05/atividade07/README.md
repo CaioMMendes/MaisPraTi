@@ -7,6 +7,6 @@
 - Clonar o repositório
     <pre><code>git clone https://github.com/CaioMMendes/MaisPraTi</code></pre>
 
-- Abrir o arquivo main no caminho module05/atividade07/src/Main.java
+- Abrir o arquivo main no caminho modulo05/atividade07/src/Main.java
 
 - Executar o metodo main com ctrl + F5 ou clicando no icone de play
