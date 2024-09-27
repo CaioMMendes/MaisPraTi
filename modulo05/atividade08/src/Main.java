@@ -1,3 +1,4 @@
+import abstraction.employeeManagement.EmployeesManagementExec;
 import abstraction.paymentSystem.PaymentExec;
 import encapsulation.EncapsulationExec;
 import inheritance.InheritanceExec;
@@ -22,8 +23,7 @@ public class Main {
         System.out.println("4 - Vehicles");
         System.out.println("5 - Animals");
         System.out.println("6 - Payment");
-        System.out.println("7 - Printing Queue");
-        System.out.println("8 - Processes Queue");
+        System.out.println("7 - Employee Management");
         System.out.println("10 - Sair");
         int option = scanner.nextInt();
 
@@ -71,16 +71,13 @@ public class Main {
             System.out.println();
             PaymentExec.execute();
             break;
-//
-//          case 7:
-//            System.out.println("Executando Printing Queue.");
-//            PrintingQueueExec.execute();
-//            break;
-//
-//          case 8:
-//            System.out.println("Executando Processes Queue.");
-//            ProcessesQueueExec.execute();
-//            break;
+
+          case 7:
+            System.out.println("-------------------------------");
+            System.out.println("Employee Management.");
+            System.out.println();
+            EmployeesManagementExec.execute();
+            break;
 
           case 10:
             System.out.println("👋 Saindo...");
