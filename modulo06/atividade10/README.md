@@ -1,4 +1,6 @@
 
+## Atividade 10 - Construção e Consulta em Bancos de Dados MySQL
+
 Dado o modelo relacional abaixo que visa resolver uma alocação de alunos e utilizando o aplicativo MySQL Workbench para modelar, construir e executar os comandos SQL, responda as perguntas utilizando comandos SQL que atendam o solicitado:
 
 ALUNO (aluno_id, nome, curso, nivel, idade)
