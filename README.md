@@ -37,3 +37,4 @@ Este repositório é destinado ao conteúdo do curso de dev fullstack da **+PraT
 - [Modulo06 - Fundamentos de Bancos de Dados Relacionais](https://github.com/CaioMMendes/MaisPraTi/tree/main/modulo06)
   - [Atividade 09 - Modelagem Conceitual de Bancos de Dados](https://github.com/CaioMMendes/MaisPraTi/tree/main/modulo06/atividade09)
   - [Atividade 10 - Construção e Consulta em Bancos de Dados MySQL](<https://github.com/CaioMMendes/MaisPraTi/tree/main/modulo06/atividade10>)
+  - [Atividade 11 - Construção e Consulta em Bancos de Dados MySQL II](<https://github.com/CaioMMendes/MaisPraTi/tree/main/modulo06/atividade11>)
