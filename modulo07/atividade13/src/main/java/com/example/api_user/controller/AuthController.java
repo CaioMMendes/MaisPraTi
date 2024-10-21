@@ -1,7 +1,10 @@
 package com.example.api_user.controller;
 
 import com.example.api_user.dto.LoginDTO;
+import com.example.api_user.dto.UserDTO;
 import com.example.api_user.security.JwtTokenProvider;
+import com.example.api_user.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -20,6 +23,9 @@ public class AuthController {
   private final JwtTokenProvider jwtTokenProvider;
 //  private final UserDetailsService userDetailsService;
 
+  @Autowired
+  private UserService userService;
+
   public AuthController(AuthenticationManager authenticationManager, JwtTokenProvider jwtTokenProvider, UserDetailsService userDetailsService) {
     this.authenticationManager = authenticationManager;
     this.jwtTokenProvider = jwtTokenProvider;
@@ -28,11 +34,7 @@ public class AuthController {
 
 
   @PostMapping("/login")
-//  public ResponseEntity<String> login(@RequestBody String username, @RequestBody String user_password) {
-//  public ResponseEntity<String> login(@RequestBody Map<String, String> loginData) {
   public ResponseEntity<String> login(@RequestBody LoginDTO loginDto) {
-//    String username = loginData.get("username");
-//    String user_password = loginData.get("user_password");
 
     String username=loginDto.getUsername();
     String user_password=loginDto.getUser_password();
@@ -40,11 +42,14 @@ public class AuthController {
     try {
       Authentication authentication = authenticationManager.authenticate(
           new UsernamePasswordAuthenticationToken(username, user_password)
-//          new UsernamePasswordAuthenticationToken(username, user_password)
       );
 
-      UserDetails user = (UserDetails) authentication.getPrincipal();
-      return ResponseEntity.ok(jwtTokenProvider.generateToken(user));
+
+      UserDTO userDTO=userService.getUserByUsername(username);
+
+      return ResponseEntity.ok(jwtTokenProvider.generateToken(userDTO.getUsername(),userDTO.getId()));
+//      UserDetails user = (UserDetails) authentication.getPrincipal();
+//      return ResponseEntity.ok(jwtTokenProvider.generateToken(user));
     } catch (AuthenticationException error) {
       System.out.println(error);
       throw new RuntimeException("Invalid Credentials");

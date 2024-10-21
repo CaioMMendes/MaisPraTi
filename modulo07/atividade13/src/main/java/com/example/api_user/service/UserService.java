@@ -44,6 +44,15 @@ public class UserService  {
       return null;
     }
 
+
+  public UserDTO getUserByUsername(String username){
+    Optional<User> user=userRepository.findByUsername(username);
+    if(user.isPresent()) {
+      User getUser=user.get();
+      return convertToDTO(getUser);
+    }
+    return null;
+  }
     
       public UserDTO createUser(UserDTO userDTO){
       User user=new User();
@@ -61,6 +70,7 @@ public class UserService  {
         User user=userOptional.get();
         user.setUsername(userDTO.getUsername());
         user.setEmail(userDTO.getEmail());
+        user.setUser_password(passwordEncoder.encode(userDTO.getUser_password()));
         userRepository.save(user);
         return convertToDTO(user);
       }
