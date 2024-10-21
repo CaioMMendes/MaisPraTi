@@ -1,6 +1,7 @@
 package com.example.api_user.security;
 
 import com.example.api_user.service.CustomUserDetailsService;
+import io.jsonwebtoken.Claims;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -13,6 +14,7 @@ import org.springframework.security.web.authentication.WebAuthenticationDetailsS
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
+import java.util.Collections;
 
 @Configuration
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
@@ -52,11 +54,22 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
     if( jwtTokenProvider.isTokenValid(jwt, userDetails)){
       System.out.println("Token válido");
-      UsernamePasswordAuthenticationToken authenticationToken =
-          new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
-      authenticationToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
+      Claims claims = jwtTokenProvider.extractAllClaims(jwt);
+      Integer id = claims.get("id", Integer.class);
+//      UsernamePasswordAuthenticationToken authenticationToken =
+//          new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
+//      authenticationToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
 
-      SecurityContextHolder.getContext().setAuthentication(authenticationToken);
+
+
+      UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(
+          new CustomUserDetails(id, username), null, Collections.emptyList()
+      );
+      authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
+
+
+      SecurityContextHolder.getContext().setAuthentication(authentication);
+//      SecurityContextHolder.getContext().setAuthentication(authenticationToken);
     }
 
 

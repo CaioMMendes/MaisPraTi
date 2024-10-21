@@ -36,7 +36,7 @@ public class JwtTokenProvider {
     return claimsResolver.apply(claims);
   }
 
-  private Claims extractAllClaims(String token){
+  protected Claims extractAllClaims(String token){
 //    trocar o parser para parserbuilder
     return Jwts.parserBuilder().setSigningKey(getSigningKey()).build()
         .parseClaimsJws(token).getBody();
