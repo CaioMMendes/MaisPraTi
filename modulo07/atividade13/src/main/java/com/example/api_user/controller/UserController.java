@@ -1,5 +1,6 @@
 package com.example.api_user.controller;
 
+import com.example.api_user.dto.UpdateUserDTO;
 import com.example.api_user.dto.UserDTO;
 import com.example.api_user.security.CustomUserDetails;
 import com.example.api_user.service.UserService;
@@ -42,10 +43,12 @@ public class UserController {
   }
 
   @PutMapping()
-  public ResponseEntity<UserDTO> updateUser(@RequestBody UserDTO userDTO) {
+  public ResponseEntity<UserDTO> updateUser(@RequestBody UpdateUserDTO updateUserDto) {
     CustomUserDetails userDetails = (CustomUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
     Integer userId = userDetails.getUserId();
-    UserDTO updatedUser = userService.updateUser(userId, userDTO);
+
+    UserDTO updatedUser = userService.updateUser(userId, updateUserDto);
+
     return updatedUser != null ? ResponseEntity.ok(updatedUser) : ResponseEntity.notFound().build();
   }
 

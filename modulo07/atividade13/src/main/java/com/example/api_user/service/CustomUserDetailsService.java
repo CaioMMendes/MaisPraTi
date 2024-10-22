@@ -32,4 +32,18 @@ public class CustomUserDetailsService implements UserDetailsService {
 
     return builder.build();
   }
+
+  public UserDetails loadUserById(Integer id) throws UsernameNotFoundException {
+    // Busca o usuário no banco de dados pelo nome de usuário
+    User user = userRepository.findById(id)
+        .orElseThrow(() -> new UsernameNotFoundException("Usuário não encontrado com o id: " + id));
+
+    // Constrói o UserDetails com username, password e authorities
+    UserBuilder builder = org.springframework.security.core.userdetails.User.withUsername(Integer.toString(id));
+    builder.password(user.getUser_password());
+    // Adiciona a senha do usuário
+//    builder.authorities("USER"); // Adiciona uma autoridade básica (você pode ajustar conforme necessário)
+
+    return builder.build();
+  }
 }

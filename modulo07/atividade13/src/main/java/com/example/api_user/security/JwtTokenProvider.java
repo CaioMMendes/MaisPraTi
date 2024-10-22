@@ -18,8 +18,7 @@ import java.util.function.Function;
 public class JwtTokenProvider {
 
   @Value("${jwt.secret}")
-  private  String secretKey;
-
+  private String secretKey;
 
   // Método auxiliar para converter a secretKey para um formato apropriado
   private Key getSigningKey() {
@@ -27,58 +26,48 @@ public class JwtTokenProvider {
     return new SecretKeySpec(keyBytes, SignatureAlgorithm.HS256.getJcaName());
   }
 
-  public String extractUsername(String token){
+  public String extractSubject(String token) {
     return extractClaim(token, Claims::getSubject);
   }
 
-  public<T> T extractClaim(String token, Function<Claims,T> claimsResolver){
-    final Claims claims=extractAllClaims(token);
+  public <T> T extractClaim(String token, Function<Claims, T> claimsResolver) {
+    final Claims claims = extractAllClaims(token);
     return claimsResolver.apply(claims);
   }
 
-  protected Claims extractAllClaims(String token){
+  protected Claims extractAllClaims(String token) {
 //    trocar o parser para parserbuilder
     return Jwts.parserBuilder().setSigningKey(getSigningKey()).build()
         .parseClaimsJws(token).getBody();
   }
 
-
-  public String generateToken(String username,int id){
-    Map<String,Object> claims=new HashMap<>();
+  public String generateToken(String username, int id) {
+    Map<String, Object> claims = new HashMap<>();
     claims.put("id", id);
-    claims.put("username",username );
-    return createToken(claims,username);
+    claims.put("username", username);
+    return createToken(claims, id);
   }
 
-
-  private String createToken(Map<String,Object> claims,String subject){
+  private String createToken(Map<String, Object> claims, Integer subject) {
     return Jwts.builder().setClaims(claims)
-        .setSubject(subject)
+        .setSubject(Integer.toString(subject))
         .setIssuedAt(new Date(System.currentTimeMillis()))
-        .setExpiration(new Date(System.currentTimeMillis()+1000*60*60*10))
+        .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 10))
         .signWith(getSigningKey())
         .compact();
   }
 
-
-
-  public boolean isTokenValid(String token,UserDetails userDetails){
-    final String username=extractUsername(token);
-    return (!isTokenExpired(token) && username.equals(userDetails.getUsername()) );
+  public boolean isTokenValid(String token, UserDetails userDetails) {
+    final String id = extractSubject(token);
+    return (!isTokenExpired(token) && id.equals(userDetails.getUsername()));
   }
 
-private Boolean isTokenExpired(String token){
+  private Boolean isTokenExpired(String token) {
     return extractExpiration(token).before(new Date());
-}
+  }
 
-
-private Date extractExpiration(String token){
-    return extractClaim(token,Claims::getExpiration);
-}
-
-
-
-
-
+  private Date extractExpiration(String token) {
+    return extractClaim(token, Claims::getExpiration);
+  }
 
 }
