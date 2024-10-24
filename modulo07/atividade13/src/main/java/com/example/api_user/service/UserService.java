@@ -35,7 +35,6 @@ public class UserService {
 
   public UserDTO getUSerById(int id) {
     Optional<User> user = userRepository.findById(id);
-//      return user.map(this::convertToDTO).orElse(null);
     if (user.isPresent()) {
       User getUser = user.get();
       return convertToDTO(getUser);

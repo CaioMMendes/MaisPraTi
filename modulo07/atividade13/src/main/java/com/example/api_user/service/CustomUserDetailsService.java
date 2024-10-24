@@ -27,8 +27,7 @@ public class CustomUserDetailsService implements UserDetailsService {
 
     // Constrói o UserDetails com username, password e authorities
     UserBuilder builder = org.springframework.security.core.userdetails.User.withUsername(user.getUsername());
-    builder.password(user.getUser_password()); // Adiciona a senha do usuário
-//    builder.authorities("USER"); // Adiciona uma autoridade básica (você pode ajustar conforme necessário)
+    builder.password(user.getUser_password());
 
     return builder.build();
   }
@@ -41,7 +40,6 @@ public class CustomUserDetailsService implements UserDetailsService {
     // Constrói o UserDetails com username, password e authorities
     UserBuilder builder = org.springframework.security.core.userdetails.User.withUsername(Integer.toString(id));
     builder.password(user.getUser_password());
-    // Adiciona a senha do usuário
 //    builder.authorities("USER"); // Adiciona uma autoridade básica (você pode ajustar conforme necessário)
 
     return builder.build();

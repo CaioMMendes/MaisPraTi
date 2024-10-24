@@ -7,7 +7,6 @@ import com.example.api_user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,12 +20,9 @@ public class UserController {
 
   @GetMapping
   public List<UserDTO> getAllUsers() {
-//      User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
     CustomUserDetails userDetails = (CustomUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
     Integer userId = userDetails.getUserId();
     String username = userDetails.getUsername();
-    System.out.println("Usuarioooooooooo " + username);
-    System.out.println("Idddddddddd " + userId);
     return userService.getAllUsers();
   }
 
@@ -38,15 +34,12 @@ public class UserController {
 
   @PostMapping()
   public UserDTO createUser(@RequestBody UserDTO userDTO) {
-
     return userService.createUser(userDTO);
   }
 
   @PutMapping()
   public ResponseEntity<UserDTO> updateUser(@RequestBody UpdateUserDTO updateUserDto) {
-
     UserDTO updatedUser = userService.updateUser(updateUserDto);
-
     return updatedUser != null ? ResponseEntity.ok(updatedUser) : ResponseEntity.notFound().build();
   }
 

@@ -20,7 +20,6 @@ public class JwtTokenProvider {
   @Value("${jwt.secret}")
   private String secretKey;
 
-  // Método auxiliar para converter a secretKey para um formato apropriado
   private Key getSigningKey() {
     byte[] keyBytes = secretKey.getBytes();
     return new SecretKeySpec(keyBytes, SignatureAlgorithm.HS256.getJcaName());
@@ -36,7 +35,6 @@ public class JwtTokenProvider {
   }
 
   protected Claims extractAllClaims(String token) {
-//    trocar o parser para parserbuilder
     return Jwts.parserBuilder().setSigningKey(getSigningKey()).build()
         .parseClaimsJws(token).getBody();
   }

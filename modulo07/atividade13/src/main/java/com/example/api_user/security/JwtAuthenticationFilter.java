@@ -53,9 +53,6 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
       System.out.println("Token válido");
       Claims claims = jwtTokenProvider.extractAllClaims(jwt);
       String username = claims.get("username", String.class);
-//      UsernamePasswordAuthenticationToken authenticationToken =
-//          new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
-//      authenticationToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
 
       UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(
           new CustomUserDetails(Integer.parseInt(id), username), null, Collections.emptyList()
@@ -63,7 +60,6 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
       authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
 
       SecurityContextHolder.getContext().setAuthentication(authentication);
-//      SecurityContextHolder.getContext().setAuthentication(authenticationToken);
     }
 
     filterChain.doFilter(request, response);

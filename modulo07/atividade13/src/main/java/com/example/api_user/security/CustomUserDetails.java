@@ -1,4 +1,5 @@
 package com.example.api_user.security;
+
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -12,7 +13,6 @@ public class CustomUserDetails implements UserDetails {
   private Integer userId;
   private String username;
 
-
   public CustomUserDetails(Integer userId, String username) {
     this.userId = userId;
     this.username = username;
@@ -20,9 +20,8 @@ public class CustomUserDetails implements UserDetails {
 
   @Override
   public String getPassword() {
-    return null; // Não estamos usando senha nesse exemplo
+    return null;
   }
-
 
   @Override
   public Collection<? extends GrantedAuthority> getAuthorities() {

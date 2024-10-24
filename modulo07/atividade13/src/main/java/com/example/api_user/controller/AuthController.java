@@ -21,7 +21,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class AuthController {
   private final AuthenticationManager authenticationManager;
   private final JwtTokenProvider jwtTokenProvider;
-//  private final UserDetailsService userDetailsService;
 
   @Autowired
   private UserService userService;
@@ -29,28 +28,18 @@ public class AuthController {
   public AuthController(AuthenticationManager authenticationManager, JwtTokenProvider jwtTokenProvider, UserDetailsService userDetailsService) {
     this.authenticationManager = authenticationManager;
     this.jwtTokenProvider = jwtTokenProvider;
-//    this.userDetailsService = userDetailsService;
   }
-
 
   @PostMapping("/login")
   public ResponseEntity<String> login(@RequestBody LoginDTO loginDto) {
-
-    String username=loginDto.getUsername();
-    String user_password=loginDto.getUser_password();
-
-
+    String username = loginDto.getUsername();
+    String user_password = loginDto.getUser_password();
     try {
       Authentication authentication = authenticationManager.authenticate(
           new UsernamePasswordAuthenticationToken(username, user_password)
       );
-
-
-      UserDTO userDTO=userService.getUserByUsername(username);
-
-      return ResponseEntity.ok(jwtTokenProvider.generateToken(userDTO.getUsername(),userDTO.getId()));
-//      UserDetails user = (UserDetails) authentication.getPrincipal();
-//      return ResponseEntity.ok(jwtTokenProvider.generateToken(user));
+      UserDTO userDTO = userService.getUserByUsername(username);
+      return ResponseEntity.ok(jwtTokenProvider.generateToken(userDTO.getUsername(), userDTO.getId()));
     } catch (AuthenticationException error) {
       System.out.println(error);
       throw new RuntimeException("Invalid Credentials");

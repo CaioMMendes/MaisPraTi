@@ -22,14 +22,12 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @EnableWebSecurity
 public class SecurityConfig {
 
-
   private final CustomUserDetailsService customUserDetailsService;
   private final JwtAuthenticationFilter jwtAuthFilter;
 
-
-  public SecurityConfig(CustomUserDetailsService customUserDetailsService,JwtAuthenticationFilter jwtAuthFilter) {
-    this.customUserDetailsService =customUserDetailsService;
-    this.jwtAuthFilter=jwtAuthFilter;
+  public SecurityConfig(CustomUserDetailsService customUserDetailsService, JwtAuthenticationFilter jwtAuthFilter) {
+    this.customUserDetailsService = customUserDetailsService;
+    this.jwtAuthFilter = jwtAuthFilter;
   }
 
   @Bean
@@ -37,7 +35,6 @@ public class SecurityConfig {
     http
         .csrf((crsf) -> crsf.disable())
         .authorizeHttpRequests(authorize -> authorize
-//        .requestMatchers("/auth/**","/api/**").permitAll()
             .requestMatchers("/auth/**").permitAll()
             .requestMatchers(HttpMethod.POST, "/api/users").permitAll()
             .requestMatchers("/api/**").authenticated()
@@ -57,15 +54,13 @@ public class SecurityConfig {
     return new BCryptPasswordEncoder();
   }
 
-
   @Bean
-  public AuthenticationProvider authenticationProvider(){
-    DaoAuthenticationProvider authProvider=new DaoAuthenticationProvider();
+  public AuthenticationProvider authenticationProvider() {
+    DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
     authProvider.setUserDetailsService(customUserDetailsService);
     authProvider.setPasswordEncoder(passwordEncoder());
 
     return authProvider;
   }
-
 
 }
