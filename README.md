@@ -39,3 +39,7 @@ Este repositório é destinado ao conteúdo do curso de dev fullstack da **+PraT
   - [Atividade 10 - Construção e Consulta em Bancos de Dados MySQL](https://github.com/CaioMMendes/MaisPraTi/tree/main/modulo06/atividade10)
   - [Atividade 11 - Construção e Consulta em Bancos de Dados MySQL II](https://github.com/CaioMMendes/MaisPraTi/tree/main/modulo06/atividade11)
   - [Atividade 12 - Construção e Consulta em Bancos de Dados MySQL III](https://github.com/CaioMMendes/MaisPraTi/tree/main/modulo06/atividade12)
+  
+- [Módulo 7 - Desenvolvimento de API’s Rest com Spring Boot](https://github.com/CaioMMendes/MaisPraTi/tree/main/modulo07)
+  - [Atividade 13 - Solução de Problemas envolvendo o JWT](https://github.com/CaioMMendes/MaisPraTi/tree/main/modulo07/atividade13)
+  - [Atividade 14 - Fluxograma de API](https://github.com/CaioMMendes/MaisPraTi/tree/main/modulo07/atividade14)
