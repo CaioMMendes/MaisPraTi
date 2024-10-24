@@ -44,19 +44,15 @@ public class UserController {
 
   @PutMapping()
   public ResponseEntity<UserDTO> updateUser(@RequestBody UpdateUserDTO updateUserDto) {
-    CustomUserDetails userDetails = (CustomUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-    Integer userId = userDetails.getUserId();
 
-    UserDTO updatedUser = userService.updateUser(userId, updateUserDto);
+    UserDTO updatedUser = userService.updateUser(updateUserDto);
 
     return updatedUser != null ? ResponseEntity.ok(updatedUser) : ResponseEntity.notFound().build();
   }
 
   @DeleteMapping()
   public ResponseEntity<Void> deleteUser() {
-    CustomUserDetails userDetails = (CustomUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-    Integer userId = userDetails.getUserId();
-    userService.deleteUser(userId);
+    userService.deleteUser();
     return ResponseEntity.noContent().build();
   }
 

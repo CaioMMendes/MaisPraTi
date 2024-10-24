@@ -2,7 +2,9 @@ package com.example.api_user.service;
 
 import com.example.api_user.dto.UpdateUserDTO;
 import com.example.api_user.repository.UserRepository;
+import com.example.api_user.security.CustomUserDetails;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import com.example.api_user.dto.UserDTO;
@@ -59,8 +61,10 @@ public class UserService {
     return convertToDTO(user);
   }
 
-  public UserDTO updateUser(int id, UpdateUserDTO updateUserDto) {
-    Optional<User> userOptional = userRepository.findById(id);
+  public UserDTO updateUser(UpdateUserDTO updateUserDto) {
+    CustomUserDetails userDetails = (CustomUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    Integer userId = userDetails.getUserId();
+    Optional<User> userOptional = userRepository.findById(userId);
     if (userOptional.isPresent()) {
       User user = userOptional.get();
       user.setUsername(updateUserDto.getUsername());
@@ -72,8 +76,10 @@ public class UserService {
     return null;
   }
 
-  public void deleteUser(int id) {
-    userRepository.deleteById(id);
+  public void deleteUser() {
+    CustomUserDetails userDetails = (CustomUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    Integer userId = userDetails.getUserId();
+    userRepository.deleteById(userId);
   }
 
   private UserDTO convertToDTO(User user) {
