@@ -2,7 +2,6 @@ package com.example.atividade15.model;
 
 import jakarta.persistence.*;
 import lombok.Data;
-
 import java.util.HashSet;
 import java.util.Set;
 
@@ -13,6 +12,7 @@ public class Student {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
   private String name;
+
   @Column(unique = true)
   private String email;
 

@@ -33,6 +33,11 @@ public class StudentService {
     return student;
   }
 
+  public void deleteStudent(Long id){
+    studentRepository.deleteById(id);
+    return;
+  }
+
   public List<Course> getAllStudentCourses(Long id) {
     return studentRepository.findCoursesByStudentId(id);
   }
