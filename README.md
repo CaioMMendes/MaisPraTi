@@ -43,3 +43,4 @@ Este repositório é destinado ao conteúdo do curso de dev fullstack da **+PraT
 - [Módulo 7 - Desenvolvimento de API’s Rest com Spring Boot](https://github.com/CaioMMendes/MaisPraTi/tree/main/modulo07)
   - [Atividade 13 - Solução de Problemas envolvendo o JWT](https://github.com/CaioMMendes/MaisPraTi/tree/main/modulo07/atividade13)
   - [Atividade 14 - Fluxograma de API](https://github.com/CaioMMendes/MaisPraTi/tree/main/modulo07/atividade14)
+  - [Atividade 15 - Implementando Relacionamento ManyToMany](https://github.com/CaioMMendes/MaisPraTi/tree/main/modulo07/atividade15)
