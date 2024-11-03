@@ -44,3 +44,6 @@ Este repositório é destinado ao conteúdo do curso de dev fullstack da **+PraT
   - [Atividade 13 - Solução de Problemas envolvendo o JWT](https://github.com/CaioMMendes/MaisPraTi/tree/main/modulo07/atividade13)
   - [Atividade 14 - Fluxograma de API](https://github.com/CaioMMendes/MaisPraTi/tree/main/modulo07/atividade14)
   - [Atividade 15 - Implementando Relacionamento ManyToMany](https://github.com/CaioMMendes/MaisPraTi/tree/main/modulo07/atividade15)
+
+- [Módulo 8 - Laboratório de Projeto Final](https://github.com/CaioMMendes/MaisPraTi/tree/main/modulo08)
+  - [Atividade 16 - Praticando Testes Unitários](https://github.com/CaioMMendes/MaisPraTi/tree/main/modulo08/atividade15)
