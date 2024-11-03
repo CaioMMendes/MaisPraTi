@@ -23,35 +23,35 @@ public class CourseController {
   }
 
   @GetMapping("/{id}")
-  public ResponseEntity<Course> getCourseById(@RequestParam String id) {
+  public ResponseEntity<Course> getCourseById(@PathVariable String id) {
     Long longId = Long.parseLong(id);
     Course returnedCourse = courseService.getCourseById(longId);
     return ResponseEntity.ok(returnedCourse);
   }
 
   @PutMapping("/{id}")
-  public ResponseEntity<Course> updateCourse(@RequestParam String id, @RequestBody CourseDTO courseDTO) {
+  public ResponseEntity<Course> updateCourse(@PathVariable String id, @RequestBody CourseDTO courseDTO) {
     Long longId = Long.parseLong(id);
     Course returnedCourse = courseService.updateCourse(longId, courseDTO);
     return ResponseEntity.ok(returnedCourse);
   }
 
   @DeleteMapping("/{id}")
-  public ResponseEntity<Void> deleteCourse(@RequestParam String id) {
+  public ResponseEntity<Void> deleteCourse(@PathVariable String id) {
     Long longId = Long.parseLong(id);
     courseService.deleteCourse(longId);
     return ResponseEntity.status(204).build();
   }
 
   @GetMapping("/all/{id}")
-  public ResponseEntity<List<Course>> getAllCourseCourses(@RequestParam String id) {
+  public ResponseEntity<List<Course>> getAllCourseCourses(@PathVariable String id) {
     Long longId = Long.parseLong(id);
     List<Course> returnedCourse = courseService.getAllCourseCourses(longId);
     return ResponseEntity.ok(returnedCourse);
   }
 
   @GetMapping("/name/{name}")
-  public ResponseEntity<Course> getCoursesByName(String name) {
+  public ResponseEntity<Course> getCoursesByName(@PathVariable String name) {
     Course returnedCourse = courseService.getCoursesByName(name);
     return ResponseEntity.ok(returnedCourse);
   }
