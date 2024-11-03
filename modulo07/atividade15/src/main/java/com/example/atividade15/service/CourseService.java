@@ -2,6 +2,7 @@ package com.example.atividade15.service;
 
 import com.example.atividade15.dto.CourseDTO;
 import com.example.atividade15.model.Course;
+import com.example.atividade15.model.Student;
 import com.example.atividade15.repository.CourseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -38,7 +39,7 @@ public class CourseService {
     return;
   }
 
-  public List<Course> getAllCourseCourses(Long id) {
+  public List<Student> getAllCourseCourses(Long id) {
     return courseRepository.findStudentByCourseId(id);
   }
 

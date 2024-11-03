@@ -2,6 +2,7 @@ package com.example.atividade15.controller;
 
 import com.example.atividade15.dto.CourseDTO;
 import com.example.atividade15.model.Course;
+import com.example.atividade15.model.Student;
 import com.example.atividade15.service.CourseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -43,10 +44,10 @@ public class CourseController {
     return ResponseEntity.status(204).build();
   }
 
-  @GetMapping("/all/{id}")
-  public ResponseEntity<List<Course>> getAllCourseCourses(@PathVariable String id) {
+  @GetMapping("/{id}/alunos")
+  public ResponseEntity<List<Student>> getAllCourseCourses(@PathVariable String id) {
     Long longId = Long.parseLong(id);
-    List<Course> returnedCourse = courseService.getAllCourseCourses(longId);
+    List<Student> returnedCourse = courseService.getAllCourseCourses(longId);
     return ResponseEntity.ok(returnedCourse);
   }
 
