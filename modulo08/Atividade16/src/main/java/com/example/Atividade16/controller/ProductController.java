@@ -30,9 +30,13 @@ public class ProductController {
   }
 
   @GetMapping("/{id}")
-  public ResponseEntity<Product> getProductById(@PathVariable String id){
+  public ResponseEntity<?> getProductById(@PathVariable String id){
     Long longId = Long.parseLong(id);
     Product responseProduct= productService.getProductById(longId);
+    if (responseProduct == null) {
+      String message = "Produto não encontrado com o ID: " + id;
+      return ResponseEntity.status(HttpStatus.NOT_FOUND).body(message);
+    }
     return ResponseEntity.ok(responseProduct);
   }
 
