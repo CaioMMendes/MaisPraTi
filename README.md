@@ -46,4 +46,4 @@ Este repositório é destinado ao conteúdo do curso de dev fullstack da **+PraT
   - [Atividade 15 - Implementando Relacionamento ManyToMany](https://github.com/CaioMMendes/MaisPraTi/tree/main/modulo07/atividade15)
 
 - [Módulo 8 - Laboratório de Projeto Final](https://github.com/CaioMMendes/MaisPraTi/tree/main/modulo08)
-  - [Atividade 16 - Praticando Testes Unitários](https://github.com/CaioMMendes/MaisPraTi/tree/main/modulo08/atividade15)
+  - [Atividade 16 - Praticando Testes Unitários](https://github.com/CaioMMendes/MaisPraTi/tree/main/modulo08/atividade16)
